@@ -1,0 +1,40 @@
+﻿@using RongKang_Entity;
+@using RongKang_ViewModel;
+@using Web_Common;
+
+@{
+    //这两行是页面添加显示修改数据必须需要的。
+    var List = ViewBag.List;
+}
+
+<div style=" border: #c3daf9 0px solid; width: 99%; max-height:500px; overflow: auto;">
+    <div id="tree">
+        <table class="am-table am-table-striped am-table-bordered am-table-compact">
+            <thead>
+                <tr>
+                    <th>角色名</th>
+                    <th>备注</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (List != null)
+                {
+                    foreach (var item in List)
+                    {
+                        <tr>
+                            <td>@item.Role_Name</td>
+                            <td>@item.Role_Remark</td>
+                            <td>
+                                @(item.Switch_OnOff == 1 ? "开启" : "停用")
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
+

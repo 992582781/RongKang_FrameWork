@@ -1,0 +1,60 @@
+
+发生时间：2018/2/8 9:37:41
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块新增,Module_Url:Module/Add,Module_ParentID:2,Module_Key:Add,Module_Order:1011,Switch_OnOff:1,
+
+发生时间：2018/2/8 9:39:32
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:用户添加,Module_Url:User/Add,Module_ParentID:11,Module_Key:Add,Module_Order:1031,Switch_OnOff:1,
+
+发生时间：2018/2/8 9:39:57
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:用户新增,Module_Url:User/Add,Module_ParentID:11,Module_Key:Add,Module_Order:1031,Switch_OnOff:1,
+
+发生时间：2018/2/8 9:40:33
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:用户修改,Module_Url:User/Mod,Module_ParentID:11,Module_Key:Mod,Module_Order:1032,Switch_OnOff:1,
+
+发生时间：2018/2/8 9:41:40
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:用户删除,Module_Url:User/Del,Module_ParentID:11,Module_Key:Del,Module_Order:1033,Switch_OnOff:1,
+
+发生时间：2018/2/8 9:42:29
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:权限配置,Module_Url:Permission/Index,Module_ParentID:10,Module_Key:,Module_Order:104,Switch_OnOff:1,
+
+发生时间：2018/2/8 10:56:47
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块删除,Module_Url:Module/Del,Module_ParentID:2,Module_Key:Del,Module_Order:1013,Switch_OnOff:1,
+
+发生时间：2018/2/8 13:35:37
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:admin,User_PassWord:admin,Switch_OnOff:1,
+
+发生时间：2018/2/8 13:39:59
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:admin,User_PassWord:33,Switch_OnOff:1,
+
+发生时间：2018/2/8 15:24:14
+操作的表：Role
+客户端IP：172.21.21.44
+操作的ID：1
+操作数据：Role_Name:Data审核,Role_Remark:基础数据的审核,Switch_OnOff:0,

@@ -1,0 +1,282 @@
+﻿@using RongKang_Entity;
+@using RongKang_ViewModel;
+@using Web_Common;
+@using RongRental.Areas.Admin_Rental.Filters;
+
+@{
+    //这两行是页面添加显示修改数据必须需要的。
+    var List = ViewBag.List;
+    Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<User>();//修改model
+}
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="主界面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Areas/Admin_Rental/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link href="~/Areas/Admin_Rental/assets/css/amazeui.page.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.datatables.css" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/admin.css">
+
+</head>
+<body>
+    <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+    @Html.Partial("Head")
+
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+        @Html.Partial("LeftMenu")
+        <!-- sidebar end -->
+        <!-- content start -->
+        <div class="admin-content">
+            <div class="admin-content-body">
+                <div class="am-cf am-padding am-padding-bottom-0">
+                    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">@Permission.ModuleName(ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["action"].ToString())</strong></div>
+                </div>
+                <hr>
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-6">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+                                <input id="Status" name="Status" onclick='LoadData1("0","0","0")' type="checkbox" />用户角色权限
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-form-group">
+
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-input-group am-input-group-sm">
+                            <div class="am-input-group am-input-group-sm">
+                                <span class="am-input-group-btn">
+                                    <button class="am-btn am-btn-default" id="save" type="button">保存</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g">
+                    <div class="am-u-sm-12">
+                        <div style="overflow: auto; width: 100%;">
+                            <div style=" float: left; border: #c3daf9 0px solid; width: 47%; max-height: 300px; overflow: auto; margin: 4px; padding: 2px;">
+                                <div id="tree">
+                                    <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th>
+                                                    勾选 @Html.Hidden("ID")  @Html.Hidden("Type")
+                                                </th>
+                                                <th>
+                                                    名称
+                                                </th>
+                                                <th>
+                                                    角色
+                                                </th>
+                                                <th>
+                                                    状态
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                if (List != null)
+                                                {
+                                                    foreach (var item in List)
+                                                    {
+                                                        {
+                                                            var SS = item.Role_Remark + "_" + item.ID;
+                                                            <tr onclick='LoadData("@SS","@item.Role_Remark","0")'>
+                                                                <td><input type="checkbox" id='@SS' name='Role_ID' /></td>
+                                                                 
+                                                                <td> @item.Role_Name</td>
+                                                                <td> @(item.Role_Remark == "1" ? "用户" : "角色")</td>
+                                                                <td> @(item.Switch_OnOff == 1 ? "开启" : "关闭")</td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="CheckboxList" style="width: 47%; float: left; margin-left:45px;"></div>
+                        </div>
+
+                        <div id="LoadUserList" style="width: 100%; float: left; margin: 2px; padding: 2px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*@Html.Partial("Footer")*@
+        </div>
+
+        <div style="display:none" class="hid-token-page">
+            @Html.AntiForgeryToken()  //为了安全必须添加
+        </div>
+        <!-- content end -->
+
+    </div>
+
+    <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+    @Html.Partial("Footer")
+
+
+</body>
+</html>
+<script src="~/Areas/Admin_Rental/assets/js/List.js"></script>
+<script src="~/Areas/Admin_Rental/assets/js/amazeui.datatables.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#example").DataTable({
+            "paging": false, // 禁止分页
+            //"bFilter": false,   //去掉搜索框方法三：这种方法可以
+            "bInfo": false, //页脚
+            bLengthChange: false  //去掉每页显示多少条数据方法
+        });
+
+        setTimeout(function () {
+            $("#CheckboxList").load('CheckboxList2').show();
+           
+            $("#LoadUserList").load('LoadUserList').show();
+        }, 1000);
+
+        $('#save').click(function () {
+            if (confirm("确认保存权限？")) {
+                save();
+            }
+        })
+
+
+    });
+
+
+    function save() {
+        var RoleId = "";
+        var Type = "";
+        var urlstring = ""
+        var Modules = new Array()
+        $("input[name='ModuleId']:checkbox:checked").each(function () {
+            Modules.push($(this).val());
+        })
+
+        if (Modules.length < 1) {
+            alert("您没有勾选");
+            return;
+        }
+
+        RoleId = $("#ID").val();
+        if (RoleId.length < 1) {
+            alert("您没有选择角色");
+            return;
+        }
+
+        Type = $("#Type").val();
+
+        if (Type == 1) { //Type是1表示是用户 2 表示是角色
+            urlstring = 'Edit1';
+        }
+        else if (Type == 2) {
+            urlstring = 'Edit';
+        }
+
+        var jsondata = {
+            Modules: Modules,
+            RoleId: RoleId
+        }
+        alert(Modules);
+        $.ajax({
+            url: urlstring,   //对应于/controllerName/ActionName
+            data: JSON.stringify(jsondata),
+            type: 'post',
+            cache: false,
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                if (!data.Status) {
+                    alert(data.Msg);
+                }
+                else {
+                    alert(data.Msg);
+                }
+            }
+        });
+    }
+
+    //加载数据事件
+    function LoadData(ID, Type, Status) {
+        $("input[name='Role_ID']").removeAttr("checked");
+        $("input[id='" + ID + "']").prop("checked", "checked");
+
+        $("#ID").val(ID.split("_")[1])
+        $("#Type").val(Type)
+        var jsondata = {
+            Id: $("#ID").val(),
+            Type: $("#Type").val(),
+            Status: Status
+        }
+        if (!$('#Status').removeAttr('checked'))
+            return;
+        //alert(jsondata);
+        if (Type == 1) { //Type是1表示是用户 2 表示是角色
+            $("#CheckboxList").load('CheckboxList1', jsondata);//加载用户和用户角色的权限
+            $("#LoadUserList").load('LoadUserRoleList', jsondata);
+        }
+        else if (Type == 2) {
+            $("#CheckboxList").load('CheckboxList2', jsondata);
+            $("#LoadUserList").load('LoadUserList', jsondata);
+        }
+    }
+
+    //加载用户角色数据事件
+    function LoadData1(Id, Type, Status) {
+        var Id = "", Type = "", Status = "";
+        Id = $("#ID").val();
+        Type = $("#Type").val();
+
+        if ($('#Status').prop('checked'))
+            Status = 1;
+        else
+            Status = 0;
+
+        var jsondata = {
+            Id: Id,
+            Type: Type,
+            Status: Status
+        }
+ 
+        if (Type != 1) {
+            $('#Status').removeAttr('checked');
+            alert("请勾选用户");
+            return;
+        }
+
+        if (Type == 1) { //Type是1表示是用户 2 表示是角色
+            //alert("数据加载中......");
+            $("#CheckboxList").load('CheckboxList1', jsondata);//加载用户和用户角色的权限
+            $("#LoadUserList").load('LoadUserRoleList', jsondata);
+        }
+    }
+
+</script>  

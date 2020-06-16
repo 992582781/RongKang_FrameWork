@@ -1,0 +1,72 @@
+
+发生时间：2018/2/5 12:43:32
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:11,User_PassWord:22,
+
+发生时间：2018/2/5 12:46:43
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:22,User_PassWord:33,
+
+发生时间：2018/2/5 12:48:09
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:111,User_PassWord:22,
+
+发生时间：2018/2/5 12:49:36
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:1123,User_PassWord:111,
+
+发生时间：2018/2/5 12:51:32
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:567,User_PassWord:123,
+
+发生时间：2018/2/5 13:06:43
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:11,User_PassWord:22,
+
+发生时间：2018/2/5 13:13:46
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:11,User_PassWord:22,
+
+发生时间：2018/2/5 13:14:15
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:1122,User_PassWord:22222,
+
+发生时间：2018/2/5 13:20:49
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:admin,User_PassWord:admin,
+
+发生时间：2018/2/5 13:26:06
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:admin,User_PassWord:admin,Switch_OnOff:1,
+
+发生时间：2018/2/5 13:31:20
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：User_Name:admin,User_PassWord:admin,Switch_OnOff:1,
+
+发生时间：2018/2/5 13:33:36
+操作的表：Role
+客户端IP：127.0.0.1
+操作的ID：0
+操作数据：Role_Name:Data审核,Role_Remark:基础数据的审核,Switch_OnOff:1,

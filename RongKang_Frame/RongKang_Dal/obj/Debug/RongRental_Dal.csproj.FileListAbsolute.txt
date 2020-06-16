@@ -1,0 +1,9 @@
+E:\zixue\RongRental\RongRental_Dao\obj\Debug\RongRental_Dal.csprojResolveAssemblyReference.cache
+E:\zixue\RongRental\RongRental_Dao\obj\Debug\RongRental_Dal.dll
+E:\zixue\RongRental\RongRental_Dao\obj\Debug\RongRental_Dal.pdb
+E:\zixue\RongRental\RongRental\bin\RongRental_Dal.dll.config
+E:\zixue\RongRental\RongRental\bin\RongRental_Dal.dll
+E:\zixue\RongRental\RongRental\bin\RongRental_Dal.pdb
+E:\zixue\RongRental\RongRental_Dal\obj\Debug\RongRental_Dal.csprojResolveAssemblyReference.cache
+E:\zixue\RongRental\RongRental_Dal\obj\Debug\RongRental_Dal.dll
+E:\zixue\RongRental\RongRental_Dal\obj\Debug\RongRental_Dal.pdb

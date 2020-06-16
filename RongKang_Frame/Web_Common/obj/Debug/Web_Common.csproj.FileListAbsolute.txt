@@ -1,0 +1,5 @@
+E:\zixue\RongRental\RongRental\bin\Web_Common.dll
+E:\zixue\RongRental\RongRental\bin\Web_Common.pdb
+E:\zixue\RongRental\Web_Common\obj\Debug\Web_Common.dll
+E:\zixue\RongRental\Web_Common\obj\Debug\Web_Common.pdb
+E:\zixue\RongRental\Web_Common\obj\Debug\Web_Common.csprojResolveAssemblyReference.cache

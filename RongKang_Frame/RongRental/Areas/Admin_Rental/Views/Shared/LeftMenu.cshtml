@@ -1,0 +1,73 @@
+﻿@using RongKang_Entity;
+@using RongKang_ViewModel;
+@using Web_Common;
+@using System.Web.Script.Serialization;
+@using RongRental.Areas.Admin_Rental.Filters;
+
+@{
+    IList<Module> List_Modules;
+    if (Permission.InitModules() == null)
+    {
+        return;
+    }
+    else
+    {
+        List_Modules = Permission.InitModules();
+    }
+
+    
+}
+<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+        <ul class="am-list admin-sidebar-list">
+            <li><a href="~/Admin_Rental/User/UserInfor"><span class="am-icon-home"></span> 首页</a></li>
+ 
+            @{
+                IList<Module> Parent_Modules = List_Modules.Where(x => x.Module_ParentID == 0).OrderByDescending(x => x.Module_Order).ToList();
+                foreach (Module Item in Parent_Modules)
+                {
+
+                    <li class="admin-parent">
+                        <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav_@Item.ID'}"><span class="am-icon-file"></span>@Item.Module_Name</a>
+                        <ul class="am-list admin-sidebar-sub am-collapse" id="collapse-nav_@Item.ID">
+                            @{
+                    IList<Module> Son_Modules = List_Modules.Where(x => x.Module_ParentID == Item.ID).OrderBy(x => x.Module_Order).ToList();
+                    foreach (Module SonItem in Son_Modules)
+                    {
+                        <li><a href="../@SonItem.Module_Url"><span class="am-icon-puzzle-piece"></span>@SonItem.Module_Name</a></li>
+                    }
+                            }
+
+                        </ul>
+                    </li>
+                }
+            }
+            
+        </ul>
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-bookmark"></span> 公告</p>
+                <p>与君初相识， 犹如故人归；天涯明月新， 朝暮最相思。—— Amaze UI</p>
+            </div>
+        </div>
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-tag"></span> wiki</p>
+                <p>Welcome to the Amaze UI wiki!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Areas/Admin_Rental/assets/js/jquery.min.js"></script>
+<script src="~/Areas/Admin_Rental/assets/js/jquery.cookie.js"></script>
+<script>
+    $(function () {
+        if ($.cookie("currId")) {
+            var arr = $.cookie("currId");
+            console.log(arr);
+            $(arr).removeClass("am-collapsed")
+            $(arr).parent().find("ul").addClass("am-in");
+        }
+    })
+
+</script>

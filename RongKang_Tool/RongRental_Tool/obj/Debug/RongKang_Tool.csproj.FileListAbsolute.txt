@@ -1,0 +1,9 @@
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\obj\Debug\RongKang_Tool.Form1.resources
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\obj\Debug\RongKang_Tool.Properties.Resources.resources
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\obj\Debug\RongKang_Tool.csproj.GenerateResource.Cache
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\bin\Debug\RongKang_Tool.exe.config
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\bin\Debug\RongKang_Tool.exe
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\bin\Debug\RongKang_Tool.pdb
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\obj\Debug\RongKang_Tool.exe
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\obj\Debug\RongKang_Tool.pdb
+E:\Work\RongKang_FrameWork\RongKang_Tool\RongRental_Tool\obj\Debug\RongKang_Tool.csprojResolveAssemblyReference.cache

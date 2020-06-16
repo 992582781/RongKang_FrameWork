@@ -1,0 +1,336 @@
+
+发生时间：2018/2/7 13:58:27
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:用户管理,Module_Url:User/List,Module_ParentID:0,Module_Key:,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 13:59:43
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:系统配置,Module_Url:..,Module_ParentID:0,Module_Key:,Module_Order:100,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:00:08
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:系统配置,Module_Url:系统配置,Module_ParentID:0,Module_Key:,Module_Order:100,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:01:08
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:用户管理,Module_Url:用户管理,Module_ParentID:10,Module_Key:,Module_Order:1001,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:02:10
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:权限配置,Module_Url:Permission/Index,Module_ParentID:10,Module_Key:,Module_Order:1002,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:34:50
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:模块查询,Module_Url:Module/List,Module_ParentID:10,Module_Key:,Module_Order:1000,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:35:23
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块新增,Module_Url:Module/Edit,Module_ParentID:2,Module_Key:Add,Module_Order:10001,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:35:40
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块修改,Module_Url:Module/Mod,Module_ParentID:2,Module_Key:Mod,Module_Order:10002,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:35:56
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块删除,Module_Url:Module/Del,Module_ParentID:2,Module_Key:Del,Module_Order:10004,Switch_OnOff:0,
+
+发生时间：2018/2/7 14:40:17
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:来源管理,Module_Url:来源管理,Module_ParentID:0,Module_Key:,Module_Order:1,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:41:03
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色修改,Module_Url:User/List,Module_ParentID:0,Module_Key:,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:41:52
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色修改,Module_Url:User/List,Module_ParentID:7,Module_Key:,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:42:19
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:User/List,Module_ParentID:7,Module_Key:Mod,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:42:46
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色新增,Module_Url:222,Module_ParentID:7,Module_Key:Add,Module_Order:211,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:44:20
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色管理,Module_Url:菜单,Module_ParentID:0,Module_Key:,Module_Order:2,Switch_OnOff:0,
+
+发生时间：2018/2/7 14:44:47
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色管理,Module_Url:角色管理,Module_ParentID:0,Module_Key:,Module_Order:2,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:45:28
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/List,Module_ParentID:6,Module_Key:,Module_Order:21,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:45:49
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色新增,Module_Url:Role/Add,Module_ParentID:7,Module_Key:Add,Module_Order:211,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:46:59
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Del,Module_ParentID:7,Module_Key:Mod,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:50:21
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色管理,Module_Url:Role,Module_ParentID:0,Module_Key:,Module_Order:2,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:51:39
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Mod,Module_ParentID:7,Module_Key:Mod,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:52:09
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Mod,Module_ParentID:7,Module_Key:Mod,Module_Order:212,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:52:38
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色管理,Module_Url:Role,Module_ParentID:0,Module_Key:,Module_Order:99,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:52:54
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/List,Module_ParentID:6,Module_Key:,Module_Order:991,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:53:08
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色新增,Module_Url:Role/Add,Module_ParentID:7,Module_Key:Add,Module_Order:9911,Switch_OnOff:1,
+
+发生时间：2018/2/7 14:53:27
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Mod,Module_ParentID:7,Module_Key:Mod,Module_Order:9912,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:09:29
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:用户管理,Module_Url:User/List,Module_ParentID:10,Module_Key:,Module_Order:1001,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:14:25
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:22,User_PassWord:33,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:14:39
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:22,User_PassWord:33,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:14:50
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:22,User_PassWord:33,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:33:50
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:admin,User_PassWord:admin,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:34:00
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:admin,User_PassWord:admin,Switch_OnOff:1,
+
+发生时间：2018/2/7 15:57:49
+操作的表：User
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：User_Name:admin,User_PassWord:admin,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:00:39
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:模块查询,Module_Url:Module/List,Module_ParentID:10,Module_Key:,Module_Order:101,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:00:53
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块新增,Module_Url:Module/Edit,Module_ParentID:2,Module_Key:Add,Module_Order:1011,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:01:17
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块修改,Module_Url:Module/Mod,Module_ParentID:2,Module_Key:Mod,Module_Order:1012,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:01:34
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:模块删除,Module_Url:Module/Del,Module_ParentID:2,Module_Key:Del,Module_Order:1013,Switch_OnOff:0,
+
+发生时间：2018/2/7 16:02:45
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色管理,Module_Url:Role,Module_ParentID:0,Module_Key:,Module_Order:102,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:03:07
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:2,Module_Name:角色管理,Module_Url:Role/List,Module_ParentID:0,Module_Key:,Module_Order:102,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:03:23
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/List,Module_ParentID:6,Module_Key:,Module_Order:1021,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:03:35
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色新增,Module_Url:Role/Add,Module_ParentID:7,Module_Key:Add,Module_Order:1022,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:04:06
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/Add,Module_ParentID:6,Module_Key:Add,Module_Order:1021,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:04:14
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/Add,Module_ParentID:6,Module_Key:Add,Module_Order:1021,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:04:31
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色管理,Module_Url:Role/List,Module_ParentID:0,Module_Key:,Module_Order:102,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:04:46
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色查询,Module_Url:Role/Add,Module_ParentID:6,Module_Key:Add,Module_Order:1021,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:05:18
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/List,Module_ParentID:0,Module_Key:,Module_Order:102,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:05:33
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色新增,Module_Url:Role/Add,Module_ParentID:6,Module_Key:Add,Module_Order:1021,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:05:53
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Add,Module_ParentID:7,Module_Key:Add,Module_Order:1022,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:06:11
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Add,Module_ParentID:6,Module_Key:Add,Module_Order:1022,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:06:40
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Mod,Module_ParentID:6,Module_Key:Mod,Module_Order:1023,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:07:03
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Mod,Module_ParentID:6,Module_Key:Mod,Module_Order:1022,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:07:44
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色修改,Module_Url:Role/Del,Module_ParentID:6,Module_Key:Del,Module_Order:1023,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:08:33
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:角色删除,Module_Url:Role/Del,Module_ParentID:6,Module_Key:Del,Module_Order:1023,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:09:21
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:用户管理,Module_Url:User/List,Module_ParentID:10,Module_Key:,Module_Order:103,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:10:01
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:权限配置,Module_Url:Permission/Index,Module_ParentID:10,Module_Key:,Module_Order:104,Switch_OnOff:1,
+
+发生时间：2018/2/7 16:10:20
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:角色查询,Module_Url:Role/List,Module_ParentID:10,Module_Key:,Module_Order:102,Switch_OnOff:1,

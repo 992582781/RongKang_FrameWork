@@ -1,0 +1,11 @@
+
+发生时间：2018/2/9 13:19:30
+操作数据：System.InvalidOperationException: 实体类型 Customer 不是当前上下文的模型的一部分。
+   在 System.Data.Entity.Internal.InternalContext.UpdateEntitySetMappingsForType(Type entityType)
+   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   在 System.Data.Entity.DbSet`1.Add(TEntity entity)
+   在 RongKang_Dal.BaseDal`1.Insert(T entity) 位置 e:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\BaseDal.cs:行号 244

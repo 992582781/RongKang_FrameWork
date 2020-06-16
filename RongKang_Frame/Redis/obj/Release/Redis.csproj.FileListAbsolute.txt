@@ -1,0 +1,5 @@
+E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\bin\Release\Redis.dll
+E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\bin\Release\Redis.pdb
+E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.dll
+E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.pdb
+E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.csprojResolveAssemblyReference.cache

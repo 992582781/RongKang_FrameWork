@@ -1,0 +1,21 @@
+﻿<footer class="admin-content-footer">
+    <hr>
+    <p class="am-padding-left">© 2018 AllMobilize, Inc. Licensed under MIT license.</p>
+</footer>
+
+@*<script src="~/Areas/Admin_Rental/assets/js/jquery.min.js"></script>*@
+<script src="~/Areas/Admin_Rental/assets/js/amazeui.js"></script>
+@*<script src="~/Areas/Admin_Rental/assets/js/app.js"></script>*@
+<script src="~/Areas/Admin_Rental/assets/js/amazeui.dialog.js"></script>
+<script src="~/Areas/Admin_Rental/assets/js/MsgAlert.js"></script>
+<script src="~/Areas/Admin_Rental/assets/js/amazeui.page.js"></script>
+@*<script src="~/Areas/Admin_Rental/assets/js/jquery.cookie.js"></script>*@
+
+<script type="text/javascript">
+    $(function () {
+        $('#Logout').click(function () {
+            MsgAlert_href("确定退出", "../Login/Logout")
+
+        })
+    });
+</script>
