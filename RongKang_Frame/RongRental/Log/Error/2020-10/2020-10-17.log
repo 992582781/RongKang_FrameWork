@@ -1,0 +1,99 @@
+
+-------------  异常信息   ---------------------------------------------------------------
+发生时间：2020/10/17 12:03:26
+发生异常页：http://localhost:4705/
+异常信息：未找到视图“Index”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Login/Views/Login/Index.aspx
+~/Areas/Login/Views/Login/Index.ascx
+~/Areas/Login/Views/Shared/Index.aspx
+~/Areas/Login/Views/Shared/Index.ascx
+~/Views/Login/Index.aspx
+~/Views/Login/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Areas/Login/Views/Login/Index.cshtml
+~/Areas/Login/Views/Login/Index.vbhtml
+~/Areas/Login/Views/Shared/Index.cshtml
+~/Areas/Login/Views/Shared/Index.vbhtml
+~/Views/Login/Index.cshtml
+~/Views/Login/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+错误源：System.Web.Mvc
+堆栈信息：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+客户端IP：127.0.0.1
+-----------------------------------------------------------------------------------------
+
+
+-------------  异常信息   ---------------------------------------------------------------
+发生时间：2020/10/17 12:03:29
+发生异常页：http://localhost:4705/
+异常信息：未找到视图“Index”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Login/Views/Login/Index.aspx
+~/Areas/Login/Views/Login/Index.ascx
+~/Areas/Login/Views/Shared/Index.aspx
+~/Areas/Login/Views/Shared/Index.ascx
+~/Views/Login/Index.aspx
+~/Views/Login/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Areas/Login/Views/Login/Index.cshtml
+~/Areas/Login/Views/Login/Index.vbhtml
+~/Areas/Login/Views/Shared/Index.cshtml
+~/Areas/Login/Views/Shared/Index.vbhtml
+~/Views/Login/Index.cshtml
+~/Views/Login/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+错误源：System.Web.Mvc
+堆栈信息：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+客户端IP：127.0.0.1
+-----------------------------------------------------------------------------------------
+
+
+-------------  异常信息   ---------------------------------------------------------------
+发生时间：2020/10/17 12:05:03
+发生异常页：http://localhost:4705/
+异常信息：未找到视图“Index”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Login/Views/Login/Index.aspx
+~/Areas/Login/Views/Login/Index.ascx
+~/Areas/Login/Views/Shared/Index.aspx
+~/Areas/Login/Views/Shared/Index.ascx
+~/Views/Login/Index.aspx
+~/Views/Login/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Areas/Login/Views/Login/Index.cshtml
+~/Areas/Login/Views/Login/Index.vbhtml
+~/Areas/Login/Views/Shared/Index.cshtml
+~/Areas/Login/Views/Shared/Index.vbhtml
+~/Views/Login/Index.cshtml
+~/Views/Login/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+错误源：System.Web.Mvc
+堆栈信息：   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+客户端IP：127.0.0.1
+-----------------------------------------------------------------------------------------
+

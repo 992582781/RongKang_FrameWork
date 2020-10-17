@@ -17,7 +17,7 @@ namespace RongRental.Areas.Admin_Rental
             context.MapRoute(
                 "Admin_Rental_default",
                 "Admin_Rental/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
