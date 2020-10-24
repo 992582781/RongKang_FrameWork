@@ -43,6 +43,18 @@ namespace RongKang_IBll
         IEnumerable<T> GetEntitiesForPaging(int pageNumber, int pageSize, Func<T, string> orderName, string sortOrder, Func<T, bool> exp);
 
         /// <summary>
+        /// 单表sql查询分页
+        /// </summary>
+        /// <param name="pageNumber">页数</param>
+        /// <param name="pageSize">条数</param>
+        /// <param name="orderName">排序字段</param>
+        /// <param name="sortOrder">排序方式 asc desc</param>
+        /// <param name="exp">查询条件</param>
+        /// <returns></returns>
+        IEnumerable<T> SingleGetEntitiesForPaging(int pageNumber, int pageSize, string orderName, string sortOrder, string exp);
+
+
+        /// <summary>
         /// sql查询分页
         /// </summary>
         /// <param name="pageNumber">页数</param>

@@ -478,3 +478,55 @@ Error Number:18456,State:1,Class:14
    在 RongKang_Dal.BaseDal`1.GetEntity(Func`2 exp) 位置 e:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\BaseDal.cs:行号 175
 ClientConnectionId:778066b0-9a57-4f45-857f-a0f48f9ba1b5
 Error Number:18456,State:1,Class:14
+
+发生时间：2020/10/17 13:31:57
+操作数据：System.InvalidOperationException: “User”的“Switch_OnOff”属性不能设置为“System.Int32”值。必须将该属性设置为类型为“System.String”的非 null 值。
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   在 RongKang_Dal.BaseDal`1.GetEntity(Func`2 exp) 位置 e:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\BaseDal.cs:行号 175
+
+发生时间：2020/10/17 13:32:01
+操作数据：System.InvalidOperationException: “User”的“Switch_OnOff”属性不能设置为“System.Int32”值。必须将该属性设置为类型为“System.String”的非 null 值。
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   在 RongKang_Dal.BaseDal`1.GetEntity(Func`2 exp) 位置 e:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\BaseDal.cs:行号 175
+
+发生时间：2020/10/17 13:33:12
+操作数据：System.InvalidOperationException: “User”的“Switch_OnOff”属性不能设置为“System.Int32”值。必须将该属性设置为类型为“System.String”的非 null 值。
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   在 RongKang_Dal.BaseDal`1.GetEntity(Func`2 exp) 位置 e:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\BaseDal.cs:行号 175
+
+发生时间：2020/10/17 13:35:09
+操作数据：System.InvalidOperationException: “User”的“Switch_OnOff”属性不能设置为“System.Int32”值。必须将该属性设置为类型为“System.String”的非 null 值。
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   在 System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   在 RongKang_Dal.BaseDal`1.GetEntity(Func`2 exp) 位置 e:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\BaseDal.cs:行号 175

@@ -328,7 +328,6 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\WebGrease.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Web_Common.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\StackExchange.Redis.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Redis.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Repository.pdb
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_Entity.pdb
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_Entity.dll.config
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IBll.pdb
@@ -391,3 +390,4 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Repository.pdb

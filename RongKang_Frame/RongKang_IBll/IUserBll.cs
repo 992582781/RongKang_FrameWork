@@ -26,5 +26,6 @@ namespace RongKang_IBll
         /// <param name="model"></param>
         /// <returns></returns>
         IEnumerable<T> GetRoleUser(int Role_ID);
+      
     }
 }

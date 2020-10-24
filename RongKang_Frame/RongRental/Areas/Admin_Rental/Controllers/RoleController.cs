@@ -165,8 +165,9 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 ViewBag.totalPage = totalPage;
                 return View();
             }
-            catch
+            catch(Exception ex)
             {
+                string s=ex.ToString();
                 return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
             }
         }

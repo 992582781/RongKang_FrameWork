@@ -29,8 +29,9 @@ namespace RongKang_IDal
         /// <param name="exp">Lambda条件的where</param>
         /// <returns></returns>
         int GetEntitiesCount(string exp);
-         
 
+
+      
         /// <summary>
         /// 分页查询(Linq分页方式)
         /// </summary>
@@ -43,6 +44,17 @@ namespace RongKang_IDal
         IEnumerable<T> GetEntitiesForPaging(int pageNumber, int pageSize, Func<T, string> orderName, string sortOrder, Func<T, bool> exp);
 
 
+        /// 单表查询
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="orderName"></param>
+        /// <param name="v"></param>
+        /// <param name="exp"></param>
+        /// <returns></returns>
+        IEnumerable<T> SingleGetEntitiesForPaging(int pageNumber, int pageSize, string orderName, string sortOrder, string exp);
+
+
         /// <summary>
         /// sql查询分页
         /// </summary>
@@ -53,7 +65,9 @@ namespace RongKang_IDal
         /// <param name="exp">查询条件</param>
         /// <returns></returns>
         IEnumerable<T> GetEntitiesForPaging(int pageNumber, int pageSize, string orderName, string sortOrder, string exp);
-         
+
+        /// <summary>
+       
 
         /// <summary>
         /// 根据条件查找满足条件的一个entites

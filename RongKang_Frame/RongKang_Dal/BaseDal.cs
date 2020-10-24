@@ -116,7 +116,7 @@ namespace RongKang_Dal
 
 
         /// <summary>
-        /// sql查询分页
+        /// 单表sql查询分页
         /// </summary>
         /// <param name="pageNumber">页数</param>
         /// <param name="pageSize">条数</param>
@@ -124,11 +124,13 @@ namespace RongKang_Dal
         /// <param name="sortOrder">排序方式 asc desc</param>
         /// <param name="exp">查询条件</param>
         /// <returns></returns>
-        public virtual IEnumerable<T> GetEntitiesForPaging(int pageNumber, int pageSize,  string  orderName, string sortOrder, string exp)
+        public virtual IEnumerable<T> SingleGetEntitiesForPaging(int pageNumber, int pageSize, string orderName, string sortOrder, string exp)
         {
             try
             {
                 var ClassName = typeof(T).Name.ToString();
+                ClassName = ClassName.Replace("View", "");
+
                 string sql = "";
                 using (RongKang_FrameRepository RKRepository = new RongKang_FrameRepository())
                 {
@@ -159,6 +161,49 @@ namespace RongKang_Dal
         }
 
 
+        /// <summary>
+        /// sql查询分页
+        /// </summary>
+        /// <param name="pageNumber">页数</param>
+        /// <param name="pageSize">条数</param>
+        /// <param name="orderName">排序字段</param>
+        /// <param name="sortOrder">排序方式 asc desc</param>
+        /// <param name="exp">查询条件</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> GetEntitiesForPaging(int pageNumber, int pageSize, string orderName, string sortOrder, string exp)
+        {
+            try
+            {
+                var ClassName = typeof(T).Name.ToString();
+
+                string sql = "";
+                using (RongKang_FrameRepository RKRepository = new RongKang_FrameRepository())
+                {
+                    if (string.IsNullOrEmpty(orderName))
+                    {
+                        sql = @"select * from (select row_number()over(order by ID)rownumber,* from  RongKang_" + ClassName + " where  " + exp + " )a where rownumber>({0}-1)* {1} AND rownumber <= {0} * {1}";
+                    }
+                    else if (orderName == "Module_Order")
+                    {
+                        sql = @"select * from (select row_number()over(order by LEFT(Module_Order, 3))rownumber,* from  RongKang_" + ClassName + " where  " + exp + " )a where rownumber>({0}-1)* {1} AND rownumber <= {0} * {1} ";
+                    }
+                    else
+                    {
+                        sql = @"select * from (select row_number()over(order by ID)rownumber,* from  RongKang_" + ClassName + " where  " + exp + " )a where rownumber>({0}-1)* {1} AND rownumber <= {0} * {1}   order by " + orderName + " " + sortOrder + " ";
+                    }
+
+                    sql = string.Format(sql, pageNumber, pageSize);
+
+
+                    return RKRepository.Database.SqlQuery<T>(sql).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Dal_Log.WriteBaseDal(e.ToString());
+                return null;
+            }
+        }
 
 
         /// <summary>

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace RongKang_ViewModel
+namespace RongKang_IDal
 {
-    class Class1
+    public interface IViewUserDal<T> : IBaseDal<T>
     {
     }
 }

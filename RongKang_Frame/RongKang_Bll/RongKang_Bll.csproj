@@ -90,6 +90,7 @@
     <Compile Include="UserRoleBll.cs" />
     <Compile Include="ViewModuleBll.cs" />
     <Compile Include="ViewRoleBll.cs" />
+    <Compile Include="ViewUserBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

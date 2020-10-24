@@ -10,9 +10,9 @@ using Web_Common;
 namespace RongKang_Bll
 {
 
-    public class BaseBll<T> : IBaseBll<T> where T : class,new()//限制T的类型为class或者对象
+    public class BaseBll<T> : IBaseBll<T> where T : class, new()//限制T的类型为class或者对象
     {
-       private IBaseDal<T> dal;
+        private IBaseDal<T> dal;
 
         public BaseBll() { }
 
@@ -69,6 +69,20 @@ namespace RongKang_Bll
 
         }
 
+        /// <summary>
+        /// 单表sql查询分页
+        /// </summary>
+        /// <param name="pageNumber">页数</param>
+        /// <param name="pageSize">条数</param>
+        /// <param name="orderName">排序字段</param>
+        /// <param name="sortOrder">排序方式 asc desc</param>
+        /// <param name="exp">查询条件</param>
+        /// <returns></returns>
+        public virtual IEnumerable<T> SingleGetEntitiesForPaging(int pageNumber, int pageSize, string orderName, string sortOrder, string exp)
+        {
+            return dal.SingleGetEntitiesForPaging(pageNumber, pageSize, orderName, sortOrder, exp);
+        }
+
 
         /// <summary>
         /// sql查询分页
@@ -84,6 +98,7 @@ namespace RongKang_Bll
             return dal.GetEntitiesForPaging(pageNumber, pageSize, orderName, sortOrder, exp);
         }
 
+ 
 
         /// <summary>
         /// 根据条件查找满足条件的一个entites

@@ -21,12 +21,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         private int User_ID = 0;
 
         IUserBll<User> UserBll;
+        IViewUserBll<ViewUser> ViewUserBll;
         IRoleBll<Role> RoleBll;
         IUserRoleBll<UserRole> UserRoleBll;
 
-        public UserController(IUserBll<User> UserBll, IRoleBll<Role> RoleBll, IUserRoleBll<UserRole> UserRoleBll) //依赖构造函数进行对象注入 
+        public UserController(IUserBll<User> UserBll, IViewUserBll<ViewUser> ViewUserBll, IRoleBll<Role> RoleBll, IUserRoleBll<UserRole> UserRoleBll) //依赖构造函数进行对象注入 
         {
             this.UserBll = UserBll; //在构造函数中初始化控制器类的Bll属性
+            this.ViewUserBll = ViewUserBll; //在构造函数中初始化控制器类的Bll属性
             this.RoleBll = RoleBll;
             this.UserRoleBll = UserRoleBll;
             User_ID = Cookie_Operate.GetID();
@@ -165,7 +167,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 var totalRecord = UserBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;
-                var List = UserBll.GetEntitiesForPaging(page, pageSize, orderName, "asc", exp).ToList();
+                var List = ViewUserBll.SingleGetEntitiesForPaging(page, pageSize, orderName, "asc", exp).ToList();
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;

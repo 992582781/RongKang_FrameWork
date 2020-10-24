@@ -95,6 +95,7 @@
     <Compile Include="UserRoleDal.cs" />
     <Compile Include="ViewModuleDal.cs" />
     <Compile Include="ViewRoleDal.cs" />
+    <Compile Include="ViewUserDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

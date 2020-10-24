@@ -85,3 +85,11 @@ E:\Work\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_Dal.pdb
 E:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.csprojResolveAssemblyReference.cache
 E:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.dll
 E:\Work\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_Dal.dll.config
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_Dal.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_Dal.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.csprojAssemblyReference.cache
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.csproj.CoreCompileInputs.cache
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.csproj.CopyComplete
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Dal\obj\Release\RongKang_Dal.pdb

@@ -89,6 +89,7 @@
     <Compile Include="IUserRoleBll.cs" />
     <Compile Include="IViewModuleBll.cs" />
     <Compile Include="IViewRoleBll.cs" />
+    <Compile Include="IViewUserBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

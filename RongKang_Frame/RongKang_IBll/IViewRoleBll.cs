@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace RongKang_IBll
 {
- public interface IViewRoleBll<T> : IBaseBll<T>
-{
-}
+    public interface IViewRoleBll<T> : IBaseBll<T>
+    {
+    }
 }

@@ -121,7 +121,7 @@
                 success: function (data) {
                     if (data.Status)
                         if (GetQueryString("ReturnUrl") == null) {
-                            //MsgAlert_href(data.Msg, "http://172.21.21.44:8086/Admin_Rental/Permission/Index");
+                            MsgAlert_href(data.Msg, "/Admin_Rental/Permission/Index");
                         }
                         else {
                             alert(GetQueryString("ReturnUrl"));
