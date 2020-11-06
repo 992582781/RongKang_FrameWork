@@ -148,22 +148,63 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         {
             try
             {
-
-                //Func<ViewModule, bool> exp1;
-                //exp1 = x => x.ID > 0;
+                Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ViewUser>();//修改model
 
                 var orderName = "ID";
-                var exp = "ID>0  ";
-                if (!string.IsNullOrEmpty(Selecte_parameter))
+                var exp = "";
+                string s = "";
+                foreach (var dic in Dic)
                 {
-
-                    var parameter = Selecte_parameter.Split(',');
-                    var Count = parameter.Count();
-                    orderName = parameter[0];
-                    exp = " CONVERT(varchar(100), " + parameter[0] + ", 23)" + " like '%" + Searchtext + "%'";
-                    for (int i = 1; i < Count; i++)
-                        exp = exp + "or " + " CONVERT(varchar(100), " + parameter[i] + ", 23)" + " like '%" + Searchtext + "%'";
+                    if (dic.Value.Control_Type == Control_Type.TimeText)
+                    {
+                        if (Request.QueryString[dic.Key + "Start"] != null
+                            && !string.IsNullOrEmpty(Request.QueryString[dic.Key + "Start"])
+                            && Request.QueryString[dic.Key + "End"] != null
+                            && !string.IsNullOrEmpty(Request.QueryString[dic.Key + "End"]))
+                        {
+                            exp = exp + " CONVERT(varchar(100), " + dic.Key + ", 23)" + " BETWEEN '" + Request.QueryString[dic.Key + "Start"] + "'" +
+                                    "and '" + Request.QueryString[dic.Key + "End"] + "' and ";
+                        }
+                        else if (Request.QueryString[dic.Key + "Start"] != null
+                                && !string.IsNullOrEmpty(Request.QueryString[dic.Key + "Start"])
+                                && Request.QueryString[dic.Key + "End"] == null
+                                && string.IsNullOrEmpty(Request.QueryString[dic.Key + "End"]))
+                        {
+                            exp = exp + " CONVERT(varchar(100), " + dic.Key + ", 23)" + " > '" + Request[dic.Key + "Start"] + "' and ";
+                        }
+                        else if (Request.QueryString[dic.Key + "Start"] == null
+                                && string.IsNullOrEmpty(Request.QueryString[dic.Key + "Start"])
+                                && Request.QueryString[dic.Key + "End"] != null
+                                && string.IsNullOrEmpty(Request.QueryString[dic.Key + "End"]))
+                        {
+                            exp = exp + " CONVERT(varchar(100), " + dic.Key + ", 23)" + " < '" + Request[dic.Key + "End"] + "' and ";
+                        }
+                    }
+                    else if (Request.QueryString[dic.Key] != null 
+                           && !string.IsNullOrEmpty(Request.QueryString[dic.Key])
+                           && dic.Value.Control_Type != Control_Type.TimeText)
+                    {
+                        s = Request[dic.Key];
+                        exp = exp + dic.Key + " like '" + Request[dic.Key] + "%' and ";
+                    }
                 }
+
+                //if (exp != "")
+                    exp = exp + "  1=1";
+
+
+                //var orderName = "ID";
+                //var exp = "ID>0  ";
+                //if (!string.IsNullOrEmpty(Selecte_parameter))
+                //{
+
+                //    var parameter = Selecte_parameter.Split(',');
+                //    var Count = parameter.Count();
+                //    orderName = parameter[0];
+                //    exp = " CONVERT(varchar(100), " + parameter[0] + ", 23)" + " like '%" + Searchtext + "%'";
+                //    for (int i = 1; i < Count; i++)
+                //        exp = exp + "or " + " CONVERT(varchar(100), " + parameter[i] + ", 23)" + " like '%" + Searchtext + "%'";
+                //}
 
                 var totalRecord = UserBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;

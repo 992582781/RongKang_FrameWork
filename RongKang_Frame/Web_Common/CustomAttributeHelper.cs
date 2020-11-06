@@ -259,7 +259,7 @@ namespace Web_Common
                     Value = string.IsNullOrEmpty(propertyInfo.GetValue(item, null) + "") ? "" : propertyInfo.GetValue(item, null).ToString();
                     if (!PageValidate.Page_Validate(Validate, Value))
                     {
-                        Result = Name + EnumDescription.GetEnumDescription((Validate)Validate) + "！";
+                        Result = Name + Validate.GetEnumText() + "！";
                         return Result;
                     }
                     else

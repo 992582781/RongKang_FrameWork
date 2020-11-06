@@ -39,7 +39,7 @@ namespace RongKang_ViewModel
         /// <summary>
         /// 
         /// </summary>
-        [FieldName(1, "户名", "请输入用户名称", Validate.Required, Control_Type.Text)]
+        [FieldName(1, "用户名称", "请输入用户名称", Validate.Required, Control_Type.Text)]
         public string User_Name
         {
             set { _user_name = value; }
@@ -48,7 +48,7 @@ namespace RongKang_ViewModel
         /// <summary>
         /// 
         /// </summary>
-        [FieldName(1, "密码", "请输入密码", Validate.Required, Control_Type.Text)]
+        [FieldName(1, "用户密码", "请输入密码", Validate.Required, Control_Type.Text)]
         public string User_PassWord
         {
             set { _user_password = value; }
@@ -69,7 +69,7 @@ namespace RongKang_ViewModel
         /// <summary>
         /// 框架必须设置字段默认值1 开启，0标志关闭
         /// </summary>
-        [FieldName(1, "状态", "下拉数据", Validate.Required, Control_Type.SelectText)]
+        [FieldName(1, "用户状态", "下拉数据", Validate.Required, Control_Type.SelectText)]
         public string Switch_OnOffstr
         {
             get
@@ -83,8 +83,9 @@ namespace RongKang_ViewModel
         }
 
         /// <summary>
-        /// 
+        /// 框架必须设置字段默认值1 开启，0标志关闭
         /// </summary>
+        [FieldName(1, "添加时间", "下拉数据", Validate.Required, Control_Type.TimeText)]
         public DateTime? RongKang_Time
         {
             set { _rongkang_time = value; }

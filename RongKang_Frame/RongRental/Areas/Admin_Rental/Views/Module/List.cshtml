@@ -52,7 +52,7 @@
                             <div class="am-btn-group am-btn-group-xs">
                                 @if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
                                 {
-                                    <button type="button" id="Add" class="am-btn am-btn-default"><span class="am-icon-plus"></span>新增</button>
+                                    <button type="button" id="Add" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span>新增</button>
 
                                 }
                                 else
@@ -99,7 +99,7 @@
                         <div class="am-input-group am-input-group-sm">
                             <input type="text" class="am-form-field" id="searchtext" value="@Request["searchtext"]" data-am-datepicker="{theme: 'success'}" />
                             <span class="am-input-group-btn">
-                                <button class="am-btn am-btn-default" id="search" type="button">搜索</button>
+                                <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" id="search" type="button">搜索</button>
                             </span>
                         </div>
                     </div>

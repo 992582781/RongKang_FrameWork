@@ -137,23 +137,49 @@ namespace Web_Common
         EmptyOrHasCHZN = 19
     }
 
-    public class EnumDescription
+    public static class EnumDescription
     {
-        public static string GetEnumDescription(Validate enumValue)
+      
+
+        private static Dictionary<string, Dictionary<string, string>> _enumCache;
+        private static Dictionary<string, Dictionary<string, string>> EnumCache
         {
+            get { return _enumCache ?? (_enumCache = new Dictionary<string, Dictionary<string, string>>()); }
+            set { _enumCache = value; }
+        }
 
-            string str = enumValue.ToString();
+        /// <summary>
+        /// 获取枚举描述信息
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
+        public static string GetEnumText(this Enum en)
+        {
+            string enString = string.Empty;
+            if (null == en) return enString;
 
-            System.Reflection.FieldInfo field = enumValue.GetType().GetField(str);
-
-            object[] objs = field.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
-
-            if (objs == null || objs.Length == 0) return str;
-
-            System.ComponentModel.DescriptionAttribute da = (System.ComponentModel.DescriptionAttribute)objs[0];
-
-            return da.Description;
-
+            Type type = en.GetType();
+            enString = en.ToString();
+            if (!EnumCache.ContainsKey(type.FullName))
+            {
+                var fields = type.GetFields();
+                Dictionary<string, string> temp = new Dictionary<string, string>();
+                foreach (var item in fields)
+                {
+                    object[] attrs = item.GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    if (attrs.Length == 1)
+                    {
+                        string v = ((DescriptionAttribute)attrs[0]).Description;
+                        temp.Add(item.Name, v);
+                    }
+                }
+                EnumCache.Add(type.FullName, temp);
+            }
+            if (EnumCache[type.FullName].ContainsKey(enString))
+            {
+                return EnumCache[type.FullName][enString];
+            }
+            return enString;
         }
     }
 
