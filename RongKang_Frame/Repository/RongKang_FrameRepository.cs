@@ -35,5 +35,8 @@ namespace Repository
         public DbSet<ViewModule> ViewModules { get; set; }
         public DbSet<ViewRole> ViewRoles { get; set; }
 
+        public DbSet<ProvincialRegion> ProvincialRegions { get; set; }
+        public DbSet<YearBudget> YearBudgets { get; set; }
+
     }
 }

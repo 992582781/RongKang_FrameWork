@@ -24,7 +24,7 @@ E:\Work\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.dll
 E:\Work\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.pdb
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Repository.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Repository.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.csprojAssemblyReference.cache
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.csproj.AssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\obj\Release\Repository.dll

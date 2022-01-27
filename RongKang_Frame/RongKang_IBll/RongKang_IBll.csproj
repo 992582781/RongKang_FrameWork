@@ -9,14 +9,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RongKang_IBll</RootNamespace>
     <AssemblyName>RongKang_IBll</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\RongRental\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -79,10 +80,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBaseBll.cs" />
+    <Compile Include="IBranchOfficeBll.cs" />
+    <Compile Include="IBranchOfficeYearBudgetBll.cs" />
     <Compile Include="ICustomerBll.cs" />
     <Compile Include="IModuleBll.cs" />
+    <Compile Include="IProductBll.cs" />
+    <Compile Include="IProjectBll.cs" />
+    <Compile Include="IProvincialRegionBll.cs" />
+    <Compile Include="IReimbursementRecordBll.cs" />
     <Compile Include="IRoleBll.cs" />
     <Compile Include="IRoleModuleBll.cs" />
+    <Compile Include="ISubjectBll.cs" />
     <Compile Include="ISwitchBll.cs" />
     <Compile Include="IUserBll.cs" />
     <Compile Include="IUserModuleBll.cs" />
@@ -90,6 +98,7 @@
     <Compile Include="IViewModuleBll.cs" />
     <Compile Include="IViewRoleBll.cs" />
     <Compile Include="IViewUserBll.cs" />
+    <Compile Include="IYearBudgetBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

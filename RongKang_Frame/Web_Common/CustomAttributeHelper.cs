@@ -155,7 +155,7 @@ namespace Web_Common
                 }
             }
 
-            return Value;
+            return Value.Trim();
         }
 
 
@@ -205,7 +205,7 @@ namespace Web_Common
                 object[] FieldName = propertyInfo.GetCustomAttributes(typeof(FieldNameAttribute), false);
                 if (FieldName.Length != 0)
                 {
-                    if (((FieldNameAttribute)FieldName[0]).View_Flag > 0)
+                    if (((FieldNameAttribute)FieldName[0]).View_Flag > -1)
                     {
                         dic.Add(propertyInfo.Name.ToString(), ((FieldNameAttribute)FieldName[0]));
                     }

@@ -127,7 +127,7 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\zh-Han
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\zh-Hans\System.Web.WebPages.resources.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\zh-Hans\System.Web.WebPages.Razor.resources.dll
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.csprojAssemblyReference.cache
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.csproj.AssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.dll

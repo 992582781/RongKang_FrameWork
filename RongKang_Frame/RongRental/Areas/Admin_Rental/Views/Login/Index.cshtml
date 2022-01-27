@@ -121,7 +121,7 @@
                 success: function (data) {
                     if (data.Status)
                         if (GetQueryString("ReturnUrl") == null) {
-                            MsgAlert_href(data.Msg, "/Admin_Rental/Permission/Index");
+                            MsgAlert_href(data.Msg, "/Admin_Rental/Default/Index");
                         }
                         else {
                             alert(GetQueryString("ReturnUrl"));

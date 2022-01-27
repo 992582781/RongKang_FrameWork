@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RongRental</RootNamespace>
     <AssemblyName>RongRental</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <Use64BitIISExpress>false</Use64BitIISExpress>
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -188,12 +189,15 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin_Rental\Admin_RentalAreaRegistration.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin_Rental\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\PermissionController.cs" />
+    <Compile Include="Areas\Admin_Rental\Controllers\ProvincialRegionController.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\SwitchController.cs" />
     <Compile Include="Areas\Admin_Rental\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin_Rental\Controllers\YearBudgetController.cs" />
     <Compile Include="Areas\Admin_Rental\Filters\AuthorizeAttribute.cs" />
     <Compile Include="Areas\Admin_Rental\Filters\Permission.cs" />
     <Compile Include="Filters\Application_Error_Log.cs" />
@@ -288,6 +292,11 @@
     <Content Include="Areas\Admin_Rental\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin_Rental\Views\Customer\Edit.cshtml" />
     <Content Include="Areas\Admin_Rental\Views\Customer\List.cshtml" />
+    <Content Include="Areas\Admin_Rental\Views\ProvincialRegion\Edit.cshtml" />
+    <Content Include="Areas\Admin_Rental\Views\ProvincialRegion\List.cshtml" />
+    <Content Include="Areas\Admin_Rental\Views\Default\Index.cshtml" />
+    <Content Include="Areas\Admin_Rental\Views\YearBudget\Edit.cshtml" />
+    <Content Include="Areas\Admin_Rental\Views\YearBudget\List.cshtml" />
     <None Include="Properties\PublishProfiles\Rongkang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

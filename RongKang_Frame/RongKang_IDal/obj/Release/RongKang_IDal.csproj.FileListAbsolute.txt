@@ -121,4 +121,3 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Release\RongKang
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Release\RongKang_IDal.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Release\RongKang_IDal.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Release\RongKang_IDal.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Release\RongKang_IDal.csprojAssemblyReference.cache

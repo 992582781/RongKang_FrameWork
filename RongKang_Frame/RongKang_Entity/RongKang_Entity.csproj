@@ -9,14 +9,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RongKang_Entity</RootNamespace>
     <AssemblyName>RongKang_Entity</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\RongRental\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -78,18 +79,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BranchOffice.cs" />
+    <Compile Include="BranchOfficeYearBudget.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="ManagementBudget.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvincialRegion.cs" />
+    <Compile Include="ReimbursementRecord.cs" />
     <Compile Include="Rental_Type_enum.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="RoleModule.cs" />
     <Compile Include="SelectData.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="Switch.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserModule.cs" />
     <Compile Include="UserRole.cs" />
+    <Compile Include="YearBudget.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

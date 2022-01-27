@@ -9,14 +9,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RongKang_Dal</RootNamespace>
     <AssemblyName>RongKang_Dal</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\RongKang\bin\</OutputPath>
+    <OutputPath>..\RongRental\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -83,12 +84,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDal.cs" />
+    <Compile Include="BranchOfficeDal.cs" />
+    <Compile Include="BranchOfficeYearBudgetDal.cs" />
     <Compile Include="CustomerDal.cs" />
     <Compile Include="Dal_Log.cs" />
     <Compile Include="ModuleDal.cs" />
+    <Compile Include="ProductDal.cs" />
+    <Compile Include="ProjectDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvincialRegionDal.cs" />
+    <Compile Include="ReimbursementRecordDal.cs" />
     <Compile Include="RoleDal.cs" />
     <Compile Include="RoleModuleDal.cs" />
+    <Compile Include="SubjectDal.cs" />
     <Compile Include="SwitchDal.cs" />
     <Compile Include="UserDal.cs" />
     <Compile Include="UserModuleDal.cs" />
@@ -96,6 +104,7 @@
     <Compile Include="ViewModuleDal.cs" />
     <Compile Include="ViewRoleDal.cs" />
     <Compile Include="ViewUserDal.cs" />
+    <Compile Include="YearBudgetDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

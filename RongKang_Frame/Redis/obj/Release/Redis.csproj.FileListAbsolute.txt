@@ -5,8 +5,8 @@ E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.pdb
 E:\Work\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.csprojResolveAssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\bin\Release\Redis.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\bin\Release\Redis.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.csprojAssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Release\Redis.csproj.AssemblyReference.cache

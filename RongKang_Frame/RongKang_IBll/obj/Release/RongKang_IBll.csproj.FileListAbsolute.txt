@@ -125,4 +125,4 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Release\RongKang
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Release\RongKang_IBll.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Release\RongKang_IBll.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Release\RongKang_IBll.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Release\RongKang_IBll.csprojAssemblyReference.cache
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Release\RongKang_IBll.csproj.AssemblyReference.cache

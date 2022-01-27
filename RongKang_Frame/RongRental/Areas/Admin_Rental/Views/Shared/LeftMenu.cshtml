@@ -20,7 +20,7 @@
 <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
         <ul class="am-list admin-sidebar-list">
-            <li><a href="~/Admin_Rental/User/UserInfor"><span class="am-icon-home"></span> 首页</a></li>
+            <li><a href="~/Admin_Rental/Default/Index"><span class="am-icon-home"></span> 首页</a></li>
  
             @{
                 IList<Module> Parent_Modules = List_Modules.Where(x => x.Module_ParentID == 0).OrderByDescending(x => x.Module_Order).ToList();
