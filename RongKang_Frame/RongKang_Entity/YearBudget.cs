@@ -40,40 +40,58 @@ namespace RongKang_Entity
         /// 预算资金 修改不能小于 BudgetFunds-AvailableBudgetFunds（已分配的）
         /// 或者UsedBudgetFunds
         /// </summary>
-        [FieldName(1, "预算资金", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "预算资金", "只能输入数字", Validate.Number, Control_Type.NumberText)]
+        [NotMapped]
+        public string BudgetFunds_1 { get; set; }
+
         public decimal? BudgetFunds { get; set; }
         /// <summary>
         /// 可用预算资金
         /// </summary>
-        [FieldName(0, "可用预算资金", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "可用预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string AvailableBudgetFunds_1 { get; set; }
+
         public decimal? AvailableBudgetFunds { get; set; }
         /// <summary>
         /// 已用预算资金
         /// </summary>
-        [FieldName(0, "已用预算资金", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "已用预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string UsedBudgetFunds_1 { get; set; }
+
         public decimal? UsedBudgetFunds { get; set; }
 
         /// <summary>
         /// 管理费预算资金 修改不能小于 ManagementFunds-AvailableManagementFunds（已分配的）
         /// 或者UsedManagementFunds
         /// </summary>
-        [FieldName(1, "管理费", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "管理费", "只能输入数字", Validate.Number, Control_Type.NumberText)]
+        [NotMapped]
+        public string ManagementFunds_1 { get; set; }
+
         public decimal? ManagementFunds { get; set; }
         /// <summary>
         /// 可用管理费预算资金
         /// </summary>
-        [FieldName(0, "可用管理费", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "可用管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string AvailableManagementFunds_1 { get; set; }
+
         public decimal? AvailableManagementFunds { get; set; }
         /// <summary>
         /// 已用管理费预算资金
         /// </summary>
-        [FieldName(0, "已用管理费", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "已用管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string UsedManagementFunds_1 { get; set; }
+
         public decimal? UsedManagementFunds { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
-        [FieldName(1, "备注", "", Validate.Empty, Control_Type.Text)]
+        [FieldName(1, "备注", "", Validate.Empty, Control_Type.Remark)]
         public string Remark { get; set; }
 
         public int UserID { get; set; }

@@ -49,6 +49,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     model = YearBudgetBll.GetEntity(x => x.ID == ID);
                     if (model != null)
                     {
+                        model.BudgetFunds_1 = model.BudgetFunds.ToString();
+                        model.AvailableBudgetFunds_1 = model.AvailableBudgetFunds.ToString();
+                        model.UsedBudgetFunds_1 = model.UsedBudgetFunds.ToString();
+
+                        model.ManagementFunds_1 = model.ManagementFunds.ToString();
+                        model.AvailableManagementFunds_1 = model.AvailableManagementFunds.ToString();
+                        model.UsedManagementFunds_1 = model.UsedManagementFunds.ToString();
+
                         ViewBag.model = model;
                     }
                 }
@@ -169,7 +177,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 foreach (var YearBudget in List)
                 {
-                    YearBudget.ProvinceName = ProvincialRegionList?.Where(x => x.ID == YearBudget.ID)?.FirstOrDefault()?.ProvinceName;
+                    YearBudget.ProvinceName = ProvincialRegionList?.Where(x => x.ID == YearBudget.ProvincialRegion_ID)?.FirstOrDefault()?.ProvinceName;
+                    YearBudget.BudgetFunds_1 = String.Format("{0:N2}", YearBudget.BudgetFunds);
+                    YearBudget.AvailableBudgetFunds_1 = String.Format("{0:N2}", YearBudget.AvailableBudgetFunds);
+                    YearBudget.UsedBudgetFunds_1 = String.Format("{0:N2}", YearBudget.UsedBudgetFunds);
+
+                    YearBudget.ManagementFunds_1 = string.Format("{0:N2}", YearBudget.ManagementFunds);
+                    YearBudget.AvailableManagementFunds_1 = string.Format("{0:N2}", YearBudget.AvailableManagementFunds);
+                    YearBudget.UsedManagementFunds_1 = string.Format("{0:N2}", YearBudget.UsedManagementFunds);
                 }
 
                 ViewBag.List = List;

@@ -218,7 +218,17 @@ namespace Web_Common
         /// 网址框
         /// </summary>
         [Description("网址框")]
-        UrlText = 4
+        UrlText = 5,
+        /// <summary>
+        /// 网址框
+        /// </summary>
+        [Description("备注框")]
+        Remark = 6,
+        /// <summary>
+        /// 网址框
+        /// </summary>
+        [Description("只读框")]
+        Readonly = 7
     }
 
     public class Control_TypeDescription
