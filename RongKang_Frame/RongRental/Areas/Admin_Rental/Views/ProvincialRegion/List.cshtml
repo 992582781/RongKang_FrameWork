@@ -14,13 +14,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
+    <title>上海丽珠制药</title>
     <meta name="description" content="主界面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.png">
+    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="~/Areas/Admin_Rental/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link href="~/Areas/Admin_Rental/assets/css/amazeui.page.css" rel="stylesheet" />
@@ -52,14 +52,14 @@
                             <div class="am-btn-group am-btn-group-xs">
                                 @if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
                                 {
-                                    <button type="button" id="Add" class="am-btn am-btn-default"><span class="am-icon-plus"></span>新增</button>
+                                    <button type="button" id="Add" class="am-btn am-btn-primary"><span class="am-icon-plus"></span>新增</button>
 
                                 }
                                 else
                                 {
                                     <button type="button" class="hide"></button>
                                 }
-                                <button class="am-btn am-btn-default" id="search" type="button">搜索</button>
+                                @*<button class="am-btn am-btn-default" id="search" type="button">搜索</button>*@
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                     }
                                     foreach (var dic in Dic)
                                     {
-                                        if (dic.Value.View_Flag != 2)
+                                        if (dic.Value.View_Flag != 2 && dic.Value.View_Flag != 0)
                                         {
                                             if (dic.Value.Control_Type != Control_Type.NumberText)
                                             {
@@ -98,9 +98,9 @@
                     </div>
                     <div class="am-u-sm-12 am-u-md-3">
                         <div class="am-input-group am-input-group-sm">
-                            <input type="text" class="am-form-field" id="searchtext" value="@Request["searchtext"]" data-am-datepicker="{theme: 'success'}" />
+                            <input type="text" class="am-form-field " id="searchtext" value="@Request["searchtext"]" data-am-datepicker="{theme: 'success'}" />
                             <span class="am-input-group-btn">
-                                <button class="am-btn am-btn-default" id="search" type="button">搜索</button>
+                                <button class="am-btn am-btn-primary" id="search" type="button">搜索</button>
                             </span>
                         </div>
                     </div>
@@ -163,14 +163,9 @@
                                                 <td>
                                                     <div class="am-btn-toolbar">
                                                         <div class="am-btn-group am-btn-group-xs">
-                                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整省份</span>
+                                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改区域</span>
                                                         </div>
-                                                        <div class="am-btn-group am-btn-group-xs">
-                                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整预算</span>
-                                                        </div>
-                                                        <div class="am-btn-group am-btn-group-xs">
-                                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整管理费</span>
-                                                        </div>
+                                                         
                                                     </div>
                                                 </td>
                                                 </tr>

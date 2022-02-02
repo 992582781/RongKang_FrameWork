@@ -1,0 +1,36 @@
+
+发生时间：2022/2/3 0:28:38
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:1,BranchOfficeName:成都,Remark:2,
+
+发生时间：2022/2/3 0:52:00
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:2,Switch_ManageType:是,Year:2022,Remark:,
+
+发生时间：2022/2/3 0:52:00
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:预算,
+
+发生时间：2022/2/3 1:03:52
+操作的表：ProvincialRegion
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvinceName:海南,Leader:南海,Remark:,
+
+发生时间：2022/2/3 1:05:02
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:2,Year:2022,Remark:,
+
+发生时间：2022/2/3 1:05:37
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:2,BranchOfficeName:三亚,Remark:,

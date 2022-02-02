@@ -46,7 +46,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 }
                 else
                 {
-                    model = YearBudgetBll.GetEntity(x => x.ID == ID);
+                    model = YearBudgetBll.GetEntity(x => x.ID == ID && x.UserID == User_ID);
                     if (model != null)
                     {
                         model.BudgetFunds_1 = model.BudgetFunds.ToString();
@@ -76,17 +76,37 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <returns></returns>
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult UpdateInsert(YearBudget Model)
+        public ActionResult UpdateInsert(YearBudget yearBudget)
         {
 
             try
             {
-                Model.UserID = User_ID;
-                Model.InTime = DateTime.Now;
+                yearBudget.UserID = User_ID;
+                yearBudget.InTime = DateTime.Now;
+
+                yearBudget.BudgetFunds = Convert.ToDecimal(yearBudget.BudgetFunds_1.Replace(",", ""));
+                yearBudget.AvailableBudgetFunds = Convert.ToDecimal(yearBudget.AvailableBudgetFunds_1.Replace(",", ""));
+                yearBudget.UsedBudgetFunds = Convert.ToDecimal(yearBudget.UsedBudgetFunds_1.Replace(",", ""));
+
+                yearBudget.ManagementFunds = Convert.ToDecimal(yearBudget.ManagementFunds_1.Replace(",", ""));
+                yearBudget.AvailableManagementFunds = Convert.ToDecimal(yearBudget.AvailableManagementFunds_1.Replace(",", ""));
+                yearBudget.UsedManagementFunds = Convert.ToDecimal(yearBudget.UsedManagementFunds_1.Replace(",", ""));
+
+
                 string messageStr = "";
-                if (string.IsNullOrEmpty(Model.ID.ToString().Trim()) || Model.ID == 0)
+                if (string.IsNullOrEmpty(yearBudget.ID.ToString().Trim()) || yearBudget.ID == 0)
                 {
-                    if (YearBudgetBll.Insert(Model, out messageStr, User_ID.ToString()))
+                    var yearBudgetOld = YearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == yearBudget.ProvincialRegion_ID && x.Year == yearBudget.Year).FirstOrDefault();
+                    if (yearBudgetOld != null)
+                    {
+                        message.Status = false;
+                        message.Msg = "数据已经存在，务重复添加！";
+                        rs = Json(message);
+                        rs.ContentType = "text/html";
+                        return rs;
+                    }
+                    yearBudget.AvailableBudgetFunds = yearBudget.BudgetFunds;
+                    if (YearBudgetBll.Insert(yearBudget, out messageStr, User_ID.ToString()))
                     {
                         message.Status = true;
                         message.Msg = "添加成功！";
@@ -105,7 +125,32 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 }
                 else
                 {
-                    if (YearBudgetBll.Update(Model, out messageStr, User_ID.ToString()))
+                    var yearBudgetOld = YearBudgetBll.GetEntities(x => x.ID == yearBudget.ID && x.Year == yearBudget.Year).FirstOrDefault();
+
+                    if (yearBudgetOld != null)
+                    {
+                        if (yearBudget.BudgetFunds < yearBudgetOld.BudgetFunds)
+                        {
+                            message.Status = true;
+                            message.Msg = "修改失败，预算资金不能小于原设置值！";
+                            rs = Json(message);
+                            rs.ContentType = "text/html";
+                            return rs;
+                        }
+                        if (yearBudget.ManagementFunds < yearBudgetOld.ManagementFunds)
+                        {
+                            message.Status = true;
+                            message.Msg = "修改失败，管理费不能小于原设置值！";
+                            rs = Json(message);
+                            rs.ContentType = "text/html";
+                            return rs;
+                        }
+
+                        yearBudget.AvailableBudgetFunds = yearBudget.BudgetFunds - yearBudgetOld.BudgetFunds + yearBudgetOld.AvailableBudgetFunds;
+                        yearBudget.AvailableManagementFunds = yearBudget.ManagementFunds - yearBudgetOld.ManagementFunds + yearBudgetOld.AvailableManagementFunds;
+                    }
+
+                    if (YearBudgetBll.Update(yearBudget, out messageStr, User_ID.ToString()))
                     {
                         message.Status = true;
                         message.Msg = "修改成功！";
@@ -122,7 +167,6 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         return rs;
                     }
                 }
-
             }
             catch (Exception e)
             {
@@ -148,7 +192,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">查询内容</param>
         /// <param name="Selecte_parameter">查询字段</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 5, string Searchtext = "", string Selecte_parameter = "")
+        public ActionResult List(int page = 1, int pageSize = 20)
         {
             try
             {
@@ -156,22 +200,29 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 //Func<ViewModule, bool> exp1;
                 //exp1 = x => x.ID > 0;
 
-                var orderName = "ID";
-                var exp = "ID>0  ";
-                if (!string.IsNullOrEmpty(Selecte_parameter))
+                var orderName = "Year";
+                var exp = "ID>0  and UserID=" + User_ID + "";
+                Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<YearBudget>();//修改model
+                foreach (var dic in Dic)
                 {
-
-                    var parameter = Selecte_parameter.Split(',');
-                    var Count = parameter.Count();
-                    orderName = parameter[0];
-                    exp = " CONVERT(varchar(100), " + parameter[0] + ", 23)" + " like '%" + Searchtext + "%'";
-                    for (int i = 1; i < Count; i++)
-                        exp = exp + "or " + " CONVERT(varchar(100), " + parameter[i] + ", 23)" + " like '%" + Searchtext + "%'";
+                    if (dic.Value.View_Flag != 0)
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                        }
+                        else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
+                        }
+                    }
                 }
 
                 var totalRecord = YearBudgetBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;
-                var List = YearBudgetBll.GetEntitiesForPaging(page, pageSize, orderName, "asc", exp).ToList();
+                var List = YearBudgetBll.GetEntitiesForPaging(page, pageSize, orderName, "desc", exp).ToList();
 
                 var ProvincialRegionList = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList();
 
@@ -200,8 +251,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         #endregion
 
 
-
-
-
+        #region 对前端开放的下拉数据接口
+        public ActionResult Funds(int ProvincialRegion_ID)
+        {
+            var View_Rental_VehicleS = YearBudgetBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID
+            && x.ProvincialRegion_ID == ProvincialRegion_ID && x.Year == DateTime.Now.Year
+            ).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.AvailableBudgetFunds.ToString() + "|" + x.AvailableManagementFunds.ToString() }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }

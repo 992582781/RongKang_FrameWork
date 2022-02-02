@@ -14,13 +14,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
+    <title>上海丽珠制药</title>
     <meta name="description" content="主界面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.png">
+    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="~/Areas/Admin_Rental/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.min.css" />
@@ -73,72 +73,82 @@
                                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                                         {
 
-                                        <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
-                                            <div class="am-u-sm-8">
-                                                <select name="@dic.Key" id="@dic.Key" data-value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)">
-                                                    <option value="">--请选择--</option>
-                                                </select>
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <select name="@dic.Key" id="@dic.Key" data-value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)">
+                                                        <option value="">--请选择--</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
                                         }
                                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                                         {
 
-                                        <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
-                                            <div class="am-u-sm-8">
-                                                <input type="text" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
-                                                <small></small>
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="text" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
                                             </div>
-                                        </div>
 
                                         }
                                         else if (dic.Value.Control_Type.ToString() == Control_Type.TimeText.ToString())
                                         {
-                                        <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
-                                            <div class="am-u-sm-8">
-                                                <input type="text" name="@dic.Key" value="@(Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(model, dic.Key), 3) == "0001-01-01" ? "" : Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(model, dic.Key), 3))" class="am-form-field" id="@dic.Key" data-am-datepicker="{theme: 'success'}" readonly />
-                                                <small></small>
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="text" name="@dic.Key" value="@(Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(model, dic.Key), 3) == "0001-01-01" ? "" : Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(model, dic.Key), 3))" class="am-form-field" id="@dic.Key" data-am-datepicker="{theme: 'success'}" readonly />
+                                                    <small></small>
+                                                </div>
                                             </div>
-                                        </div>
                                         }
                                         else if (dic.Value.Control_Type.ToString() == Control_Type.NumberText.ToString())
                                         {
-                                        <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
-                                            <div class="am-u-sm-8">
-                                                <input type="number" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
-                                                <small></small>
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="number" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
                                             </div>
-                                        </div>
                                         }
                                         else if (dic.Value.Control_Type.ToString() == Control_Type.EmailText.ToString())
                                         {
-                                        <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
-                                            <div class="am-u-sm-8">
-                                                <input type="email" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
-                                                <small></small>
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="email" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
                                             </div>
-                                        </div>
                                         }
                                         else if (dic.Value.Control_Type.ToString() == Control_Type.UrlText.ToString())
                                         {
-                                        <div class="am-form-group">
-                                            <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
-                                            <div class="am-u-sm-8">
-                                                <input type="url" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
-                                                <small></small>
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="url" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
                                             </div>
-                                        </div>
-                                            }
                                         }
-
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.Remark.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <textarea rows="5" cols="20" name="@dic.Key" id="@dic.Key" placeholder="@dic.Value.View_PlaceHolder">@CustomAttributeHelper.GetpropertyValue(model, dic.Key)</textarea>
+                                                    <small></small>
+                                                </div>
+                                            </div>
+                                        }
                                     }
 
                                 }
+
+                            }
 
 
                             <div style="display:none" class="hid-token-page">
@@ -230,7 +240,7 @@
                             MsgAlert(data.Msg);
                             setTimeout(function () {
                                 $btn.button('reset');
-                                location = location;
+                                location.href = 'List';
                             }, 5000);
                         }
                         else {

@@ -58,6 +58,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
 
         }
+
+        public ActionResult ManageType()
+        {
+            var View_Rental_VehicleS = SwitchBll.GetEntities(x => x.Switch_TypeVaule == 4).ToList().Select(x => new SelectData { ID = x.Switch_Name.ToString(), Name = x.Switch_Name }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+
+        }
+
         #endregion
     }
 }

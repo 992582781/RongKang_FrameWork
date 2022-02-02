@@ -21,11 +21,13 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         private int User_ID = 0;
 
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
+        IYearBudgetBll<YearBudget> YearBudgetBll;
 
-
-        public ProvincialRegionController(IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll) //依赖构造函数进行对象注入 
+        public ProvincialRegionController(IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
+            IYearBudgetBll<YearBudget> YearBudgetBll) //依赖构造函数进行对象注入 
         {
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
+            this.YearBudgetBll = YearBudgetBll; //在构造函数中初始化控制器类的Bll属性
 
             User_ID = Cookie_Operate.GetID();
         }
@@ -45,7 +47,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 }
                 else
                 {
-                    model = ProvincialRegionBll.GetEntity(x => x.ID == ID);
+                    model = ProvincialRegionBll.GetEntity(x => x.ID == ID && x.UserID == User_ID);
                     if (model != null)
                     {
                         ViewBag.model = model;
@@ -77,6 +79,16 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 string messageStr = "";
                 if (string.IsNullOrEmpty(Model.ID.ToString().Trim()) || Model.ID == 0)
                 {
+                    var ProvincialRegionOld = ProvincialRegionBll.GetEntities(x => x.ProvinceName == Model.ProvinceName.Trim()
+                    && x.Leader == Model.Leader).FirstOrDefault();
+                    if (ProvincialRegionOld != null)
+                    {
+                        message.Status = false;
+                        message.Msg = "数据已经存在，务重复添加！";
+                        rs = Json(message);
+                        rs.ContentType = "text/html";
+                        return rs;
+                    }
                     if (ProvincialRegionBll.Insert(Model, out messageStr, User_ID.ToString()))
                     {
                         message.Status = true;
@@ -139,7 +151,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">查询内容</param>
         /// <param name="Selecte_parameter">查询字段</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 5, string Searchtext = "", string Selecte_parameter = "")
+        public ActionResult List(int page = 1, int pageSize = 20, string Searchtext = "", string Selecte_parameter = "")
         {
             try
             {
@@ -148,7 +160,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 //exp1 = x => x.ID > 0;
 
                 var orderName = "ID";
-                var exp = "ID>0  ";
+                var exp = "ID>0  and UserID=" + User_ID + "";
                 if (!string.IsNullOrEmpty(Selecte_parameter))
                 {
 
@@ -163,7 +175,18 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 var totalRecord = ProvincialRegionBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;
                 var List = ProvincialRegionBll.GetEntitiesForPaging(page, pageSize, orderName, "asc", exp).ToList();
+                foreach (var provincialRegion in List)
+                {
+                    var yearBudgets = YearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == provincialRegion.ID &&
+                    x.Year == DateTime.Now.Year).FirstOrDefault();
+                    provincialRegion.BudgetFunds_1 = String.Format("{0:N2}", yearBudgets?.BudgetFunds);
+                    provincialRegion.AvailableBudgetFunds_1 = String.Format("{0:N2}", yearBudgets?.AvailableBudgetFunds);
+                    provincialRegion.UsedBudgetFunds_1 = String.Format("{0:N2}", yearBudgets?.UsedBudgetFunds);
 
+                    provincialRegion.ManagementFunds_1 = string.Format("{0:N2}", yearBudgets?.ManagementFunds);
+                    provincialRegion.AvailableManagementFunds_1 = string.Format("{0:N2}", yearBudgets?.AvailableManagementFunds);
+                    provincialRegion.UsedManagementFunds_1 = string.Format("{0:N2}", yearBudgets?.UsedManagementFunds);
+                }
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
                 return View();
@@ -181,7 +204,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         #region 对前端开放的下拉数据接口
         public ActionResult ID()
         {
-            var View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+            var View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID==User_ID).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }
         #endregion

@@ -1,0 +1,273 @@
+﻿@using RongKang_Entity;
+@using RongKang_ViewModel;
+@using Web_Common;
+@using RongRental.Areas.Admin_Rental.Filters;
+
+@{
+    //这两行是页面添加显示修改数据必须需要的。
+    var model = ViewBag.model;
+    Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<BranchOffice>();//修改model
+}
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>上海丽珠制药</title>
+    <meta name="description" content="主界面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="~/Areas/Admin_Rental/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/admin.css">
+    <script src="~/Areas/Admin_Rental/assets/js/MoneyFormat.js"></script>
+</head>
+<body>
+    <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+    @Html.Partial("Head")
+
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+        @Html.Partial("LeftMenu")
+        <!-- sidebar end -->
+        <!-- content start -->
+        <div class="admin-content">
+            <div class="admin-content-body">
+                <div class="am-cf am-padding am-padding-bottom-0">
+                    <div class="am-fl am-cf">
+                        <strong class="am-text-primary am-text-lg">
+                            @{
+                                if (!string.IsNullOrEmpty(Request["ID"]))
+                                {
+                                    @Permission.ModuleName(ViewContext.RouteData.Values["controller"].ToString(), "Mod")
+                                }
+                                else
+                                {
+                                    @Permission.ModuleName(ViewContext.RouteData.Values["controller"].ToString(), "Add")
+                                }
+                            }
+                        </strong>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8" style=" display:none">
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+                        <form class="am-form am-form-horizontal">
+
+                            @{
+
+                                foreach (var dic in Dic)
+                                {
+                                    if (dic.Value.View_Flag != 0)
+                                    {
+                                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                                        {
+
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <select name="@dic.Key" id="@dic.Key" data-value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)">
+                                                        <option value="">--请选择--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
+                                        {
+
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="text" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
+                                            </div>
+
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.TimeText.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="text" name="@dic.Key" value="@(Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(model, dic.Key), 3) == "0001-01-01" ? "" : Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(model, dic.Key), 3))" class="am-form-field" id="@dic.Key" data-am-datepicker="{theme: 'success'}" readonly />
+                                                    <small></small>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.NumberText.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-5">
+                                                    <input type="text" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder" onkeyup="decimalPoint(this)" onloadeddata="DecimalPlaces(this)" onmouseover="DecimalPlaces(this),decimalPoint(this)" onblur="DecimalPlaces(this),decimalPoint(this)">
+                                                    <small></small>
+                                                </div>
+                                                <div class="am-u-sm-3" id="div_@dic.Key">大写金额</div>
+                                            </div>
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.EmailText.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="email" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.UrlText.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <input type="url" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder">
+                                                    <small></small>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.Remark.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-8">
+                                                    <textarea rows="5" cols="20" name="@dic.Key" id="@dic.Key" placeholder="@dic.Value.View_PlaceHolder">@CustomAttributeHelper.GetpropertyValue(model, dic.Key)</textarea>
+                                                    <small></small>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (dic.Value.Control_Type.ToString() == Control_Type.Readonly.ToString())
+                                        {
+                                            <div class="am-form-group">
+                                                <label for="user-phone" class="am-u-sm-4 am-form-label">@dic.Value.View_Name @Html.Raw(dic.Value.Validate_Type.ToString().Contains("Empty") ? "" : "<font color=red>*</font>")</label>
+                                                <div class="am-u-sm-5">
+                                                    <input type="text" readonly="readonly" name="@dic.Key" id="@dic.Key" value="@CustomAttributeHelper.GetpropertyValue(model, dic.Key)" placeholder="@dic.Value.View_PlaceHolder" onkeyup="decimalPoint(this)" onloadeddata="DecimalPlaces(this)" onmouseover="DecimalPlaces(this),decimalPoint(this)" onblur="DecimalPlaces(this),decimalPoint(this)">
+                                                    <small></small>
+                                                </div>
+                                                <div class="am-u-sm-3" id="div_@dic.Key">大写金额</div>
+                                            </div>
+
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+
+                            <div style="display:none" class="hid-token-page">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="ID" id="ID" value="@Request["ID"]">
+                            </div>
+
+
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3">
+                                    @{
+                                        if (!string.IsNullOrEmpty(Request["ID"]))
+                                        {
+                                            if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Mod"))
+                                            {
+                                                <button type="button" id="Save" class="am-btn am-btn-primary" data-am-loading="{spinner: 'circle-o-notch', loadingText: '保存中...', resetText: '保存'}">保存</button>
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
+                                            {
+                                                <button type="button" id="Save" class="am-btn am-btn-primary" data-am-loading="{spinner: 'circle-o-notch', loadingText: '保存中...', resetText: '保存'}">保存</button>
+
+                                            }
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- content end -->
+
+    </div>
+
+    <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+    @Html.Partial("Footer")
+
+
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $("select").each(function () {
+            var _this = $(this);
+            var id = _this.attr("id");
+            var data_value = _this.attr("data-value");
+            var url = id.split("_");
+            $.ajax({
+                type: "post",
+                url: "/Admin_Rental/" + url[0] + "/" + url[1],  //对应于/controllerName/ActionName
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data && data.length) {
+                        $(data).each(function (i, item) {
+                            if (data_value == item.ID)
+                                _this.append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
+                            else {
+                                _this.append('<option  value="' + item.ID + '" >' + item.Name + '</option>');
+                            }
+                        })
+                    }
+                }
+            });
+        })
+
+
+        $("#Save").click(function () {
+            var $btn = $(this)
+            $btn.button('loading');
+            setTimeout(function () {
+                $.ajax({
+                    url: 'UpdateInsert',   //对应于/controllerName/ActionName
+                    data: $("form").serialize(),
+                    type: 'post',
+                    cache: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.Status) {
+                            MsgAlert(data.Msg);
+                            setTimeout(function () {
+                                $btn.button('reset');
+                                location.href = 'List';
+                            }, 5000);
+                        }
+                        else {
+                            MsgAlert(data.Msg);
+                            setTimeout(function () {
+                                $btn.button('reset');
+                            }, 3000);
+                        }
+                    }
+                });
+            }, 2000);
+        })
+
+    });
+
+</script>

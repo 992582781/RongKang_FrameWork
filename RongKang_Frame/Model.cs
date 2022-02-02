@@ -48,7 +48,7 @@ namespace Agile.Config.Protocol.Model
         /// <summary>
         /// 已用预算资金
         /// </summary>
-        public decimal UsedBudgetFunds { get; set; 
+        public decimal UsedBudgetFunds { get; set; }
 		
 		 /// <summary>
         /// 管理费预算资金 修改不能小于 ManagementFunds-AvailableManagementFunds（已分配的）
@@ -110,7 +110,7 @@ namespace Agile.Config.Protocol.Model
         /// <summary>
         /// 省份+负责人(基础数据)
         /// </summary>
-        public int ProvincialRegionID { get; set; }
+        public int ProvincialRegion_ID { get; set; }
         /// <summary>
         /// 商业名称
         /// </summary>

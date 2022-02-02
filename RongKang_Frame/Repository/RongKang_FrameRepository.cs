@@ -37,6 +37,15 @@ namespace Repository
 
         public DbSet<ProvincialRegion> ProvincialRegions { get; set; }
         public DbSet<YearBudget> YearBudgets { get; set; }
+        public DbSet<BranchOffice> BranchOffices { get; set; }
+
+        public DbSet<BranchOfficeYearBudget> BranchOfficeYearBudgets { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ReimbursementRecord> ReimbursementRecords { get; set; }
 
     }
 }

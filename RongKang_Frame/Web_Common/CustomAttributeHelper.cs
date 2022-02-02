@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -249,8 +250,9 @@ namespace Web_Common
             {
 
                 object[] FieldName = propertyInfo.GetCustomAttributes(typeof(FieldNameAttribute), false);
+                object[] NotMapped = propertyInfo.GetCustomAttributes(typeof(NotMappedAttribute), false);
 
-                if (FieldName.Length != 0)
+                if (FieldName.Length != 0 && NotMapped.Length == 0)
                 {
                     Validate = ((FieldNameAttribute)FieldName[0]).Validate_Type;
                     Name = ((FieldNameAttribute)FieldName[0]).View_Name;

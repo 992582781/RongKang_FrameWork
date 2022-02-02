@@ -1,0 +1,48 @@
+
+发生时间：2022/2/1 9:26:56
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:预算,
+
+发生时间：2022/2/1 20:13:57
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:商业管理,Module_Url:BranchOffice/List,Module_ParentID:1,Module_Key:,Module_Order:204,Switch_OnOff:1,
+
+发生时间：2022/2/1 20:15:07
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:商业添加,Module_Url:BranchOffice/Add,Module_ParentID:1018,Module_Key:Add,Module_Order:2041,Switch_OnOff:1,
+
+发生时间：2022/2/1 20:15:51
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:商业修改,Module_Url:BranchOffice/Mod,Module_ParentID:1018,Module_Key:Mod,Module_Order:2042,Switch_OnOff:1,
+
+发生时间：2022/2/1 20:34:41
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:1,BranchOfficeName:乐天,Remark:1,
+
+发生时间：2022/2/1 21:59:41
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:商业年度预算,Module_Url:BranchOfficeYearBudget/List,Module_ParentID:1,Module_Key:,Module_Order:205,Switch_OnOff:1,
+
+发生时间：2022/2/1 22:00:43
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:商业年度预算添加,Module_Url:BranchOfficeYearBudget/Add,Module_ParentID:1021,Module_Key:Add,Module_Order:2051,Switch_OnOff:1,
+
+发生时间：2022/2/1 22:01:36
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:商业年度预算修改,Module_Url:BranchOfficeYearBudget/Mod,Module_ParentID:1021,Module_Key:Mod,Module_Order:2052,Switch_OnOff:1,
