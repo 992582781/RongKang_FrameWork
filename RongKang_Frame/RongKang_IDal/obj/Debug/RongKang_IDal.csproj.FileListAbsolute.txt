@@ -29,6 +29,7 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\bin\Debug\zh-Hans\Sy
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IDal.dll.config
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IDal.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IDal.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Debug\RongKang_IDal.csproj.AssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Debug\RongKang_IDal.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Debug\RongKang_IDal.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IDal\obj\Debug\RongKang_IDal.dll

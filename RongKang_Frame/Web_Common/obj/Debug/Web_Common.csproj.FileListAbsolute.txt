@@ -9,6 +9,7 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\bin\Debug\Web_Common.dl
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\bin\Debug\Web_Common.pdb
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Web_Common.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Web_Common.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Debug\Web_Common.csproj.AssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Debug\Web_Common.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Debug\Web_Common.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Debug\Web_Common.pdb

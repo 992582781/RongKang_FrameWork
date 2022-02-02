@@ -29,6 +29,7 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\bin\Debug\zh-Hans\Sy
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IBll.dll.config
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IBll.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongKang_IBll.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.csproj.AssemblyReference.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.dll
