@@ -126,6 +126,10 @@
       <Project>{9a6bfb82-99d1-4bca-9c76-7190a59770a3}</Project>
       <Name>RongKang_ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Web_Common\Web_Common.csproj">
+      <Project>{d6fd0293-c90f-4160-96b3-6deb1abaed9e}</Project>
+      <Name>Web_Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

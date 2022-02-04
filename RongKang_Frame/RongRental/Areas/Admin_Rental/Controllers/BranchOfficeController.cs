@@ -57,6 +57,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return RedirectToAction("Index");
             }
 
@@ -130,6 +131,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 message.Status = false;
                 message.Msg = "失败！" + e.ToString();
                 rs = Json(message);
@@ -201,8 +203,9 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 ViewBag.totalPage = totalPage;
                 return View();
             }
-            catch
+            catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
             }
         }

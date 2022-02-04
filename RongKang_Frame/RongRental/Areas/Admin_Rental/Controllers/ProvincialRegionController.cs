@@ -22,12 +22,18 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
         IYearBudgetBll<YearBudget> YearBudgetBll;
+        IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll;
+        IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll;
 
         public ProvincialRegionController(IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
-            IYearBudgetBll<YearBudget> YearBudgetBll) //依赖构造函数进行对象注入 
+            IYearBudgetBll<YearBudget> YearBudgetBll,
+            IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
+            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll) //依赖构造函数进行对象注入 
         {
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
             this.YearBudgetBll = YearBudgetBll; //在构造函数中初始化控制器类的Bll属性
+            this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
+            this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
 
             User_ID = Cookie_Operate.GetID();
         }
@@ -56,6 +62,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return RedirectToAction("Index");
             }
 
@@ -129,6 +136,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 message.Status = false;
                 message.Msg = "失败！" + e.ToString();
                 rs = Json(message);
@@ -186,13 +194,56 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     provincialRegion.ManagementFunds_1 = string.Format("{0:N2}", yearBudgets?.ManagementFunds);
                     provincialRegion.AvailableManagementFunds_1 = string.Format("{0:N2}", yearBudgets?.AvailableManagementFunds);
                     provincialRegion.UsedManagementFunds_1 = string.Format("{0:N2}", yearBudgets?.UsedManagementFunds);
+
+                    var branchOfficeYearBudgetList = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == provincialRegion.ID &&
+                     x.Switch_ManageType == "否" &&
+                     x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                     Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
+                    provincialRegion.RealUsedBudgetFunds = string.Format("{0:N2}", branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds);
+
+
+                    var branchOfficeYearBudgetList2 = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == provincialRegion.ID &&
+                    x.Switch_ManageType == "是" &&
+                    x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                    Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
+                    provincialRegion.RealUsedManagementFunds = string.Format("{0:N2}", branchOfficeYearBudgetList2?.FirstOrDefault()?.UsedBudgetFunds);
+
+                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == provincialRegion.ID &&
+                     x.Year == DateTime.Now.Year).ToList();
+
+                    var FollowUpFundsList = reimbursementRecordList.Where(x => x.Project_ID == 2).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, FollowUpFunds = e.Sum(q => q.Funds) });
+                    provincialRegion.FollowUpFunds = string.Format("{0:N2}", FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds);
+                    provincialRegion.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds 
+                        / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+                  
+
+                    var AcademicFundsList = reimbursementRecordList.Where(x => x.Project_ID == 3).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, AcademicFunds = e.Sum(q => q.Funds) });
+                    provincialRegion.AcademicFunds = string.Format("{0:N2}", AcademicFundsList?.FirstOrDefault()?.AcademicFunds);
+                    provincialRegion.PercentAcademicFunds = Convert.ToDecimal(AcademicFundsList?.FirstOrDefault()?.AcademicFunds
+                       / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+
+                    var BusinessFundsList = reimbursementRecordList.Where(x => x.Project_ID == 4).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, BusinessFunds = e.Sum(q => q.Funds) });
+                    provincialRegion.BusinessFunds = string.Format("{0:N2}", BusinessFundsList?.FirstOrDefault()?.BusinessFunds);
+                    provincialRegion.PercentBusinessFunds = Convert.ToDecimal(BusinessFundsList?.FirstOrDefault()?.BusinessFunds
+                      / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    var InformationFundsList = reimbursementRecordList.Where(x => x.Project_ID == 5).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, InformationFunds = e.Sum(q => q.Funds) });
+                    provincialRegion.InformationFunds = string.Format("{0:N2}", InformationFundsList?.FirstOrDefault()?.InformationFunds);
+                    provincialRegion.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
+                     / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
                 }
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
                 return View();
             }
-            catch
+            catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
             }
         }
@@ -205,6 +256,16 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         public ActionResult ID()
         {
             var View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID==User_ID).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region 对前端开放的下拉数据接口
+        public ActionResult Leader(int ProvincialRegion_ID)
+        {
+            var View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID
+            && x.ID==ProvincialRegion_ID
+            ).ToList().Select(x => new SelectData { ID = x.Leader.ToString(), Name = x.Leader }).ToList();
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }
         #endregion

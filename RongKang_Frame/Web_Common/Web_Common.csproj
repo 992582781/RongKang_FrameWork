@@ -46,8 +46,10 @@
     <Compile Include="CacheHelper.cs" />
     <Compile Include="Cookie_Operate.cs" />
     <Compile Include="CustomAttributeHelper.cs" />
+    <Compile Include="Dal_Log.cs" />
     <Compile Include="EncryptUtil.cs" />
     <Compile Include="FieldNameAttribute.cs" />
+    <Compile Include="MoneyConvertChinese.cs" />
     <Compile Include="Number_Conversion.cs" />
     <Compile Include="PageValidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

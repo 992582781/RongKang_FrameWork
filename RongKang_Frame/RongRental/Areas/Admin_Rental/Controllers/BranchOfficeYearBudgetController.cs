@@ -65,6 +65,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return RedirectToAction("Index");
             }
 
@@ -196,6 +197,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 message.Status = false;
                 message.Msg = "失败！" + e.ToString();
                 rs = Json(message);
@@ -267,13 +269,23 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 ViewBag.totalPage = totalPage;
                 return View();
             }
-            catch
+            catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
             }
         }
 
         #endregion
 
+        #region 对前端开放的下拉数据接口
+        public ActionResult Funds(int BranchOffice_ID)
+        {
+            var View_Rental_VehicleS = BranchOfficeYearBudgetBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID
+            && x.BranchOffice_ID == BranchOffice_ID && x.Year == DateTime.Now.Year
+            ).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.AvailableBudgetFunds.ToString() }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }

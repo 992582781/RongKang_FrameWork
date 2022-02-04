@@ -32,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -311,7 +312,6 @@
     <Content Include="Areas\Admin_Rental\Views\BranchOfficeYearBudget\List.cshtml" />
     <Content Include="Areas\Admin_Rental\Views\ReimbursementRecord\Edit.cshtml" />
     <Content Include="Areas\Admin_Rental\Views\ReimbursementRecord\List.cshtml" />
-    <None Include="Properties\PublishProfiles\Rongkang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -338,6 +338,7 @@
     <Folder Include="Areas\Admin_Rental\Models\" />
     <Folder Include="Areas\Admin_Rental\Views\Switch\" />
     <Folder Include="Log\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

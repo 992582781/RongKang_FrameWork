@@ -1,0 +1,276 @@
+﻿@using RongKang_Entity;
+@using RongKang_ViewModel;
+@using Web_Common;
+@using RongRental.Areas.Admin_Rental.Filters;
+@{
+    //这两行是页面添加显示修改数据必须需要的。
+    var List = ViewBag.List;
+    Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ViewUser>();//修改model
+}
+
+<!doctype html>
+<html class="no-js fixed-layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="主界面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="~/Areas/Admin_Rental/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Areas/Admin_Rental/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link href="~/Areas/Admin_Rental/assets/css/amazeui.page.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.datatables.css" />
+    <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/admin.css">
+
+</head>
+<body>
+    <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+    @Html.Partial("Head")
+
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+        @Html.Partial("LeftMenu")
+        <!-- sidebar end -->
+        <!-- content start -->
+        <div class="admin-content">
+            <div class="admin-content-body">
+                <div class="am-cf am-padding am-padding-bottom-0">
+                    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">@Permission.ModuleName(ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["action"].ToString())</strong></div>
+                </div>
+                <hr>
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-6">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+
+                                @if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
+                                {
+                                    <button type="button" id="Add" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span>新增</button>
+
+                                }
+                                else
+                                {
+                                    <button type="button" class="hide"></button>
+                                }
+                                <button class="am-btn  am-btn-default am-btn-warning tpl-am-btn-success am-icon-search" id="search" type="button">搜索</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Search" class="am-g">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+                                @{
+                                    var parameter = new[] { "" };
+                                    var Count = -1;
+                                    var parameterCount = 0;
+                                    if (!string.IsNullOrEmpty(Request["Selecte_parameter"]))
+                                    {
+                                        parameter = Request["Selecte_parameter"].Split(',');
+                                        Count = parameter.Count();
+                                    }
+                                    foreach (var dic in Dic)
+                                    {
+                                        if (dic.Value.View_Flag != 2)
+                                        {
+                                            if (dic.Value.Control_Type != Control_Type.NumberText)
+                                            {
+                                                var flag = false;
+
+                                                for (int i = 0; i < Count; i++)
+                                                {
+                                                    if (parameter[i] == dic.Key)
+                                                    {
+                                                        flag = true;
+                                                    }
+                                                }
+                                                if (dic.Value.Control_Type == Control_Type.TimeText)
+                                                {
+
+                                                    @dic.Value.View_Name @Html.Raw(":")
+                                                    <input type="text" id="@dic.Key@Html.Raw("Start")" value="@Request[@dic.Key+@Html.Raw("Start")]" data-am-datepicker="{theme: 'success'}" />
+                                                    @Html.Raw("至") <input type="text" id="@dic.Key@Html.Raw("End")" value="@Request[@dic.Key+@Html.Raw("End")]" data-am-datepicker="{theme: 'success'}" />
+                                                    parameterCount = parameterCount + 2;
+                                                }
+                                                else
+                                                {
+                                                    @dic.Value.View_Name @Html.Raw(":") <input type="text" class="am-sm-only-text-center" id="@dic.Key" value="@Request[@dic.Key]" />
+                                                    parameterCount = parameterCount + 1;
+                                                }
+                                                if (parameterCount % 3 == 0 && Dic.Count >= parameterCount)
+                                                {
+                                                    @*@parameterCount;*@
+                                                    <br />
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            </div>
+                            @*<div class="am-btn-group am-btn-group-xs">
+                                   <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" id="search" type="button">搜索</button>
+                                </div>*@
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="am-g">
+                    <div class="am-u-sm-12">
+                        <form class="am-form">
+                            <table class="am-table am-table-striped am-table-hover table-main">
+                                <thead>
+                                    <tr>
+                                        <th class="table-check" style="display:none"><input class="allcheck" type="checkbox" /></th>
+                                        @{
+                                            foreach (var dic in Dic)
+                                            {
+                                                if (dic.Value.View_Flag != 2)
+                                                {
+                                                    <th class="table-title @(dic.Value.View_Flag == 3 ? "am-hide-sm-only" : "")">@dic.Value.View_Name</th>
+                                                }
+
+                                            }
+                                        }
+                                        <th class="table-set am-hide-sm-only">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @{
+                                        if (List != null)
+                                        {
+                                            foreach (var item in List)
+                                            {
+                                                int i = 0;
+                                                <tr>
+                                                    <td style="display:none"><input data-rowindex="@item.ID" class="checkbox" type="checkbox" /></td>
+
+                                                    @foreach (var dic in Dic)
+                                                    {
+                                                        if (dic.Value.View_Flag != 2)
+                                                        {
+                                                            if (i == 0)
+                                                            {
+                                                                <td><a href="Edit?ID=@item.ID">@CustomAttributeHelper.GetpropertyValue(item, dic.Key)</a></td>
+                                                            }
+                                                            else
+                                                            {
+                                                                if (dic.Value.Control_Type.ToString() == Control_Type.TimeText.ToString())
+                                                                {
+                                                                    <td class="@(dic.Value.View_Flag == 3 ? "am-hide-sm-only" : "")">@Web_Common.PageValidate.DateFormatReturnString(CustomAttributeHelper.GetpropertyValue(item, dic.Key), 3)</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td class="@(dic.Value.View_Flag == 3 ? "am-hide-sm-only" : "")">@CustomAttributeHelper.GetpropertyValue(item, dic.Key)</td>
+                                                                }
+                                                            }
+                                                            i++;
+                                                        }
+                                                    }
+
+
+                                                    <td>
+                                                        <div class="am-btn-toolbar">
+                                                            <div class="am-btn-group am-btn-group-xs">
+                                                                <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 操作</span>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    }
+
+
+                                </tbody>
+                            </table>
+                            <div id="page"></div>
+                            <hr />
+                            <p>注：.....</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @*@Html.Partial("Footer")*@
+        </div>
+
+        <div style="display:none" class="hid-token-page">
+            @Html.AntiForgeryToken()  //为了安全必须添加
+        </div>
+        <!-- content end -->
+
+    </div>
+
+    <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+    @Html.Partial("Footer")
+
+
+</body>
+</html>
+<script src="~/Areas/Admin_Rental/assets/js/List.js"></script>
+@*<script src="~/Areas/Admin_Rental/assets/js/amazeui.datatables.min.js"></script>*@
+
+<script type="text/javascript">
+    $(function () {
+        //$("#example").DataTable({
+        //    "paging": false, // 禁止分页
+        //    bFilter: false,   //去掉搜索框方法三：这种方法可以
+        //    "bInfo": false //页脚
+        //});
+
+        var selecte_parameter = "", searchtext = "", parameter = "", page = "", page_parameter = "";
+        parameter_(0);
+        var page = window.location.search.match(/page=(\d+)/);
+        $("#page").page({
+            pages: '@ViewBag.totalPage',
+            curr: page ? page[1] : 1,
+            jump: location.href.split('?')[0] + parameter
+            /*使用回调函数可以处理更复杂的逻辑
+            jump:function(context, first){
+                if(!first){
+                    window.location.href = '?page='+context.option.curr;
+                }
+            }
+            */
+        });
+
+        $("#search").click(function () {
+            parameter_(1);
+            location.href = location.href.split('?')[0] + parameter;
+        });
+
+        function parameter_(flag) {
+            searchtext = '';
+            if (flag == 0) {
+                $("#Search").find("input[type='text']").each(function () {
+                    searchtext = searchtext + $(this).attr("id") + '=' + $(this).val() + '&';
+                })
+                page_parameter = "&page=%page%"
+            } else {
+                $("#Search").find("input[type='text']").each(function () {
+                    searchtext = searchtext + $(this).attr("id") + '=' + $(this).val() + '&';
+                })
+                page_parameter = "&page=1"
+            }
+            if (selecte_parameter == null) {
+                selecte_parameter = "";
+            }
+            parameter = "?" + searchtext + page_parameter;
+        }
+
+    });
+
+</script>  

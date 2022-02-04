@@ -21,13 +21,13 @@ namespace RongKang_Entity
         /// <summary>
         /// 省份
         /// </summary>
-        [FieldName(0, "所属省份", "", Validate.Empty, Control_Type.Text)]
+        [FieldName(0, "省份", "", Validate.Empty, Control_Type.Text)]
         [NotMapped]
         public string ProvinceName { get; set; }
         /// <summary>
         /// 省份+负责人(基础数据)
         /// </summary>
-        [FieldName(2, "所属省份", "", Validate.Required, Control_Type.SelectText)]
+        [FieldName(2, "省份", "", Validate.Required, Control_Type.SelectText)]
         public int ProvincialRegion_ID { get; set; }
         /// <summary>
         /// 商业名称

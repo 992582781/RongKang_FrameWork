@@ -22,19 +22,19 @@ namespace RongKang_Entity
         /// <summary>
         /// 省份
         /// </summary>
-        [FieldName(0, "所属省份", "", Validate.Empty, Control_Type.Text)]
+        [FieldName(0, "省份", "", Validate.Empty, Control_Type.Text)]
         [NotMapped]
         public string ProvinceName { get; set; }
 
         /// <summary>
         /// 省份+负责人(基础数据)
         /// </summary>
-        [FieldName(2, "所属省份", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        [FieldName(2, "省份", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
         public int ProvincialRegion_ID { get; set; }
         /// <summary>
         /// 所属年度
         /// </summary>
-        [FieldName(1, "所属年度", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [FieldName(1, "年度", "只能输入数字", Validate.Number, Control_Type.Text)]
         public int? Year { get; set; }
         /// <summary>
         /// 预算资金 修改不能小于 BudgetFunds-AvailableBudgetFunds（已分配的）
@@ -51,7 +51,7 @@ namespace RongKang_Entity
         /// <summary>
         /// 未分配预算资金
         /// </summary>
-        [FieldName(1, "未分配预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [FieldName(1, "未分预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
         [NotMapped]
         public string AvailableBudgetFunds_1 { get; set; }
         /// <summary>
@@ -61,13 +61,75 @@ namespace RongKang_Entity
         /// <summary>
         /// 已分配预算资金
         /// </summary>
-        [FieldName(1, "已分配预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [FieldName(1, "已分预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
         [NotMapped]
         public string UsedBudgetFunds_1 { get; set; }
         /// <summary>
         /// 已分配预算资金
         /// </summary>
         public decimal? UsedBudgetFunds { get; set; }
+
+        /// <summary>
+        /// 已使用预算资金
+        /// </summary>
+        [FieldName(0, "已用预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string RealUsedBudgetFunds { get; set; }
+
+        /// <summary>
+        /// 随访费合计
+        /// </summary>
+        [FieldName(0, "随访费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string FollowUpFunds { get; set; }
+
+        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [NotMapped]
+        public string PercentFollowUpFunds { get; set; }
+
+        /// <summary>
+        /// 学术费合计
+        /// </summary>
+        [FieldName(0, "学术费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string AcademicFunds { get; set; }
+
+
+        /// <summary>
+        /// 学术费合计
+        /// </summary>
+        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [NotMapped]
+        public string PercentAcademicFunds { get; set; }
+
+        /// <summary>
+        /// 商务费合计
+        /// </summary>
+        [FieldName(0, "商务费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string BusinessFunds { get; set; }
+
+
+        /// <summary>
+        /// 商务费合计
+        /// </summary>
+        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [NotMapped]
+        public string PercentBusinessFunds { get; set; }
+
+        /// <summary>
+        /// 信息费合计
+        /// </summary>
+        [FieldName(0, "信息费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string InformationFunds { get; set; }
+
+        /// <summary>
+        /// 信息费合计
+        /// </summary>
+        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        [NotMapped]
+        public string PercentInformationFunds { get; set; }
 
         /// <summary>
         /// 管理费预算资金 修改不能小于 ManagementFunds-AvailableManagementFunds（已分配的）
@@ -85,7 +147,7 @@ namespace RongKang_Entity
         /// <summary>
         /// 未分配管理费
         /// </summary>
-        [FieldName(1, "未分配管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [FieldName(1, "未分管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
         [NotMapped]
         public string AvailableManagementFunds_1 { get; set; }
         /// <summary>
@@ -95,13 +157,20 @@ namespace RongKang_Entity
         /// <summary>
         /// 已分配管理费
         /// </summary>
-        [FieldName(1, "已分配管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [FieldName(1, "已分管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
         [NotMapped]
         public string UsedManagementFunds_1 { get; set; }
         /// <summary>
         /// 已分配管理费
         /// </summary>
         public decimal? UsedManagementFunds { get; set; }
+
+        /// <summary>
+        /// 已用管理费
+        /// </summary>
+        [FieldName(0, "已用管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string RealUsedManagementFunds { get; set; }
 
         /// <summary>
         /// 备注

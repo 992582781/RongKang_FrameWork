@@ -95,7 +95,7 @@ namespace RongKang_Entity
         public decimal? AvailableBudgetFunds { get; set; }
 
         /// <summary>
-        /// 商业已用预算资金 
+        /// 已用预算资金 
         /// 或者UsedBudgetFunds
         /// </summary>
         [FieldName(1, "已用预算资金", "只能输入数字", Validate.Number, Control_Type.Readonly)]

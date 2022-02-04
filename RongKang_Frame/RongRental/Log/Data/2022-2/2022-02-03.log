@@ -34,3 +34,129 @@
 客户端IP：127.0.0.1
 操作的ID：1
 操作数据：ProvincialRegion_ID:2,BranchOfficeName:三亚,Remark:,
+
+发生时间：2022/2/3 9:02:34
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:1,Module_Name:报销记录,Module_Url:ReimbursementRecord/List,Module_ParentID:1,Module_Key:,Module_Order:206,Switch_OnOff:1,
+
+发生时间：2022/2/3 9:03:48
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:报销记录添加,Module_Url:ReimbursementRecord/Add,Module_ParentID:1024,Module_Key:Add,Module_Order:2061,Switch_OnOff:1,
+
+发生时间：2022/2/3 9:04:55
+操作的表：Module
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：Switch_ModuleType:0,Module_Name:报销记录修改,Module_Url:ReimbursementRecord/Mod,Module_ParentID:1024,Module_Key:Mod,Module_Order:2062,Switch_OnOff:1,
+
+发生时间：2022/2/3 20:23:57
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:0,ProvincialRegion_ID:1,BranchOffice_ID:1,ProvincialRegion_Leader:0,Project_ID:4,Remark:7777,
+
+发生时间：2022/2/3 20:23:57
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:1,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/3 21:04:02
+操作的表：ProvincialRegion
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvinceName:宁夏,Leader:张友军,Remark:,
+
+发生时间：2022/2/3 21:05:08
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,Year:2022,Remark:,
+
+发生时间：2022/2/3 21:07:06
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,BranchOfficeName:宁夏锐洛普信息咨询有限公司,Remark:,
+
+发生时间：2022/2/3 21:08:24
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,BranchOffice_ID:4,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/3 21:08:24
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,Year:2022,Remark:,
+
+发生时间：2022/2/3 21:10:12
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Remark:,
+
+发生时间：2022/2/3 21:10:12
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,BranchOffice_ID:4,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/3 21:11:29
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Remark:,
+
+发生时间：2022/2/3 21:21:52
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Remark:,
+
+发生时间：2022/2/3 21:23:36
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Remark:,
+
+发生时间：2022/2/3 21:24:01
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Remark:,
+
+发生时间：2022/2/3 21:41:55
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Product_ID:1,Remark:,
+
+发生时间：2022/2/3 21:41:55
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,BranchOffice_ID:4,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/3 22:30:28
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ReimbursementDate:2022/2/3 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:3,BranchOffice_ID:4,ProvincialRegion_Leader:张友军,Project_ID:4,Product_ID:1,Remark:,
+
+发生时间：2022/2/3 22:30:28
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,BranchOffice_ID:4,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/3 22:43:47
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：1
+操作数据：ProvincialRegion_ID:3,BranchOfficeName:对私,Remark:对私支付,

@@ -22,12 +22,20 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
         IYearBudgetBll<YearBudget> YearBudgetBll;
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
+        IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll;
+        IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll;
 
 
-        public YearBudgetController(IYearBudgetBll<YearBudget> YearBudgetBll, IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll) //依赖构造函数进行对象注入 
+        public YearBudgetController(IYearBudgetBll<YearBudget> YearBudgetBll, 
+            IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
+            IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
+            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll
+            ) //依赖构造函数进行对象注入 
         {
             this.YearBudgetBll = YearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
+            this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
+            this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
             User_ID = Cookie_Operate.GetID();
         }
 
@@ -63,6 +71,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return RedirectToAction("Index");
             }
 
@@ -170,6 +179,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
             catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 message.Status = false;
                 message.Msg = "失败！" + e.ToString();
                 rs = Json(message);
@@ -236,14 +246,57 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     YearBudget.ManagementFunds_1 = string.Format("{0:N2}", YearBudget.ManagementFunds);
                     YearBudget.AvailableManagementFunds_1 = string.Format("{0:N2}", YearBudget.AvailableManagementFunds);
                     YearBudget.UsedManagementFunds_1 = string.Format("{0:N2}", YearBudget.UsedManagementFunds);
+
+                    var branchOfficeYearBudgetList = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                     x.Switch_ManageType == "否" &&
+                     x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                     Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
+                    YearBudget.RealUsedBudgetFunds = string.Format("{0:N2}", branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds);
+
+
+                    var branchOfficeYearBudgetList2 = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                    x.Switch_ManageType == "是" &&
+                    x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                    Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
+                    YearBudget.RealUsedManagementFunds = string.Format("{0:N2}", branchOfficeYearBudgetList2?.FirstOrDefault()?.UsedBudgetFunds);
+
+                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                     x.Year == DateTime.Now.Year).ToList();
+
+                    var FollowUpFundsList = reimbursementRecordList.Where(x => x.Project_ID == 2).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, FollowUpFunds = e.Sum(q => q.Funds) });
+                    YearBudget.FollowUpFunds = string.Format("{0:N2}", FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds);
+                    YearBudget.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds
+                        / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+
+                    var AcademicFundsList = reimbursementRecordList.Where(x => x.Project_ID == 3).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, AcademicFunds = e.Sum(q => q.Funds) });
+                    YearBudget.AcademicFunds = string.Format("{0:N2}", AcademicFundsList?.FirstOrDefault()?.AcademicFunds);
+                    YearBudget.PercentAcademicFunds = Convert.ToDecimal(AcademicFundsList?.FirstOrDefault()?.AcademicFunds
+                       / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+
+                    var BusinessFundsList = reimbursementRecordList.Where(x => x.Project_ID == 4).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, BusinessFunds = e.Sum(q => q.Funds) });
+                    YearBudget.BusinessFunds = string.Format("{0:N2}", BusinessFundsList?.FirstOrDefault()?.BusinessFunds);
+                    YearBudget.PercentBusinessFunds = Convert.ToDecimal(BusinessFundsList?.FirstOrDefault()?.BusinessFunds
+                      / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    var InformationFundsList = reimbursementRecordList.Where(x => x.Project_ID == 5).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, InformationFunds = e.Sum(q => q.Funds) });
+                    YearBudget.InformationFunds = string.Format("{0:N2}", InformationFundsList?.FirstOrDefault()?.InformationFunds);
+                    YearBudget.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
+                     / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
                 }
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
                 return View();
             }
-            catch
+            catch (Exception e)
             {
+                Dal_Log.WriteBaseDal(e.ToString());
                 return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
             }
         }

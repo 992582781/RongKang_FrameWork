@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\rongkong</_PublishTargetUrl>
+    <History>True|2022-02-04T08:52:59.7999408Z;True|2022-02-04T16:16:07.8322198+08:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/Admin_Rental/assets/css/admin.css">
+      <publishTime>01/16/2018 12:53:50</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/amazeui.css">
+      <publishTime>01/15/2018 14:55:08</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/amazeui.datatables.css">
+      <publishTime>07/06/2016 11:31:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/amazeui.flat.css">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/amazeui.flat.min.css">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/amazeui.min.css">
+      <publishTime>01/17/2018 16:07:32</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/amazeui.page.css">
+      <publishTime>12/29/2017 16:37:44</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/css/app.css">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/fonts/fontawesome-webfont.eot">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/fonts/fontawesome-webfont.svg">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/fonts/fontawesome-webfont.ttf">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/fonts/fontawesome-webfont.woff">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/fonts/fontawesome-webfont.woff2">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/fonts/FontAwesome.otf">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/app-icon72x72%402x.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/bg09.png">
+      <publishTime>09/22/2010 22:29:20</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/bg10.png">
+      <publishTime>09/22/2010 22:29:20</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/car.jpg">
+      <publishTime>01/18/2018 11:11:06</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/Card.jpg">
+      <publishTime>01/15/2018 15:33:58</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/admin-chrome.png">
+      <publishTime>01/09/2015 17:35:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/admin-firefox.png">
+      <publishTime>01/09/2015 17:35:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/admin-ie.png">
+      <publishTime>01/09/2015 17:35:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/admin-opera.png">
+      <publishTime>01/09/2015 17:35:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/admin-safari.png">
+      <publishTime>01/09/2015 17:35:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/adminPage.png">
+      <publishTime>01/09/2015 17:35:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/blogPage.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/landing.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/landingPage.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/loginPage.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/examples/sidebarPage.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/favicon.ico">
+      <publishTime>02/01/2022 22:24:42</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/favicon.png">
+      <publishTime>02/01/2022 22:24:42</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/i/startup-640x1096.png">
+      <publishTime>01/05/2015 10:45:22</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.datatables.min.js">
+      <publishTime>07/06/2016 11:31:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.dialog.js">
+      <publishTime>12/28/2017 11:41:17</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.ie8polyfill.js">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.ie8polyfill.min.js">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.js">
+      <publishTime>01/09/2018 17:30:35</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.min.js">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.page.js">
+      <publishTime>12/29/2017 13:37:16</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.widgets.helper.js">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/amazeui.widgets.helper.min.js">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/app.js">
+      <publishTime>06/01/2015 10:15:54</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/dataTables.responsive.min.js">
+      <publishTime>07/06/2016 11:31:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/hammer.min.js">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/handlebars.min.js">
+      <publishTime>08/17/2016 16:17:34</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/iscroll-zoom.min.js">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/jquery.cookie.js">
+      <publishTime>10/26/2017 09:59:10</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/jquery.min.js">
+      <publishTime>12/07/2017 14:12:07</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/List.js">
+      <publishTime>02/02/2018 11:37:11</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/MoneyFormat.js">
+      <publishTime>01/28/2022 20:06:59</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/MsgAlert.js">
+      <publishTime>02/02/2018 11:20:24</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/photoClip.js">
+      <publishTime>01/15/2018 14:59:23</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/assets/js/photoClip.min.js">
+      <publishTime>11/23/2017 16:58:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/BranchOffice/Edit.cshtml">
+      <publishTime>02/03/2022 21:32:21</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/BranchOffice/List.cshtml">
+      <publishTime>02/04/2022 15:01:47</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/BranchOfficeYearBudget/Edit.cshtml">
+      <publishTime>02/04/2022 08:48:40</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/BranchOfficeYearBudget/List.cshtml">
+      <publishTime>02/04/2022 10:16:52</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Customer/Edit.cshtml">
+      <publishTime>02/09/2018 13:10:59</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Customer/List.cshtml">
+      <publishTime>10/25/2020 10:27:24</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Default/Index.cshtml">
+      <publishTime>02/01/2022 22:27:44</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Login/Index.cshtml">
+      <publishTime>02/01/2022 22:53:24</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Module/Edit.cshtml">
+      <publishTime>10/24/2020 23:43:01</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Module/List.cshtml">
+      <publishTime>10/25/2020 00:03:26</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Permission/CheckboxList1.cshtml">
+      <publishTime>02/07/2018 15:48:09</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Permission/CheckboxList2.cshtml">
+      <publishTime>02/06/2018 16:05:25</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Permission/Index.cshtml">
+      <publishTime>10/25/2020 00:27:51</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Permission/LoadUserList.cshtml">
+      <publishTime>02/06/2018 13:19:00</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Permission/LoadUserRoleList.cshtml">
+      <publishTime>02/06/2018 13:18:14</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Product/Edit.cshtml">
+      <publishTime>02/01/2022 19:36:49</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Product/List.cshtml">
+      <publishTime>02/01/2022 20:35:58</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/ProvincialRegion/Edit.cshtml">
+      <publishTime>02/03/2022 21:32:49</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/ProvincialRegion/List.cshtml">
+      <publishTime>02/04/2022 10:22:30</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/ReimbursementRecord/Edit.cshtml">
+      <publishTime>02/04/2022 09:20:20</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/ReimbursementRecord/List.cshtml">
+      <publishTime>02/04/2022 10:13:28</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Role/Edit.cshtml">
+      <publishTime>02/08/2018 13:33:03</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Role/List.cshtml">
+      <publishTime>10/25/2020 00:08:40</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Shared/Footer.cshtml">
+      <publishTime>02/07/2018 16:19:38</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Shared/Head.cshtml">
+      <publishTime>02/01/2022 22:54:36</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/Shared/LeftMenu.cshtml">
+      <publishTime>02/01/2022 22:56:09</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/User/Edit.cshtml">
+      <publishTime>10/21/2020 20:55:54</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/User/List.cshtml">
+      <publishTime>10/25/2020 16:07:01</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/web.config">
+      <publishTime>12/12/2017 09:52:13</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/YearBudget/Edit.cshtml">
+      <publishTime>02/02/2022 22:01:55</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/YearBudget/List.cshtml">
+      <publishTime>02/04/2022 10:21:42</publishTime>
+    </File>
+    <File Include="Areas/Admin_Rental/Views/_ViewStart.cshtml">
+      <publishTime>12/27/2017 16:54:13</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>12/08/2017 09:23:37</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>12/08/2017 09:23:37</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>12/08/2017 15:53:42</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>12/08/2017 15:45:51</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>12/08/2017 09:56:52</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>12/08/2017 09:56:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>12/08/2017 09:23:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>12/08/2017 09:23:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>12/08/2017 09:23:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>12/08/2017 09:23:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>12/08/2017 09:23:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>12/08/2017 09:23:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>12/08/2017 09:23:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>12/08/2017 09:23:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>12/08/2017 09:23:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>12/08/2017 09:23:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>12/08/2017 09:23:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>12/08/2017 09:23:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>12/08/2017 09:23:35</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/08/2017 09:23:36</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>12/08/2017 09:23:48</publishTime>
+    </File>
+    <File Include="bin/Redis.dll">
+      <publishTime>01/26/2022 20:55:20</publishTime>
+    </File>
+    <File Include="bin/Redis.pdb">
+      <publishTime>01/26/2022 20:55:20</publishTime>
+    </File>
+    <File Include="bin/Repository.dll">
+      <publishTime>02/04/2022 16:52:58</publishTime>
+    </File>
+    <File Include="bin/Repository.pdb">
+      <publishTime>02/04/2022 16:52:58</publishTime>
+    </File>
+    <File Include="bin/RongKang_Dal.dll">
+      <publishTime>02/04/2022 15:53:33</publishTime>
+    </File>
+    <File Include="bin/RongKang_Dal.dll.config">
+      <publishTime>01/25/2022 21:29:40</publishTime>
+    </File>
+    <File Include="bin/RongKang_Dal.pdb">
+      <publishTime>02/04/2022 15:53:33</publishTime>
+    </File>
+    <File Include="bin/RongKang_Entity.dll">
+      <publishTime>02/04/2022 16:52:58</publishTime>
+    </File>
+    <File Include="bin/RongKang_Entity.dll.config">
+      <publishTime>01/25/2022 21:29:40</publishTime>
+    </File>
+    <File Include="bin/RongKang_Entity.pdb">
+      <publishTime>02/04/2022 16:52:58</publishTime>
+    </File>
+    <File Include="bin/RongKang_IBll.dll">
+      <publishTime>02/04/2022 15:24:25</publishTime>
+    </File>
+    <File Include="bin/RongKang_IBll.dll.config">
+      <publishTime>01/25/2022 21:29:40</publishTime>
+    </File>
+    <File Include="bin/RongKang_IBll.pdb">
+      <publishTime>02/04/2022 15:24:25</publishTime>
+    </File>
+    <File Include="bin/RongKang_IDal.dll">
+      <publishTime>02/04/2022 15:24:25</publishTime>
+    </File>
+    <File Include="bin/RongKang_IDal.dll.config">
+      <publishTime>01/25/2022 21:29:40</publishTime>
+    </File>
+    <File Include="bin/RongKang_IDal.pdb">
+      <publishTime>02/04/2022 15:24:25</publishTime>
+    </File>
+    <File Include="bin/RongKang_ViewModel.dll">
+      <publishTime>02/04/2022 16:52:58</publishTime>
+    </File>
+    <File Include="bin/RongKang_ViewModel.dll.config">
+      <publishTime>01/25/2022 21:29:40</publishTime>
+    </File>
+    <File Include="bin/RongKang_ViewModel.pdb">
+      <publishTime>02/04/2022 16:52:58</publishTime>
+    </File>
+    <File Include="bin/RongRental.dll">
+      <publishTime>02/04/2022 16:52:59</publishTime>
+    </File>
+    <File Include="bin/RongRental.pdb">
+      <publishTime>02/04/2022 16:52:59</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>06/19/2017 16:12:20</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>12/08/2017 09:23:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>12/08/2017 15:17:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>12/08/2017 09:23:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>12/08/2017 09:23:41</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>12/08/2017 15:17:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>12/08/2017 09:23:35</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>12/08/2017 15:17:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>12/08/2017 15:17:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>12/08/2017 15:17:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>12/08/2017 15:17:09</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>12/08/2017 09:23:38</publishTime>
+    </File>
+    <File Include="bin/Web_Common.dll">
+      <publishTime>02/04/2022 16:52:57</publishTime>
+    </File>
+    <File Include="bin/Web_Common.pdb">
+      <publishTime>02/04/2022 16:52:57</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>12/08/2017 09:57:28</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>12/08/2017 09:57:28</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.Core.resources.dll">
+      <publishTime>12/08/2017 09:23:51</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.EntityFramework.resources.dll">
+      <publishTime>12/08/2017 09:23:51</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.Owin.resources.dll">
+      <publishTime>12/08/2017 09:23:52</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Host.SystemWeb.resources.dll">
+      <publishTime>12/08/2017 09:23:52</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.resources.dll">
+      <publishTime>12/08/2017 09:23:52</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.Facebook.resources.dll">
+      <publishTime>12/08/2017 09:23:53</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.Google.resources.dll">
+      <publishTime>12/08/2017 09:23:53</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.MicrosoftAccount.resources.dll">
+      <publishTime>12/08/2017 09:23:53</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.resources.dll">
+      <publishTime>12/08/2017 09:23:52</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Owin.Security.Twitter.resources.dll">
+      <publishTime>12/08/2017 09:23:53</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>12/08/2017 09:23:42</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>12/08/2017 15:18:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>12/08/2017 09:23:42</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>12/08/2017 09:23:42</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>12/08/2017 15:18:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>12/08/2017 09:23:39</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>12/08/2017 15:18:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>12/08/2017 15:18:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>12/08/2017 15:18:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>12/08/2017 15:18:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>12/08/2017 09:23:28</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>12/08/2017 09:23:28</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>12/08/2017 09:23:42</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>12/08/2017 09:23:20</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>12/08/2017 09:23:28</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>12/08/2017 09:23:27</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>12/08/2017 09:23:27</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>12/08/2017 09:23:27</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/08/2017 09:23:20</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/25/2022 21:29:40</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>12/08/2017 09:23:27</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>12/08/2017 09:23:27</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>12/08/2017 09:23:28</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>12/08/2017 09:23:28</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>12/08/2017 09:23:28</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>12/08/2017 09:23:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>12/08/2017 09:23:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>12/08/2017 09:23:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>12/08/2017 09:23:50</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>12/08/2017 09:23:36</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>12/08/2017 09:23:38</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>12/08/2017 09:23:38</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>02/05/2018 13:56:28</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/04/2022 15:25:49</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

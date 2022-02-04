@@ -18,3 +18,4 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\bin\Release\Web_Common.
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Release\Web_Common.csproj.CoreCompileInputs.cache
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Release\Web_Common.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Release\Web_Common.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Web_Common\obj\Release\Web_Common.csproj.AssemblyReference.cache
