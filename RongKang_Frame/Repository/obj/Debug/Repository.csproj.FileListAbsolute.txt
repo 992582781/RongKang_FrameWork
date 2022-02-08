@@ -5,6 +5,9 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\EntityFramewo
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\RongKang_Entity.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\RongKang_ViewModel.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\Web_Common.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\NPOI.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\BouncyCastle.Crypto.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\RongKang_Entity.pdb
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\RongKang_Entity.dll.config
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\RongKang_ViewModel.pdb
@@ -12,6 +15,11 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\RongKang_View
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\EntityFramework.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\EntityFramework.SqlServer.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\Web_Common.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\NPOI.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\NPOI.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\ICSharpCode.SharpZipLib.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\ICSharpCode.SharpZipLib.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\BouncyCastle.Crypto.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Repository\obj\Debug\Repository.csproj.AssemblyReference.cache

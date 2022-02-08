@@ -50,7 +50,12 @@
       "ProjectGuid": "e18546cf-45b7-4655-80ca-602076314be8",
       "DisplayName": "Repository",
       "ColorIndex": 8
+    },
+    "54e214a1-6cf2-4973-9aae-da991efed7a2": {
+      "ProjectGuid": "54e214a1-6cf2-4973-9aae-da991efed7a2",
+      "DisplayName": "RongKang_Bll",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 10
 }

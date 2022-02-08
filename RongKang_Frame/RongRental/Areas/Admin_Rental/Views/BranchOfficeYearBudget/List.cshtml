@@ -239,6 +239,8 @@
             });
         });
 
+        ProvincialRegion("#ProvincialRegion_ID")
+
         var selecte_parameter = "", searchtext = "", parameter = "", page = "", page_parameter = "";
         parameter_(0);
         var page = window.location.search.match(/page=(\d+)/);
@@ -307,6 +309,7 @@
                 console.log(data);
                 if (data && data.length) {
                     $("#BranchOffice_ID").empty();
+                    $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
                     $(data).each(function (i, item) {
 
                         if (data_value == item.ID)
@@ -318,10 +321,10 @@
                 }
             }
         });
-        if (data_value == "") {
-            $("#BranchOffice_ID").empty();
-            $("#BranchOffice_ID").attr("data-value", "");
-            $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
-        }
+        //if (data_value == "") {
+        //    $("#BranchOffice_ID").empty();
+        //    $("#BranchOffice_ID").attr("data-value", "");
+        //    $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
+        //}
     }
 </script>  

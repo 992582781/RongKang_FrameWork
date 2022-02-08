@@ -19,23 +19,27 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         private Message message = new Message();
         private JsonResult rs = null;
         private int User_ID = 0;
+        public  int Role_ID = 0;
 
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
         IYearBudgetBll<YearBudget> YearBudgetBll;
         IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll;
         IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll;
+        IUserRoleBll<UserRole> UserRoleBll;
 
         public ProvincialRegionController(IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
             IYearBudgetBll<YearBudget> YearBudgetBll,
             IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
-            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll) //依赖构造函数进行对象注入 
+            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll,
+            IUserRoleBll<UserRole> UserRoleBll) //依赖构造函数进行对象注入 
         {
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
             this.YearBudgetBll = YearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
-
+            this.UserRoleBll = UserRoleBll;
             User_ID = Cookie_Operate.GetID();
+            Role_ID = (int)(UserRoleBll.GetFirstEntity(x => x.User_ID == User_ID)?.Role_ID);
         }
 
 
@@ -159,26 +163,39 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">查询内容</param>
         /// <param name="Selecte_parameter">查询字段</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 20, string Searchtext = "", string Selecte_parameter = "")
+        public ActionResult List(int page = 1, int pageSize = 20)
         {
             try
             {
 
                 //Func<ViewModule, bool> exp1;
                 //exp1 = x => x.ID > 0;
-
+                int MonthQuarterint = 0;
                 var orderName = "ID";
                 var exp = "ID>0  and UserID=" + User_ID + "";
-                if (!string.IsNullOrEmpty(Selecte_parameter))
+                List<int> MonthQuarter = new List<int>();
+                Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ProvincialRegion>();//修改model
+                foreach (var dic in Dic)
                 {
-
-                    var parameter = Selecte_parameter.Split(',');
-                    var Count = parameter.Count();
-                    orderName = parameter[0];
-                    exp = " CONVERT(varchar(100), " + parameter[0] + ", 23)" + " like '%" + Searchtext + "%'";
-                    for (int i = 1; i < Count; i++)
-                        exp = exp + "or " + " CONVERT(varchar(100), " + parameter[i] + ", 23)" + " like '%" + Searchtext + "%'";
+                    if (dic.Value.View_Flag != 0)
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                            {
+                                MonthQuarter = Request.QueryString[dic.Key].ToString().Split(new char[] { ',' },
+                                    StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToList();
+                                MonthQuarterint++;
+                            }
+                        }
+                    }
                 }
+
+                if (MonthQuarterint > 1)
+                {
+                    return Content("<script>alert('月份与季度只能选择一个！');window.history.back();</script>");
+                }
+
 
                 var totalRecord = ProvincialRegionBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;
@@ -211,12 +228,18 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == provincialRegion.ID &&
                      x.Year == DateTime.Now.Year).ToList();
 
+                    if (MonthQuarter.Count > 0)
+                    {
+                        reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == provincialRegion.ID &&
+                        x.Year == DateTime.Now.Year && MonthQuarter.Contains(x.Month)).ToList();
+                    }
+
                     var FollowUpFundsList = reimbursementRecordList.Where(x => x.Project_ID == 2).GroupBy(g => g.Project_ID).
                     Select(e => new { Project_ID = e.Key, FollowUpFunds = e.Sum(q => q.Funds) });
                     provincialRegion.FollowUpFunds = string.Format("{0:N2}", FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds);
-                    provincialRegion.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds 
+                    provincialRegion.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds
                         / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
-                  
+
 
                     var AcademicFundsList = reimbursementRecordList.Where(x => x.Project_ID == 3).GroupBy(g => g.Project_ID).
                     Select(e => new { Project_ID = e.Key, AcademicFunds = e.Sum(q => q.Funds) });
@@ -236,9 +259,18 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     provincialRegion.InformationFunds = string.Format("{0:N2}", InformationFundsList?.FirstOrDefault()?.InformationFunds);
                     provincialRegion.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
                      / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
+                  Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    provincialRegion.GuangLeFunds = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
+                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    provincialRegion.PersonFunds = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
                 }
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
+                ViewBag.Role_ID = Role_ID;
                 return View();
             }
             catch (Exception e)
@@ -255,7 +287,13 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         #region 对前端开放的下拉数据接口
         public ActionResult ID()
         {
-            var View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID==User_ID).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+
+            var View_Rental_VehicleS = new List<SelectData>();
+            if (Role_ID == 4)
+                View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+            else
+                View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }
         #endregion
@@ -264,7 +302,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         public ActionResult Leader(int ProvincialRegion_ID)
         {
             var View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID
-            && x.ID==ProvincialRegion_ID
+            && x.ID == ProvincialRegion_ID
             ).ToList().Select(x => new SelectData { ID = x.Leader.ToString(), Name = x.Leader }).ToList();
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }

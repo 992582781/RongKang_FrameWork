@@ -227,7 +227,7 @@
                     console.log(data);
                     if (data && data.length) {
                         $(data).each(function (i, item) {
-                            if (data_value == item.ID || item.Name=='否')
+                            if (data_value == item.ID || (item.Name == '否' && data_value != '是'))
                                 _this.append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
                             else {
                                 _this.append('<option  value="' + item.ID + '" >' + item.Name + '</option>');

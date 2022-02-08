@@ -1,0 +1,4 @@
+
+发生时间：2022/2/8 20:06:44
+操作数据：System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 RongRental.Areas.Admin_Rental.Controllers.BranchOfficeYearBudgetController.UpdateInsert(BranchOfficeYearBudget branchOfficeYearBudget) 位置 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\Areas\Admin_Rental\Controllers\BranchOfficeYearBudgetController.cs:行号 92

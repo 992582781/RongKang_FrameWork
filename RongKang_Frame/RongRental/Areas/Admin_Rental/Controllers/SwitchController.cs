@@ -66,6 +66,20 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
         }
 
+        public ActionResult Month()
+        {
+            var View_Rental_VehicleS = SwitchBll.GetEntities(x => x.Switch_TypeVaule == 5).ToList().Select(x => new SelectData { ID = x.Switch_State.ToString(), Name = x.Switch_Name }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult Quarter()
+        {
+            var View_Rental_VehicleS = SwitchBll.GetEntities(x => x.Switch_TypeVaule == 6).ToList().Select(x => new SelectData { ID = x.Switch_State.ToString(), Name = x.Switch_Name }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+
+        }
+
         #endregion
     }
 }

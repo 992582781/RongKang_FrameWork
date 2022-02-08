@@ -244,6 +244,7 @@
     <Content Include="Areas\Admin_Rental\assets\i\examples\sidebarPage.png" />
     <Content Include="Areas\Admin_Rental\assets\i\favicon.ico" />
     <Content Include="Areas\Admin_Rental\assets\i\favicon.png" />
+    <Content Include="Areas\Admin_Rental\assets\i\logo.png" />
     <Content Include="Areas\Admin_Rental\assets\i\startup-640x1096.png" />
     <Content Include="Areas\Admin_Rental\assets\css\amazeui.page.css" />
     <Content Include="Areas\Admin_Rental\assets\js\amazeui.datatables.min.js" />

@@ -110,7 +110,8 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                     if (ReimbursementRecordBll.Insert(reimbursementRecord, out messageStr, User_ID.ToString()))
                     {
-                        BranchOfficeYearBudgetBll.Update(branchOfficeYearBudget, out messageStr, User_ID.ToString());
+                        if (reimbursementRecord.Project_ID < 6)
+                            BranchOfficeYearBudgetBll.Update(branchOfficeYearBudget, out messageStr, User_ID.ToString());
                         message.Status = true;
                         message.Msg = "添加成功！";
                         rs = Json(message);
@@ -138,7 +139,8 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                     if (ReimbursementRecordBll.Update(reimbursementRecordOld, out messageStr, User_ID.ToString()))
                     {
-                        BranchOfficeYearBudgetBll.Update(branchOfficeYearBudget, out messageStr, User_ID.ToString());
+                        if (reimbursementRecordOld.Project_ID < 6)
+                            BranchOfficeYearBudgetBll.Update(branchOfficeYearBudget, out messageStr, User_ID.ToString());
                         message.Status = true;
                         message.Msg = "修改成功！";
                         rs = Json(message);

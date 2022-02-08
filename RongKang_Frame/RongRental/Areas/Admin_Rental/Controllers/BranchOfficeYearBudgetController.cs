@@ -79,7 +79,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <returns></returns>
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult UpdateInsert(BranchOfficeYearBudget  branchOfficeYearBudget)
+        public ActionResult UpdateInsert(BranchOfficeYearBudget branchOfficeYearBudget)
         {
 
             try
@@ -87,9 +87,9 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 branchOfficeYearBudget.UserID = User_ID;
                 branchOfficeYearBudget.InTime = DateTime.Now;
 
-                branchOfficeYearBudget.BudgetFunds = Convert.ToDecimal(branchOfficeYearBudget.BudgetFunds_1.Replace(",", ""));
-                branchOfficeYearBudget.AvailableBudgetFunds = Convert.ToDecimal(branchOfficeYearBudget.AvailableBudgetFunds_1.Replace(",", ""));
-                branchOfficeYearBudget.UsedBudgetFunds = Convert.ToDecimal(branchOfficeYearBudget.UsedBudgetFunds_1.Replace(",", ""));
+                branchOfficeYearBudget.BudgetFunds = Convert.ToDecimal(branchOfficeYearBudget.BudgetFunds_1?.Replace(",", ""));
+                branchOfficeYearBudget.AvailableBudgetFunds = Convert.ToDecimal(branchOfficeYearBudget?.AvailableBudgetFunds_1?.Replace(",", ""));
+                branchOfficeYearBudget.UsedBudgetFunds = Convert.ToDecimal(branchOfficeYearBudget?.UsedBudgetFunds_1?.Replace(",", ""));
 
 
                 string messageStr = "";

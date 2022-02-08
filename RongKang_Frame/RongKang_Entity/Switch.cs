@@ -22,7 +22,7 @@ namespace RongKang_Entity
         #region Model
         private int _id;
         private string _switch_name;
-        private int _switch_state;
+        private string _switch_state;
         private int _switch_typevaule;
         private string _switch_typetext;
 
@@ -48,7 +48,7 @@ namespace RongKang_Entity
         /// 
         /// </summary>
         [FieldName(1, "状态", "状态值", Validate.Required, Control_Type.Text)]
-        public int Switch_State
+        public string Switch_State
         {
             set { _switch_state = value; }
             get { return _switch_state; }

@@ -7,6 +7,7 @@
 @{
     //这两行是页面添加显示修改数据必须需要的。
     var List = ViewBag.List;
+    int Role_ID = ViewBag.Role_ID;
     Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ProvincialRegion>();//修改model
 }
 <!doctype html>
@@ -26,7 +27,7 @@
     <link href="~/Areas/Admin_Rental/assets/css/amazeui.page.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="~/Areas/Admin_Rental/assets/css/admin.css">
-
+    <script src="~/Areas/Admin_Rental/assets/js/MoneyFormat.js"></script>
 </head>
 <body>
     <!--[if lte IE 9]>
@@ -46,10 +47,12 @@
                     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">@Permission.ModuleName(ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["action"].ToString())</strong></div>
                 </div>
                 <hr>
+                <!-- List search start -->
                 <div class="am-g">
-                    <div class="am-u-sm-12 am-u-md-6">
-                        <div class="am-btn-toolbar">
-                            <div class="am-btn-group am-btn-group-xs">
+                    @if (Role_ID == 4)
+                    {
+                        <div class="am-u-lg-2">
+                            <div class="am-input-group am-input-group-secondary am-form-group">
                                 @if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
                                 {
                                     <button type="button" id="Add" class="am-btn am-btn-primary"><span class="am-icon-plus"></span>新增</button>
@@ -59,59 +62,55 @@
                                 {
                                     <button type="button" class="hide"></button>
                                 }
-                                @*<button class="am-btn am-btn-default" id="search" type="button">搜索</button>*@
                             </div>
                         </div>
-                    </div>
-                    <div class="am-u-sm-12 am-u-md-3">
-                        <div class="am-form-group">
-                            <select multiple id="selecte_parameter" data-am-selected="{btnSize: 'sm'}">
-                                @{
-                                    var parameter = new[] { "" };
-                                    var Count = -1;
-                                    if (!string.IsNullOrEmpty(Request["Selecte_parameter"]))
-                                    {
-                                        parameter = Request["Selecte_parameter"].Split(',');
-                                        Count = parameter.Count();
-                                    }
-                                    foreach (var dic in Dic)
-                                    {
-                                        if (dic.Value.View_Flag != 2 && dic.Value.View_Flag != 0)
+                    }
+                    @{
+                        foreach (var dic in Dic)
+                        {
+                            if (dic.Value.View_Flag != 0)
+                            {
+                                <div class="am-u-lg-2">
+
+                                    @{
+                                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                                         {
-                                            if (dic.Value.Control_Type != Control_Type.NumberText)
-                                            {
-                                                var flag = false;
-                                                for (int i = 0; i < Count; i++)
-                                                {
-                                                    if (parameter[i] == dic.Key)
-                                                    {
-                                                        flag = true;
-                                                    }
-                                                }
-                                                <option value='@dic.Key' @(flag == true ? "selected" : "")>@dic.Value.View_Name</option>
-                                            }
+                                            <div class="am-input-group am-input-group-secondary am-form-group">
+                                                <span class="am-input-group-label">@dic.Value.View_Name</span>
+                                                <select class="am-form-field" name="@dic.Key" id="@dic.Key" data-value="@Request.QueryString[dic.Key]">
+                                                    <option value="">--请选择--</option>
+                                                </select>
+                                            </div>
                                         }
+                                        @*else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
+                                            { <div class="am-input-group am-input-group-secondary am-form-group">
+                                                    <span class="am-input-group-label">@dic.Value.View_Name</span>
+                                                    <input type="text" class="am-form-field" name="@dic.Key" id="@dic.Key" placeholder="@dic.Value.View_PlaceHolder">
+                                                </div>
+                                            }*@
                                     }
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-12 am-u-md-3">
-                        <div class="am-input-group am-input-group-sm">
-                            <input type="text" class="am-form-field " id="searchtext" value="@Request["searchtext"]" data-am-datepicker="{theme: 'success'}" />
-                            <span class="am-input-group-btn">
-                                <button class="am-btn am-btn-primary" id="search" type="button">搜索</button>
-                            </span>
+                                </div>
+
+                            }
+
+                        }
+                    }
+
+                    <div class="am-u-lg-1">
+                        <div class="am-input-group ">
+                            <button class="am-btn am-btn-primary" id="search" type="button">搜索</button>
                         </div>
                     </div>
                 </div>
+                <!-- List search end -->
+                <!-- List start -->
                 <div class="am-g">
                     <div class="am-u-sm-12">
                         <form class="am-form">
                             <table class="am-table am-table-striped am-table-hover table-main">
                                 <thead>
                                     <tr>
-                                        <th class="table-check"><input style="display:none" class="allcheck" type="checkbox" /></th>
+                                        @*<th class="table-check"><input style="display:none" class="allcheck" type="checkbox" /></th>*@
                                         @{
                                             foreach (var dic in Dic)
                                             {
@@ -122,7 +121,10 @@
 
                                             }
                                         }
-                                        <th class="table-set am-hide-sm-only">操作</th>
+                                        @if (Role_ID == 4)
+                                        {
+                                            <th class="table-set am-hide-sm-only">操作</th>
+                                        }
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -134,7 +136,7 @@
                                             {
                                                 int i = 0;
                                                 <tr>
-                                                    <td><input data-rowindex="@item.ID" class="checkbox" type="checkbox" /></td>
+                                                    <td style="display:none"><input data-rowindex="@item.ID" class="checkbox" type="checkbox" /></td>
 
                                                     @foreach (var dic in Dic)
                                                     {
@@ -142,7 +144,15 @@
                                                         {
                                                             if (i == 0)
                                                             {
-                                                                <td><a href="Edit?ID=@item.ID">@CustomAttributeHelper.GetpropertyValue(item, dic.Key)</a></td>
+                                                                if (Role_ID == 4)
+                                                                {
+                                                                    <td><a href="Edit?ID=@item.ID">@CustomAttributeHelper.GetpropertyValue(item, dic.Key)</a></td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td>@CustomAttributeHelper.GetpropertyValue(item, dic.Key)</td>
+
+                                                                }
                                                             }
                                                             else
                                                             {
@@ -171,9 +181,18 @@
                                                     <td>
                                                         <div class="am-btn-toolbar">
                                                             <div class="am-btn-group am-btn-group-xs">
-                                                                <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改区域</span>
-                                                            </div>
+                                                                @if (Role_ID == 4)
+                                                                {
+                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>修改</span>
 
+                                                                }
+                                                            </div>
+                                                            @*<div class="am-btn-group am-btn-group-xs">
+                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整预算</span>
+                                                                </div>
+                                                                <div class="am-btn-group am-btn-group-xs">
+                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整管理费</span>
+                                                                </div>*@
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -190,6 +209,7 @@
                         </form>
                     </div>
                 </div>
+                <!-- List end -->
             </div>
             @*@Html.Partial("Footer")*@
         </div>
@@ -212,6 +232,32 @@
 
 <script type="text/javascript">
     $(function () {
+
+        $("select").each(function () {
+            var _this = $(this);
+            var id = _this.attr("id");
+            var data_value = _this.attr("data-value");
+            var url = id.split("_");
+            $.ajax({
+                type: "post",
+                url: "/Admin_Rental/" + url[0] + "/" + url[1],  //对应于/controllerName/ActionName
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data && data.length) {
+                        $(data).each(function (i, item) {
+                            if (data_value == item.ID)
+                                _this.append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
+                            else {
+                                _this.append('<option  value="' + item.ID + '" >' + item.Name + '</option>');
+                            }
+                        })
+                    }
+                }
+            });
+        });
+
         var selecte_parameter = "", searchtext = "", parameter = "", page = "", page_parameter = "";
         parameter_(0);
         var page = window.location.search.match(/page=(\d+)/);
@@ -234,26 +280,33 @@
         });
 
         function parameter_(flag) {
-
             if (flag == 0) {
-                selecte_parameter = '@Request["Selecte_parameter"]';
-                searchtext = '@Request["Searchtext"]';
-                page_parameter = "&page=%page%"
-
-
+                if (location.href.indexOf("?") > -1)
+                    searchtext = searchtext + location.href.split('?')[1].split('page')[0];
+                page_parameter = "page=%page%";
             } else {
-                selecte_parameter = $("#selecte_parameter").val();
-                searchtext = $("#searchtext").val();
-                page_parameter = "&page=1"
+                searchtext = "";
+                $("select").each(function () {
+                    var _this = $(this);
+                    var id1 = _this.attr("id");
+                    var data_value1 = $(this).val();
+                    if ($(this).val() != null || $(this).val() != undefined || $(this).val() != '') {
+                        searchtext = searchtext + _this.attr("id") + "=" + $(this).val() + "&";
+                    }
+                });
+                $("input[type='text']").each(function () {
+                    var _this = $(this);
+                    var id1 = _this.attr("id");
+                    var data_value1 = $(this).val();
+                    if ($(this).val() != null || $(this).val() != undefined || $(this).val() != '') {
+                        searchtext = searchtext + _this.attr("id") + "=" + $(this).val() + "&";
+                    }
+                });
 
+                page_parameter = "page=1"
             }
-            if (selecte_parameter == null) {
-                selecte_parameter = "";
-            }
-            parameter = "?Searchtext=" + searchtext + "&Selecte_parameter=" + selecte_parameter + page_parameter;
-
+            parameter = "?" + searchtext + page_parameter;
         }
-
     });
 
 </script>  

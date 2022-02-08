@@ -28,8 +28,8 @@
                 {
 
                     <li class="admin-parent">
-                        <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav_@Item.ID'}"><span class="am-icon-file"></span>@Item.Module_Name</a>
-                        <ul class="am-list admin-sidebar-sub am-collapse" id="collapse-nav_@Item.ID">
+                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav_@Item.ID'}"><span class="am-icon-file"></span>@Item.Module_Name</a>
+                        <ul class="am-list admin-sidebar-sub" id="collapse-nav_@Item.ID">
                             @{
                     IList<Module> Son_Modules = List_Modules.Where(x => x.Module_ParentID == Item.ID).OrderBy(x => x.Module_Order).ToList();
                     foreach (Module SonItem in Son_Modules)

@@ -18,6 +18,20 @@ namespace RongKang_Entity
     {
         [Key]
         public int ID { get; set; }
+
+        /// <summary>
+        /// 月份
+        /// </summary>
+        [FieldName(2, "月份", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        [NotMapped]
+        public int Switch_Month { get; set; }
+        /// <summary>
+        /// 季度
+        /// </summary>
+        [FieldName(2, "季度", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        [NotMapped]
+        public int Switch_Quarter { get; set; }
+
         /// <summary>
         /// 省份 如：江苏省
         /// </summary>
@@ -110,6 +124,22 @@ namespace RongKang_Entity
         [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
         [NotMapped]
         public string PercentInformationFunds { get; set; }
+ 
+
+        /// <summary>
+        /// 广乐总费用
+        /// </summary>
+        [FieldName(0, "广乐总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string GuangLeFunds { get; set; }
+
+
+        /// <summary>
+        /// 对私总费用
+        /// </summary>
+        [FieldName(0, "对私总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string PersonFunds { get; set; }
 
         /// <summary>
         /// 管理费预算资金 修改不能小于 ManagementFunds-AvailableManagementFunds（已分配的）

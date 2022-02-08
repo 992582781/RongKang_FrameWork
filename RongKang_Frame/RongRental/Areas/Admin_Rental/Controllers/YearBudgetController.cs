@@ -19,24 +19,27 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         private Message message = new Message();
         private JsonResult rs = null;
         private int User_ID = 0;
+        public int Role_ID = 0;
 
         IYearBudgetBll<YearBudget> YearBudgetBll;
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
         IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll;
         IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll;
+        IUserRoleBll<UserRole> UserRoleBll;
 
 
         public YearBudgetController(IYearBudgetBll<YearBudget> YearBudgetBll, 
             IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
             IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
-            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll
-            ) //依赖构造函数进行对象注入 
+            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll,
+            IUserRoleBll<UserRole> UserRoleBll) //依赖构造函数进行对象注入 
         {
             this.YearBudgetBll = YearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
             this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
             User_ID = Cookie_Operate.GetID();
+            Role_ID = (int)(UserRoleBll.GetFirstEntity(x => x.User_ID == User_ID)?.Role_ID);
         }
 
 
@@ -93,13 +96,13 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 yearBudget.UserID = User_ID;
                 yearBudget.InTime = DateTime.Now;
 
-                yearBudget.BudgetFunds = Convert.ToDecimal(yearBudget.BudgetFunds_1.Replace(",", ""));
-                yearBudget.AvailableBudgetFunds = Convert.ToDecimal(yearBudget.AvailableBudgetFunds_1.Replace(",", ""));
-                yearBudget.UsedBudgetFunds = Convert.ToDecimal(yearBudget.UsedBudgetFunds_1.Replace(",", ""));
+                yearBudget.BudgetFunds = Convert.ToDecimal(yearBudget?.BudgetFunds_1?.Replace(",", ""));
+                yearBudget.AvailableBudgetFunds = Convert.ToDecimal(yearBudget?.AvailableBudgetFunds_1?.Replace(",", ""));
+                yearBudget.UsedBudgetFunds = Convert.ToDecimal(yearBudget?.UsedBudgetFunds_1?.Replace(",", ""));
 
-                yearBudget.ManagementFunds = Convert.ToDecimal(yearBudget.ManagementFunds_1.Replace(",", ""));
-                yearBudget.AvailableManagementFunds = Convert.ToDecimal(yearBudget.AvailableManagementFunds_1.Replace(",", ""));
-                yearBudget.UsedManagementFunds = Convert.ToDecimal(yearBudget.UsedManagementFunds_1.Replace(",", ""));
+                yearBudget.ManagementFunds = Convert.ToDecimal(yearBudget?.ManagementFunds_1?.Replace(",", ""));
+                yearBudget.AvailableManagementFunds = Convert.ToDecimal(yearBudget?.AvailableManagementFunds_1?.Replace(",", ""));
+                yearBudget.UsedManagementFunds = Convert.ToDecimal(yearBudget?.UsedManagementFunds_1?.Replace(",", ""));
 
 
                 string messageStr = "";
@@ -115,6 +118,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         return rs;
                     }
                     yearBudget.AvailableBudgetFunds = yearBudget.BudgetFunds;
+                    yearBudget.AvailableManagementFunds = yearBudget.ManagementFunds;
                     if (YearBudgetBll.Insert(yearBudget, out messageStr, User_ID.ToString()))
                     {
                         message.Status = true;
@@ -209,13 +213,19 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 //Func<ViewModule, bool> exp1;
                 //exp1 = x => x.ID > 0;
-
+                int MonthQuarterint = 0;
+                List<int> MonthQuarter = new List<int>();
                 var orderName = "Year";
-                var exp = "ID>0  and UserID=" + User_ID + "";
+                var exp = "";
+                if (Role_ID == 4)
+                    exp = "ID>0  and UserID=" + User_ID + "";
+                else
+                    exp = "ID>0 ";
+
                 Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<YearBudget>();//修改model
                 foreach (var dic in Dic)
                 {
-                    if (dic.Value.View_Flag != 0)
+                    if (dic.Value.View_Flag != 0 && !dic.Key.Contains("Switch"))
                     {
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
@@ -228,7 +238,26 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                                 exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
                         }
                     }
+                    else if (dic.Key.Contains("Switch"))
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                            {
+                                MonthQuarter = Request.QueryString[dic.Key].ToString().Split(new char[] { ',' },
+                                    StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToList();
+                                MonthQuarterint++;
+                            }
+                        }
+                    }
                 }
+
+                if (MonthQuarterint > 1)
+                {
+                    return Content("<script>alert('月份与季度只能选择一个！');window.history.back();</script>");
+                }
+
+
 
                 var totalRecord = YearBudgetBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;
@@ -261,7 +290,13 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     YearBudget.RealUsedManagementFunds = string.Format("{0:N2}", branchOfficeYearBudgetList2?.FirstOrDefault()?.UsedBudgetFunds);
 
                     var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
-                     x.Year == DateTime.Now.Year).ToList();
+                     x.Year == YearBudget.Year).ToList();
+
+                    if (MonthQuarter.Count > 0)
+                    {
+                        reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                        x.Year == YearBudget.Year && MonthQuarter.Contains(x.Month)).ToList();
+                    }
 
                     var FollowUpFundsList = reimbursementRecordList.Where(x => x.Project_ID == 2).GroupBy(g => g.Project_ID).
                     Select(e => new { Project_ID = e.Key, FollowUpFunds = e.Sum(q => q.Funds) });
@@ -288,10 +323,19 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     YearBudget.InformationFunds = string.Format("{0:N2}", InformationFundsList?.FirstOrDefault()?.InformationFunds);
                     YearBudget.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
                      / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
+                 Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    YearBudget.GuangLeFunds = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
+                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    YearBudget.PersonFunds = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
                 }
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
+                ViewBag.Role_ID = Role_ID;
                 return View();
             }
             catch (Exception e)

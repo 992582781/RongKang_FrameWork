@@ -92,7 +92,6 @@ E:\zixue\RongRental\RongRental\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAcco
 E:\zixue\RongRental\RongRental\obj\Debug\RongRental.csprojResolveAssemblyReference.cache
 E:\zixue\RongRental\RongRental\obj\Debug\RongRental.dll
 E:\zixue\RongRental\RongRental\obj\Debug\RongRental.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongRental.dll.config
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongRental.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\RongRental.pdb
@@ -152,6 +151,7 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.AspNet.Id
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.Owin.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.Owin.Security.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.Owin.Security.Facebook.xml
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Microsoft.Owin.Security.Cookies.xml
