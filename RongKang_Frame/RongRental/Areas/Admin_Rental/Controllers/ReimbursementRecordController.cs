@@ -189,13 +189,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 //Func<ViewModule, bool> exp1;
                 //exp1 = x => x.ID > 0;
-
+                int MonthQuarterint = 0;
+                string MonthQuarter = string.Empty;
                 var orderName = "Year";
                 var exp = "ID>0  and UserID=" + User_ID + "";
                 Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ReimbursementRecord>();//修改model
                 foreach (var dic in Dic)
                 {
-                    if (dic.Value.View_Flag != 0)
+                    if (dic.Value.View_Flag != 0 && !dic.Key.Contains("Switch"))
                     {
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
@@ -208,6 +209,23 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                                 exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
                         }
                     }
+                    else if (dic.Key.Contains("Switch"))
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                            {
+                                MonthQuarter = Request.QueryString[dic.Key].ToString();
+                                MonthQuarterint++;
+                                exp = exp + " and Month in (" + MonthQuarter + ")";
+                            }
+                        }
+                    }
+                }
+
+                if (MonthQuarterint > 1)
+                {
+                    return Content("<script>alert('月份与季度只能选择一个！');window.history.back();</script>");
                 }
 
                 var totalRecord = ReimbursementRecordBll.GetEntitiesCount(exp);
@@ -259,13 +277,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 //Func<ViewModule, bool> exp1;
                 //exp1 = x => x.ID > 0;
-
+                int MonthQuarterint = 0;
+                string MonthQuarter = string.Empty;
                 var orderName = "Year";
                 var exp = "ID>0  and UserID=" + User_ID + "";
                 Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ReimbursementRecord>();//修改model
                 foreach (var dic in Dic)
                 {
-                    if (dic.Value.View_Flag != 0)
+                    if (dic.Value.View_Flag != 0 && !dic.Key.Contains("Switch"))
                     {
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
@@ -278,6 +297,23 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                                 exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
                         }
                     }
+                    else if (dic.Key.Contains("Switch"))
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                            {
+                                MonthQuarter = Request.QueryString[dic.Key].ToString();
+                                MonthQuarterint++;
+                                exp = exp + " and Month in (" + MonthQuarter + ")";
+                            }
+                        }
+                    }
+                }
+
+                if (MonthQuarterint > 1)
+                {
+                    return Content("<script>alert('月份与季度只能选择一个！');window.history.back();</script>");
                 }
 
                 var totalRecord = ReimbursementRecordBll.GetEntitiesCount(exp);

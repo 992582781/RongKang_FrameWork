@@ -116,6 +116,18 @@ namespace RongKang_Entity
         [FieldName(2, "所属产品", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
         public int Product_ID { get; set; }
 
+        /// <summary>
+        /// 月份
+        /// </summary>
+        [FieldName(2, "月份", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        [NotMapped]
+        public int Switch_Month { get; set; }
+        /// <summary>
+        /// 季度
+        /// </summary>
+        [FieldName(2, "季度", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        [NotMapped]
+        public int Switch_Quarter { get; set; }
 
         /// <summary>
         /// 备注
