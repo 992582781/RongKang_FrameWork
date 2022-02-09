@@ -348,6 +348,153 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         #endregion
 
 
+        #region 导出列表
+        /// </summary>
+        /// <param name="page">当前页码</param>
+        /// <param name="pageSize">分页条数</param>
+        /// <param name="Searchtext">查询内容</param>
+        /// <param name="Selecte_parameter">查询字段</param>
+        /// <returns></returns>
+        public ActionResult Excel(int page = 1, int pageSize = 20000)
+        {
+            try
+            {
+
+                //Func<ViewModule, bool> exp1;
+                //exp1 = x => x.ID > 0;
+                int MonthQuarterint = 0;
+                List<int> MonthQuarter = new List<int>();
+                var orderName = "Year";
+                var exp = "";
+                if (Role_ID == 4)
+                    exp = "ID>0  and UserID=" + User_ID + "";
+                else
+                    exp = "ID>0 ";
+
+                Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<YearBudget>();//修改model
+                foreach (var dic in Dic)
+                {
+                    if (dic.Value.View_Flag != 0 && !dic.Key.Contains("Switch"))
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                        }
+                        else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
+                        }
+                    }
+                    else if (dic.Key.Contains("Switch"))
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                            {
+                                MonthQuarter = Request.QueryString[dic.Key].ToString().Split(new char[] { ',' },
+                                    StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToList();
+                                MonthQuarterint++;
+                            }
+                        }
+                    }
+                }
+
+                if (MonthQuarterint > 1)
+                {
+                    return Content("<script>alert('月份与季度只能选择一个！');window.history.back();</script>");
+                }
+
+
+
+                var totalRecord = YearBudgetBll.GetEntitiesCount(exp);
+                var totalPage = (totalRecord + pageSize - 1) / pageSize;
+                var List = YearBudgetBll.GetEntitiesForPaging(page, pageSize, orderName, "desc", exp).ToList();
+
+                var ProvincialRegionList = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList();
+
+                foreach (var YearBudget in List)
+                {
+                    YearBudget.ProvinceName = ProvincialRegionList?.Where(x => x.ID == YearBudget.ProvincialRegion_ID)?.FirstOrDefault()?.ProvinceName;
+                    YearBudget.BudgetFunds_1 = String.Format("{0:N2}", YearBudget.BudgetFunds);
+                    YearBudget.AvailableBudgetFunds_1 = String.Format("{0:N2}", YearBudget.AvailableBudgetFunds);
+                    YearBudget.UsedBudgetFunds_1 = String.Format("{0:N2}", YearBudget.UsedBudgetFunds);
+
+                    YearBudget.ManagementFunds_1 = string.Format("{0:N2}", YearBudget.ManagementFunds);
+                    YearBudget.AvailableManagementFunds_1 = string.Format("{0:N2}", YearBudget.AvailableManagementFunds);
+                    YearBudget.UsedManagementFunds_1 = string.Format("{0:N2}", YearBudget.UsedManagementFunds);
+
+                    var branchOfficeYearBudgetList = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                     x.Switch_ManageType == "否" &&
+                     x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                     Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
+                    YearBudget.RealUsedBudgetFunds = string.Format("{0:N2}", branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds);
+
+
+                    var branchOfficeYearBudgetList2 = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                    x.Switch_ManageType == "是" &&
+                    x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                    Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
+                    YearBudget.RealUsedManagementFunds = string.Format("{0:N2}", branchOfficeYearBudgetList2?.FirstOrDefault()?.UsedBudgetFunds);
+
+                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                     x.Year == YearBudget.Year).ToList();
+
+                    if (MonthQuarter.Count > 0)
+                    {
+                        reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
+                        x.Year == YearBudget.Year && MonthQuarter.Contains(x.Month)).ToList();
+                    }
+
+                    var FollowUpFundsList = reimbursementRecordList.Where(x => x.Project_ID == 2).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, FollowUpFunds = e.Sum(q => q.Funds) });
+                    YearBudget.FollowUpFunds = string.Format("{0:N2}", FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds);
+                    YearBudget.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds
+                        / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+
+                    var AcademicFundsList = reimbursementRecordList.Where(x => x.Project_ID == 3).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, AcademicFunds = e.Sum(q => q.Funds) });
+                    YearBudget.AcademicFunds = string.Format("{0:N2}", AcademicFundsList?.FirstOrDefault()?.AcademicFunds);
+                    YearBudget.PercentAcademicFunds = Convert.ToDecimal(AcademicFundsList?.FirstOrDefault()?.AcademicFunds
+                       / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+
+                    var BusinessFundsList = reimbursementRecordList.Where(x => x.Project_ID == 4).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, BusinessFunds = e.Sum(q => q.Funds) });
+                    YearBudget.BusinessFunds = string.Format("{0:N2}", BusinessFundsList?.FirstOrDefault()?.BusinessFunds);
+                    YearBudget.PercentBusinessFunds = Convert.ToDecimal(BusinessFundsList?.FirstOrDefault()?.BusinessFunds
+                      / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    var InformationFundsList = reimbursementRecordList.Where(x => x.Project_ID == 5).GroupBy(g => g.Project_ID).
+                    Select(e => new { Project_ID = e.Key, InformationFunds = e.Sum(q => q.Funds) });
+                    YearBudget.InformationFunds = string.Format("{0:N2}", InformationFundsList?.FirstOrDefault()?.InformationFunds);
+                    YearBudget.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
+                     / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
+                 Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    YearBudget.GuangLeFunds = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
+                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    YearBudget.PersonFunds = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
+                }
+
+                return File(ExportExcelHelper.GenExcelFileStream(List), "application/ms-excel", string.Format("报销汇总{0}.xls", DateTime.Now.ToString("yyyyMMddHHmmss")));
+
+            }
+            catch (Exception e)
+            {
+                Dal_Log.WriteBaseDal(e.ToString());
+                return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
+            }
+        }
+
+        #endregion
+
+
         #region 对前端开放的下拉数据接口
         public ActionResult Funds(int ProvincialRegion_ID)
         {

@@ -77,12 +77,15 @@ namespace Web_Common
             foreach (var propertyInfo in props)
             {
                 var exportAtt = (FieldNameAttribute)propertyInfo.GetCustomAttributes(typeof(FieldNameAttribute), false).FirstOrDefault();
-                ExportHeader header = new ExportHeader()
+                if (exportAtt?.View_Flag <= 1)
                 {
-                    PropertyName = propertyInfo?.Name,
-                    HeaderName = exportAtt?.View_Name,
-                };
-                headerList.Add(header);
+                    ExportHeader header = new ExportHeader()
+                    {
+                        PropertyName = propertyInfo?.Name,
+                        HeaderName = exportAtt?.View_Name,
+                    };
+                    headerList.Add(header);
+                }
             }
 
             headerList = headerList.ToList();

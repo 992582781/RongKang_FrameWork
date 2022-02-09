@@ -1,5 +1,8 @@
 ﻿//阿拉伯数字转换成大写汉字
 function numberParseChina(money) {
+
+    var IsNegative = false; // 是否是负数
+
     //汉字的数字
     var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
     //基本单位
@@ -32,6 +35,13 @@ function numberParseChina(money) {
         chineseStr = cnNums[0] + cnIntLast + cnInteger;
         return chineseStr;
     }
+
+    if (money != Math.abs(money)) {
+        // 是负数则先转为正数
+        money = Math.abs(money);
+        IsNegative = true;
+    }
+
     //转换为字符串
     money = money.toString();
     if (money.indexOf('.') == -1) {
@@ -82,7 +92,13 @@ function numberParseChina(money) {
     } else if (decimalNum == '') {
         chineseStr += cnInteger;
     }
-    return chineseStr;
+    if (IsNegative == true) {
+        return "负" + chineseStr;
+    }
+    else {
+        return chineseStr;
+    }
+    //return chineseStr;
 }
 
 //千分位的分隔符

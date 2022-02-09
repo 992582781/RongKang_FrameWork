@@ -1,0 +1,114 @@
+
+发生时间：2022/2/9 19:31:32
+操作的表：ProvincialRegion
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvinceName:宁夏,Leader:张友军,Remark:,
+
+发生时间：2022/2/9 19:32:04
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:32:28
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOfficeName:对私,Remark:,
+
+发生时间：2022/2/9 19:32:40
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOfficeName:宁夏锐洛普信息咨询有限公司,Remark:,
+
+发生时间：2022/2/9 19:32:50
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOfficeName:管理费公司,Remark:,
+
+发生时间：2022/2/9 19:33:16
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:1,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:33:16
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:33:45
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:2,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:33:45
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:34:25
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:3,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:34:25
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:34:50
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:3,Switch_ManageType:否,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:34:50
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:35:16
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:3,Switch_ManageType:是,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:35:16
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:53:17
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:3,Switch_ManageType:是,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:53:18
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:53:33
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,BranchOffice_ID:3,Switch_ManageType:是,Year:2022,Remark:,
+
+发生时间：2022/2/9 19:53:33
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2022,Remark:,

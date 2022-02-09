@@ -244,5 +244,74 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
         #endregion
 
+
+        #region 导出列表
+        /// </summary>
+        /// <param name="page">当前页码</param>
+        /// <param name="pageSize">分页条数</param>
+        /// <param name="Searchtext">查询内容</param>
+        /// <param name="Selecte_parameter">查询字段</param>
+        /// <returns></returns>
+        public ActionResult Excel(int page = 1, int pageSize = 20000)
+        {
+            try
+            {
+
+                //Func<ViewModule, bool> exp1;
+                //exp1 = x => x.ID > 0;
+
+                var orderName = "Year";
+                var exp = "ID>0  and UserID=" + User_ID + "";
+                Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ReimbursementRecord>();//修改model
+                foreach (var dic in Dic)
+                {
+                    if (dic.Value.View_Flag != 0)
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                        }
+                        else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
+                        }
+                    }
+                }
+
+                var totalRecord = ReimbursementRecordBll.GetEntitiesCount(exp);
+                var totalPage = (totalRecord + pageSize - 1) / pageSize;
+                var List = ReimbursementRecordBll.GetEntitiesForPaging(page, pageSize, orderName, "desc", exp).ToList();
+
+
+                var ProvincialRegionList = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList();
+                var BranchOfficeList = BranchOfficeBll.GetEntities(x => x.ID > 0).ToList();
+                var ProjectList = ProjectBll.GetEntities(x => x.ID > 0).ToList();
+                var ProductList = ProductBll.GetEntities(x => x.ID > 0).ToList();
+
+                foreach (var ReimbursementRecor in List)
+                {
+                    ReimbursementRecor.BranchOfficeName = BranchOfficeList?.Where(x => x.ID == ReimbursementRecor.BranchOffice_ID)?.FirstOrDefault()?.BranchOfficeName;
+                    ReimbursementRecor.ProvinceName = ProvincialRegionList?.Where(x => x.ID == ReimbursementRecor.ProvincialRegion_ID)?.FirstOrDefault()?.ProvinceName;
+                    ReimbursementRecor.ProductName = ProductList?.Where(x => x.ID == ReimbursementRecor.Product_ID)?.FirstOrDefault()?.ProductName;
+
+                    ReimbursementRecor.ProjectName = ProjectList?.Where(x => x.ID == ReimbursementRecor.Project_ID)?.FirstOrDefault().ProjectName;
+                    ReimbursementRecor.Funds_1 = String.Format("{0:N2}", ReimbursementRecor.Funds);
+                    ReimbursementRecor.ReimbursementDateStr = PageValidate.DateFormatReturnString(ReimbursementRecor.ReimbursementDate.ToString(), 3);
+                }
+
+                return File(ExportExcelHelper.GenExcelFileStream(List), "application/ms-excel", string.Format("报销记录{0}.xls", DateTime.Now.ToString("yyyyMMddHHmmss")));
+
+            }
+            catch (Exception e)
+            {
+                Dal_Log.WriteBaseDal(e.ToString());
+                return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
+            }
+        }
+
+        #endregion
+
     }
 }
