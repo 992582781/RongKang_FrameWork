@@ -314,7 +314,7 @@
                     $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
                     $(data).each(function (i, item) {
 
-                        if (data_value == item.ID)
+                        if (data_value == item.ID || GetQueryString('BranchOffice_ID') == item.ID)
                             $("#BranchOffice_ID").append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
                         else {
                             $("#BranchOffice_ID").append('<option  value="' + item.ID + '" >' + item.Name + '</option>');
