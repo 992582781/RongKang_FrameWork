@@ -24,16 +24,19 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         IBranchOfficeBll<BranchOffice> BranchOfficeBll;
         IYearBudgetBll<YearBudget> YearBudgetBll;
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
+        IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll;
 
         public BranchOfficeYearBudgetController(IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
              IBranchOfficeBll<BranchOffice> BranchOfficeBll,
              IYearBudgetBll<YearBudget> YearBudgetBll,
+             IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll,
              IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll) //依赖构造函数进行对象注入 
         {
             this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.BranchOfficeBll = BranchOfficeBll; //在构造函数中初始化控制器类的Bll属性
             this.YearBudgetBll = YearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
+            this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
             User_ID = Cookie_Operate.GetID();
         }
 
@@ -243,7 +246,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
+                                exp = exp + " and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
                         }
                     }
                 }
@@ -263,6 +266,17 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     BranchOfficeYearBudget.BudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.BudgetFunds);
                     BranchOfficeYearBudget.AvailableBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.AvailableBudgetFunds);
                     BranchOfficeYearBudget.UsedBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.UsedBudgetFunds);
+
+                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.BranchOffice_ID == BranchOfficeYearBudget.BranchOffice_ID &&
+                   x.Year == BranchOfficeYearBudget.Year).ToList();
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
+                Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    BranchOfficeYearBudget.GuangLeFunds_1 = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
+                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    BranchOfficeYearBudget.PersonFunds_1 = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
                 }
 
                 ViewBag.List = List;

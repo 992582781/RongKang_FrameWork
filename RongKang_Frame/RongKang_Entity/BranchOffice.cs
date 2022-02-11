@@ -63,6 +63,21 @@ namespace RongKang_Entity
         public string UsedBudgetFunds_1 { get; set; }
 
         /// <summary>
+        /// 广乐总费用
+        /// </summary>
+        [FieldName(0, "广乐总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string GuangLeFunds_1 { get; set; }
+
+
+        /// <summary>
+        /// 对私总费用
+        /// </summary>
+        [FieldName(0, "对私总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string PersonFunds_1 { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [FieldName(1, "备注", "", Validate.Empty, Control_Type.Remark)]

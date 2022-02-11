@@ -21,6 +21,12 @@ namespace RongKang_Entity
         public int ID { get; set; }
 
         /// <summary>
+        /// 所属年度
+        /// </summary>
+        [FieldName(1, "所属年度", "只能输入数字", Validate.Number, Control_Type.Text)]
+        public int? Year { get; set; }
+
+        /// <summary>
         /// 省份
         /// </summary>
         [FieldName(0, "所属省份", "", Validate.Empty, Control_Type.Text)]
@@ -63,11 +69,7 @@ namespace RongKang_Entity
         [FieldName(2, "未分配管理费", "只能输入数字", Validate.Number, Control_Type.Readonly)]
         [NotMapped]
         public string AvailableManagementFunds_2 { get; set; }
-        /// <summary>
-        /// 所属年度
-        /// </summary>
-        [FieldName(1, "所属年度", "只能输入数字", Validate.Number, Control_Type.Text)]
-        public int? Year { get; set; }
+       
         /// <summary>
         /// 商业预算资金 
         /// 或者UsedBudgetFunds
@@ -106,7 +108,20 @@ namespace RongKang_Entity
         /// </summary>
         public decimal? UsedBudgetFunds { get; set; }
 
+        /// <summary>
+        /// 广乐总费用
+        /// </summary>
+        [FieldName(0, "广乐总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string GuangLeFunds_1 { get; set; }
 
+
+        /// <summary>
+        /// 对私总费用
+        /// </summary>
+        [FieldName(0, "对私总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        [NotMapped]
+        public string PersonFunds_1 { get; set; }
         /// <summary>
         /// 备注
         /// </summary>

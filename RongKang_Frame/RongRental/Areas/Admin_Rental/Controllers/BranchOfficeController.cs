@@ -23,13 +23,16 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         IBranchOfficeBll<BranchOffice> BranchOfficeBll;
         IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll;
         IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll;
+        IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll;
         public BranchOfficeController(IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
             IBranchOfficeBll<BranchOffice> BranchOfficeBll,
+            IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll,
             IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll) //依赖构造函数进行对象注入 
         {
             this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.BranchOfficeBll = BranchOfficeBll; //在构造函数中初始化控制器类的Bll属性
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
+            this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
             User_ID = Cookie_Operate.GetID();
         }
 
@@ -197,6 +200,17 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     BranchOffice.BudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.BudgetFunds);
                     BranchOffice.AvailableBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.AvailableBudgetFunds);
                     BranchOffice.UsedBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.UsedBudgetFunds);
+
+                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.BranchOffice_ID == BranchOffice.ID &&
+                    x.Year == DateTime.Now.Year).ToList();
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
+                Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    BranchOffice.GuangLeFunds_1 = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
+                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    BranchOffice.PersonFunds_1 = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
                 }
 
                 ViewBag.List = List;

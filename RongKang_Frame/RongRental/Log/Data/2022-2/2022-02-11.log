@@ -1,0 +1,12 @@
+
+发生时间：2022/2/11 19:20:05
+操作的表：ReimbursementRecord
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ReimbursementDate:2022/2/24 0:00:00,Year:2022,Month:2,ProvincialRegion_ID:1,BranchOffice_ID:2,ProvincialRegion_Leader:张友军,Project_ID:6,Product_ID:2,Remark:,
+
+发生时间：2022/2/11 19:33:58
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：15
+操作数据：ProvincialRegion_ID:1,Year:2021,Remark:,
