@@ -293,10 +293,10 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         #endregion
 
         #region 对前端开放的下拉数据接口
-        public ActionResult Funds(int BranchOffice_ID)
+        public ActionResult Funds(int BranchOffice_ID, DateTime ReimbursementDate)
         {
             var View_Rental_VehicleS = BranchOfficeYearBudgetBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID
-            && x.BranchOffice_ID == BranchOffice_ID && x.Year == DateTime.Now.Year
+            && x.BranchOffice_ID == BranchOffice_ID && x.Year == ReimbursementDate.Year
             ).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.AvailableBudgetFunds.ToString() }).ToList();
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }

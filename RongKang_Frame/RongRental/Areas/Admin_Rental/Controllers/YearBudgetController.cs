@@ -28,7 +28,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         IUserRoleBll<UserRole> UserRoleBll;
 
 
-        public YearBudgetController(IYearBudgetBll<YearBudget> YearBudgetBll, 
+        public YearBudgetController(IYearBudgetBll<YearBudget> YearBudgetBll,
             IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
             IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll,
             IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll,
@@ -278,14 +278,14 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                     var branchOfficeYearBudgetList = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
                      x.Switch_ManageType == "否" &&
-                     x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                     x.Year == YearBudget.Year).GroupBy(g => g.ProvincialRegion_ID).
                      Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
                     YearBudget.RealUsedBudgetFunds = string.Format("{0:N2}", branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds);
 
 
                     var branchOfficeYearBudgetList2 = BranchOfficeYearBudgetBll.GetEntities(x => x.ProvincialRegion_ID == YearBudget.ProvincialRegion_ID &&
                     x.Switch_ManageType == "是" &&
-                    x.Year == DateTime.Now.Year).GroupBy(g => g.ProvincialRegion_ID).
+                    x.Year == YearBudget.Year).GroupBy(g => g.ProvincialRegion_ID).
                     Select(e => new { ProvincialRegion_ID = e.Key, UsedBudgetFunds = e.Sum(q => q.UsedBudgetFunds) });
                     YearBudget.RealUsedManagementFunds = string.Format("{0:N2}", branchOfficeYearBudgetList2?.FirstOrDefault()?.UsedBudgetFunds);
 
@@ -496,10 +496,10 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
 
         #region 对前端开放的下拉数据接口
-        public ActionResult Funds(int ProvincialRegion_ID)
+        public ActionResult Funds(int ProvincialRegion_ID, int Year)
         {
             var View_Rental_VehicleS = YearBudgetBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID
-            && x.ProvincialRegion_ID == ProvincialRegion_ID && x.Year == DateTime.Now.Year
+            && x.ProvincialRegion_ID == ProvincialRegion_ID && x.Year == Year
             ).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.AvailableBudgetFunds.ToString() + "|" + x.AvailableManagementFunds.ToString() }).ToList();
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }

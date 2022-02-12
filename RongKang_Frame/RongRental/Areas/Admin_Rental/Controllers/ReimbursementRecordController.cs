@@ -191,7 +191,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 //exp1 = x => x.ID > 0;
                 int MonthQuarterint = 0;
                 string MonthQuarter = string.Empty;
-                var orderName = "Year ,Month";
+                var orderName = "Year desc ,Month";
                 var exp = "ID>0  and UserID=" + User_ID + "";
                 Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ReimbursementRecord>();//ÐÞ¸Ämodel
                 foreach (var dic in Dic)
@@ -279,7 +279,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 //exp1 = x => x.ID > 0;
                 int MonthQuarterint = 0;
                 string MonthQuarter = string.Empty;
-                var orderName = "Year ,Month";
+                var orderName = "Year desc,Month";
                 var exp = "ID>0  and UserID=" + User_ID + "";
                 Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<ReimbursementRecord>();//ÐÞ¸Ämodel
                 foreach (var dic in Dic)
