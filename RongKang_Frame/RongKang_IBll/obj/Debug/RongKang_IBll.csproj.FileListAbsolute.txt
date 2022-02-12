@@ -33,4 +33,3 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_I
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.pdb
-D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_IBll\obj\Debug\RongKang_IBll.csproj.AssemblyReference.cache
