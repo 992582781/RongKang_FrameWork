@@ -215,6 +215,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
+                ViewBag.totalRecord = totalRecord;
                 return View();
             }
             catch (Exception e)

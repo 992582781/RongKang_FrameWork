@@ -6,3 +6,4 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Debug\Redis.csproj.CoreC
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Debug\Redis.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Debug\Redis.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Debug\Redis.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\Redis\obj\Debug\Redis.csproj.AssemblyReference.cache

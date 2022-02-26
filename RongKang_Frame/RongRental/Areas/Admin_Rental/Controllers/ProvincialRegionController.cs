@@ -163,7 +163,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">²éÑ¯ÄÚÈÝ</param>
         /// <param name="Selecte_parameter">²éÑ¯×Ö¶Î</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 20)
+        public ActionResult List(int page = 1, int pageSize = 10)
         {
             try
             {
@@ -271,6 +271,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
                 ViewBag.Role_ID = Role_ID;
+                ViewBag.totalRecord = totalRecord;
                 return View();
             }
             catch (Exception e)
@@ -415,9 +416,9 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
             var View_Rental_VehicleS = new List<SelectData>();
             if (Role_ID == 4)
-                View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+                View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName+"_"+x.Leader }).ToList();
             else
-                View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName }).ToList();
+                View_Rental_VehicleS = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.ProvinceName + "_" + x.Leader }).ToList();
 
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }

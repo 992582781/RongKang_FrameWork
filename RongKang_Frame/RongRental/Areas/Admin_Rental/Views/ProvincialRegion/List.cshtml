@@ -204,7 +204,12 @@
 
                                 </tbody>
                             </table>
-                            <div id="page"></div>
+                            <div class="am-u-lg-1">
+                                <div class="am-pagination" id="totalRecord" style="color: #0e90d2"></div>
+                            </div>
+                            <div class="am-u-lg-11">
+                                <div id="page"></div>
+                            </div>
                             <hr />
                             <p>注：.....</p>
                         </form>
@@ -233,7 +238,7 @@
 
 <script type="text/javascript">
     $(function () {
-
+        $("#totalRecord").text("显示" + @ViewBag.totalRecord + "条记录");
         $("select").each(function () {
             var _this = $(this);
             var id = _this.attr("id");
