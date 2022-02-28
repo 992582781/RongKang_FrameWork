@@ -157,7 +157,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">²éÑ¯ÄÚÈÝ</param>
         /// <param name="Selecte_parameter">²éÑ¯×Ö¶Î</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 20)
+        public ActionResult List(int page = 1, int pageSize = 10)
         {
             try
             {
@@ -235,6 +235,19 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             ).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.BranchOfficeName }).ToList();
             return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult NOTID(int ProvincialRegion_ID)
+        {
+            var IDS = BranchOfficeYearBudgetBll.GetEntities(X => X.ProvincialRegion_ID == ProvincialRegion_ID && X.Year == DateTime.Now.Year).ToList()
+                .Select(X => X.BranchOffice_ID).ToList();
+
+            var View_Rental_VehicleS = BranchOfficeBll.GetEntities(x => x.ID > 0 && x.UserID == User_ID &&
+            x.ProvincialRegion_ID == ProvincialRegion_ID &&
+            !IDS.Contains(x.ID)
+            ).ToList().Select(x => new SelectData { ID = x.ID.ToString(), Name = x.BranchOfficeName }).ToList();
+            return Json(View_Rental_VehicleS, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
     }
 }

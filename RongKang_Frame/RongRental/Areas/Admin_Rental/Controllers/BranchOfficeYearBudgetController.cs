@@ -51,6 +51,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 if (ID == 0 || string.IsNullOrEmpty(ID.ToString().Trim()))
                 {
+                    model.Year = DateTime.Now.Year;
                     ViewBag.model = model;
                 }
                 else
@@ -223,7 +224,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">²éÑ¯ÄÚÈÝ</param>
         /// <param name="Selecte_parameter">²éÑ¯×Ö¶Î</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 20)
+        public ActionResult List(int page = 1, int pageSize = 10)
         {
             try
             {

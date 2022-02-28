@@ -182,7 +182,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">²éÑ¯ÄÚÈİ</param>
         /// <param name="Selecte_parameter">²éÑ¯×Ö¶Î</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 20)
+        public ActionResult List(int page = 1, int pageSize = 10)
         {
             try
             {
