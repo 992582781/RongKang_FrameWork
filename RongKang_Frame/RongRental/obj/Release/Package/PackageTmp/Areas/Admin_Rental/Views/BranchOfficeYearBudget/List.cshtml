@@ -169,11 +169,11 @@
                                                                 <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>修改</span>
                                                             </div>
                                                             @*<div class="am-btn-group am-btn-group-xs">
-                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整预算</span>
-                                                                </div>
-                                                                <div class="am-btn-group am-btn-group-xs">
-                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整管理费</span>
-                                                                </div>*@
+                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整预算</span>
+                                        </div>
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整管理费</span>
+                                        </div>*@
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -184,7 +184,12 @@
 
                                 </tbody>
                             </table>
-                            <div id="page"></div>
+                            <div class="am-u-lg-1">
+                                <div class="am-pagination" id="totalRecord" style="color: #0e90d2"></div>
+                            </div>
+                            <div class="am-u-lg-11">
+                                <div id="page"></div>
+                            </div>
                             <hr />
                             <p>注：.....</p>
                         </form>
@@ -213,7 +218,7 @@
 
 <script type="text/javascript">
     $(function () {
-
+    $("#totalRecord").text("显示" + @ViewBag.totalRecord + "条记录");
         $("select").each(function () {
             var _this = $(this);
             var id = _this.attr("id");
@@ -238,6 +243,8 @@
                 }
             });
         });
+
+        ProvincialRegion("#ProvincialRegion_ID")
 
         var selecte_parameter = "", searchtext = "", parameter = "", page = "", page_parameter = "";
         parameter_(0);
@@ -307,9 +314,10 @@
                 console.log(data);
                 if (data && data.length) {
                     $("#BranchOffice_ID").empty();
+                    $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
                     $(data).each(function (i, item) {
 
-                        if (data_value == item.ID)
+                        if (data_value == item.ID || GetQueryString('BranchOffice_ID') == item.ID)
                             $("#BranchOffice_ID").append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
                         else {
                             $("#BranchOffice_ID").append('<option  value="' + item.ID + '" >' + item.Name + '</option>');
@@ -318,10 +326,10 @@
                 }
             }
         });
-        if (data_value == "") {
-            $("#BranchOffice_ID").empty();
-            $("#BranchOffice_ID").attr("data-value", "");
-            $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
-        }
+        //if (data_value == "") {
+        //    $("#BranchOffice_ID").empty();
+        //    $("#BranchOffice_ID").attr("data-value", "");
+        //    $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
+        //}
     }
 </script>  

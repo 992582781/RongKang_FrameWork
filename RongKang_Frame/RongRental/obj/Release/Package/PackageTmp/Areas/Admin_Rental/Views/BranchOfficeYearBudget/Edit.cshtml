@@ -227,7 +227,7 @@
                     console.log(data);
                     if (data && data.length) {
                         $(data).each(function (i, item) {
-                            if (data_value == item.ID || item.Name=='否')
+                            if (data_value == item.ID || (item.Name == '否' && data_value != '是'))
                                 _this.append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
                             else {
                                 _this.append('<option  value="' + item.ID + '" >' + item.Name + '</option>');
@@ -275,6 +275,13 @@
         var _this = $($this);
         /* $("#div_" + $amountInput.attr("id")).text(numberParseChina(num));*/
         var data_value = _this.val();
+
+        if (data_value != "" && $("#Year").val() == "") {
+            MsgAlert("请先选择所属年度！");
+            _this.val("");
+            return;
+        }
+
         var url = "BranchOffice_ID".split("_");
         $.ajax({
             type: "post",
@@ -305,7 +312,7 @@
             url: "/Admin_Rental/" + url[0] + "/" + url[1],  //对应于/controllerName/ActionName
             async: false,
             dataType: 'json',
-            data: { "ProvincialRegion_ID": data_value },
+            data: { "ProvincialRegion_ID": data_value, "Year": $("#Year").val() },
             success: function (data) {
                 console.log(data);
                 if (data && data.length) {

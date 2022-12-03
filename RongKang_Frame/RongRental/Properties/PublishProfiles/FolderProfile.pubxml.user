@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\rongkong</_PublishTargetUrl>
-    <History>True|2022-02-06T08:24:47.3806091Z;True|2022-02-04T16:59:41.6327239+08:00;True|2022-02-04T16:52:59.7999408+08:00;True|2022-02-04T16:16:07.8322198+08:00;</History>
+    <History>True|2022-11-28T14:48:03.6157643Z;True|2022-02-06T16:24:47.3806091+08:00;True|2022-02-04T16:59:41.6327239+08:00;True|2022-02-04T16:52:59.7999408+08:00;True|2022-02-04T16:16:07.8322198+08:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin_Rental/assets/css/admin.css">
@@ -159,10 +159,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/07/2017 14:12:07</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/assets/js/List.js">
-      <publishTime>02/02/2018 11:37:11</publishTime>
+      <publishTime>02/10/2022 19:36:51</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/assets/js/MoneyFormat.js">
-      <publishTime>01/28/2022 20:06:59</publishTime>
+      <publishTime>02/09/2022 19:52:36</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/assets/js/MsgAlert.js">
       <publishTime>02/02/2018 11:20:24</publishTime>
@@ -177,13 +177,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/03/2022 21:32:21</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/BranchOffice/List.cshtml">
-      <publishTime>02/04/2022 15:01:47</publishTime>
+      <publishTime>02/26/2022 10:23:43</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/BranchOfficeYearBudget/Edit.cshtml">
-      <publishTime>02/04/2022 08:48:40</publishTime>
+      <publishTime>02/26/2022 15:41:15</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/BranchOfficeYearBudget/List.cshtml">
-      <publishTime>02/04/2022 10:16:52</publishTime>
+      <publishTime>02/26/2022 10:27:00</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/Customer/Edit.cshtml">
       <publishTime>02/09/2018 13:10:59</publishTime>
@@ -225,16 +225,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/01/2022 20:35:58</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/ProvincialRegion/Edit.cshtml">
-      <publishTime>02/03/2022 21:32:49</publishTime>
+      <publishTime>02/09/2022 19:29:31</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/ProvincialRegion/List.cshtml">
-      <publishTime>02/06/2022 16:22:50</publishTime>
+      <publishTime>02/21/2022 22:13:51</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/ReimbursementRecord/Edit.cshtml">
-      <publishTime>02/04/2022 09:20:20</publishTime>
+      <publishTime>02/11/2022 20:21:23</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/ReimbursementRecord/List.cshtml">
-      <publishTime>02/04/2022 10:13:28</publishTime>
+      <publishTime>02/26/2022 10:29:49</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/Role/Edit.cshtml">
       <publishTime>02/08/2018 13:33:03</publishTime>
@@ -246,7 +246,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/07/2018 16:19:38</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/Shared/Head.cshtml">
-      <publishTime>02/04/2022 17:38:42</publishTime>
+      <publishTime>02/12/2022 17:49:28</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/Shared/LeftMenu.cshtml">
       <publishTime>02/04/2022 17:33:14</publishTime>
@@ -261,10 +261,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/12/2017 09:52:13</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/YearBudget/Edit.cshtml">
-      <publishTime>02/02/2022 22:01:55</publishTime>
+      <publishTime>02/26/2022 13:22:03</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/YearBudget/List.cshtml">
-      <publishTime>02/04/2022 10:21:42</publishTime>
+      <publishTime>02/21/2022 22:15:21</publishTime>
     </File>
     <File Include="Areas/Admin_Rental/Views/_ViewStart.cshtml">
       <publishTime>12/27/2017 16:54:13</publishTime>
@@ -281,11 +281,20 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/Autofac.Integration.Mvc.dll">
       <publishTime>12/08/2017 15:45:51</publishTime>
     </File>
+    <File Include="bin/BouncyCastle.Crypto.dll">
+      <publishTime>12/18/2020 05:32:28</publishTime>
+    </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/08/2017 09:56:52</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>12/08/2017 09:56:52</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>05/09/2021 01:08:30</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.pdb">
+      <publishTime>05/09/2021 01:08:30</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>12/08/2017 09:23:47</publishTime>
@@ -329,6 +338,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>12/08/2017 09:23:36</publishTime>
     </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>10/23/2021 09:07:54</publishTime>
+    </File>
+    <File Include="bin/NPOI.pdb">
+      <publishTime>10/23/2021 17:07:54</publishTime>
+    </File>
     <File Include="bin/Owin.dll">
       <publishTime>12/08/2017 09:23:48</publishTime>
     </File>
@@ -339,10 +354,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/26/2022 20:55:20</publishTime>
     </File>
     <File Include="bin/Repository.dll">
-      <publishTime>02/06/2022 16:24:42</publishTime>
+      <publishTime>11/28/2022 22:48:01</publishTime>
     </File>
     <File Include="bin/Repository.pdb">
-      <publishTime>02/06/2022 16:24:42</publishTime>
+      <publishTime>11/28/2022 22:48:01</publishTime>
     </File>
     <File Include="bin/RongKang_Dal.dll">
       <publishTime>02/04/2022 15:53:33</publishTime>
@@ -354,13 +369,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/04/2022 15:53:33</publishTime>
     </File>
     <File Include="bin/RongKang_Entity.dll">
-      <publishTime>02/04/2022 16:52:58</publishTime>
+      <publishTime>11/28/2022 22:48:01</publishTime>
     </File>
     <File Include="bin/RongKang_Entity.dll.config">
       <publishTime>01/25/2022 21:29:40</publishTime>
     </File>
     <File Include="bin/RongKang_Entity.pdb">
-      <publishTime>02/04/2022 16:52:58</publishTime>
+      <publishTime>11/28/2022 22:48:01</publishTime>
     </File>
     <File Include="bin/RongKang_IBll.dll">
       <publishTime>02/04/2022 15:24:25</publishTime>
@@ -381,19 +396,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/04/2022 15:24:25</publishTime>
     </File>
     <File Include="bin/RongKang_ViewModel.dll">
-      <publishTime>02/06/2022 16:24:42</publishTime>
+      <publishTime>11/28/2022 22:48:01</publishTime>
     </File>
     <File Include="bin/RongKang_ViewModel.dll.config">
       <publishTime>01/25/2022 21:29:40</publishTime>
     </File>
     <File Include="bin/RongKang_ViewModel.pdb">
-      <publishTime>02/06/2022 16:24:42</publishTime>
+      <publishTime>11/28/2022 22:48:01</publishTime>
     </File>
     <File Include="bin/RongRental.dll">
-      <publishTime>02/06/2022 16:24:43</publishTime>
+      <publishTime>11/28/2022 22:48:02</publishTime>
     </File>
     <File Include="bin/RongRental.pdb">
-      <publishTime>02/06/2022 16:24:43</publishTime>
+      <publishTime>11/28/2022 22:48:02</publishTime>
     </File>
     <File Include="bin/StackExchange.Redis.dll">
       <publishTime>06/19/2017 16:12:20</publishTime>
@@ -432,10 +447,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/08/2017 09:23:38</publishTime>
     </File>
     <File Include="bin/Web_Common.dll">
-      <publishTime>02/04/2022 16:52:57</publishTime>
+      <publishTime>11/28/2022 22:48:00</publishTime>
     </File>
     <File Include="bin/Web_Common.pdb">
-      <publishTime>02/04/2022 16:52:57</publishTime>
+      <publishTime>11/28/2022 22:48:00</publishTime>
     </File>
     <File Include="bin/zh-Hans/EntityFramework.resources.dll">
       <publishTime>12/08/2017 09:57:28</publishTime>
@@ -573,7 +588,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/05/2018 13:56:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/04/2022 15:25:49</publishTime>
+      <publishTime>11/28/2022 22:48:03</publishTime>
     </File>
   </ItemGroup>
 </Project>

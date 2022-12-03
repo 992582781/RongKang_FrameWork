@@ -175,7 +175,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                                exp = exp + "and  " + dic.Key + " = '" + Request.QueryString[dic.Key].ToString() + "'";
                         }
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {
@@ -194,23 +194,31 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 foreach (var BranchOffice in List)
                 {
-                    BranchOffice.ProvinceName = ProvincialRegionList?.Where(x => x.ID == BranchOffice.ProvincialRegion_ID)?.FirstOrDefault()?.ProvinceName;
-                    var BranchOfficeYearBudget = BranchOfficeYearBudgetList.Where(x => x.BranchOffice_ID == BranchOffice.ID)?.FirstOrDefault();
-                    BranchOffice.Switch_ManageType = BranchOfficeYearBudget?.Switch_ManageType;
-                    BranchOffice.BudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.BudgetFunds);
-                    BranchOffice.AvailableBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.AvailableBudgetFunds);
-                    BranchOffice.UsedBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.UsedBudgetFunds);
+                    BranchOffice.ProvinceName = ProvincialRegionList?.Where(x => x.ID == BranchOffice.ProvincialRegion_ID)?
+                        .FirstOrDefault()?.ProvinceName;
 
-                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.BranchOffice_ID == BranchOffice.ID &&
-                    x.Year == DateTime.Now.Year).ToList();
 
-                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
-                Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
-                    BranchOffice.GuangLeFunds_1 = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+                    #region ÔÝÊ±×¢ÊÍ
+                    //var BranchOfficeYearBudget = BranchOfficeYearBudgetList.Where(x => x.BranchOffice_ID == BranchOffice.ID)?.FirstOrDefault();
+                    //BranchOffice.Switch_ManageType = BranchOfficeYearBudget?.Switch_ManageType;
 
-                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
-                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
-                    BranchOffice.PersonFunds_1 = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
+                    //BranchOffice.BudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.BudgetFunds);
+                    //BranchOffice.AvailableBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.AvailableBudgetFunds);
+                    //BranchOffice.UsedBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget?.UsedBudgetFunds);
+
+                    //var reimbursementRecordList = ReimbursementRecordBll
+                    //    .GetEntities(x => x.BranchOffice_ID == BranchOffice.ID &&x.Year == DateTime.Now.Year).ToList();
+
+                    //var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID)
+                    //    .Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    //BranchOffice.GuangLeFunds_1 = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    //var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID)
+                    //    .Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    //BranchOffice.PersonFunds_1 = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
+
+                    #endregion
+
                 }
 
                 ViewBag.List = List;

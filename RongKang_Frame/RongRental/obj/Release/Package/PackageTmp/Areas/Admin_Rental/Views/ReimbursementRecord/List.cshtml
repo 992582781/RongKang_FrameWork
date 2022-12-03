@@ -69,7 +69,7 @@
                                 <div class="am-u-lg-2">
 
                                     @{
-                                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString() && dic.Key != "ProvincialRegion_Leader")
                                         {
                                             <div class="am-input-group am-input-group-secondary am-form-group">
                                                 <span class="am-input-group-label">@dic.Value.View_Name</span>
@@ -92,9 +92,10 @@
                         }
                     }
 
-                    <div class="am-u-lg-1">
+                    <div class="am-u-lg-2">
                         <div class="am-input-group ">
                             <button class="am-btn am-btn-primary" id="search" type="button">搜索</button>
+                            <button class="am-btn am-btn-primary" id="excel" type="button">导出</button>
                         </div>
                     </div>
                 </div>
@@ -180,7 +181,12 @@
 
                                 </tbody>
                             </table>
-                            <div id="page"></div>
+                            <div class="am-u-lg-1">
+                                <div class="am-pagination" id="totalRecord" style="color: #0e90d2"></div>
+                            </div>
+                            <div class="am-u-lg-11">
+                                <div id="page"></div>
+                            </div>
                             <hr />
                             <p>注：.....</p>
                         </form>
@@ -209,7 +215,7 @@
 
 <script type="text/javascript">
     $(function () {
-
+         $("#totalRecord").text("显示" + @ViewBag.totalRecord + "条记录");
         $("select").each(function () {
             var _this = $(this);
             var id = _this.attr("id");
@@ -235,6 +241,8 @@
             });
         });
 
+        ProvincialRegion("#ProvincialRegion_ID")
+
         var selecte_parameter = "", searchtext = "", parameter = "", page = "", page_parameter = "";
         parameter_(0);
         var page = window.location.search.match(/page=(\d+)/);
@@ -254,6 +262,11 @@
         $("#search").click(function () {
             parameter_(1);
             location.href = location.href.split('?')[0] + parameter;
+        });
+
+        $("#excel").click(function () {
+            parameter_(1);
+            location.href = location.href.split('?')[0].replace('List', 'Excel') + parameter;
         });
 
         function parameter_(flag) {
@@ -303,9 +316,10 @@
                 console.log(data);
                 if (data && data.length) {
                     $("#BranchOffice_ID").empty();
+                    $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
                     $(data).each(function (i, item) {
 
-                        if (data_value == item.ID)
+                        if (data_value == item.ID || GetQueryString('BranchOffice_ID') == item.ID)
                             $("#BranchOffice_ID").append('<option  value="' + item.ID + '" selected >' + item.Name + '</option>');
                         else {
                             $("#BranchOffice_ID").append('<option  value="' + item.ID + '" >' + item.Name + '</option>');
@@ -314,10 +328,10 @@
                 }
             }
         });
-        if (data_value == "") {
-            $("#BranchOffice_ID").empty();
-            $("#BranchOffice_ID").attr("data-value", "");
-            $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
-        }
+        //if (data_value == "") {
+        //    $("#BranchOffice_ID").empty();
+        //    $("#BranchOffice_ID").attr("data-value", "");
+        //    $("#BranchOffice_ID").append('<option  value="" >--请选择--</option>');
+        //}
     }
 </script>  

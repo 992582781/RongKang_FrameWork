@@ -52,6 +52,22 @@ namespace RongKang_Entity
         [FieldName(2, "所属商业", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
         public int BranchOffice_ID { get; set; }
 
+
+        /// <summary>
+        /// 省份
+        /// </summary>
+        [FieldName(0, "法人", "", Validate.Empty, Control_Type.Text)]
+        [NotMapped]
+        public string Legal { get; set; }
+
+
+        /// <summary>
+        /// 省份
+        /// </summary>
+        [FieldName(0, "业务员", "", Validate.Empty, Control_Type.Text)]
+        [NotMapped]
+        public string Salesman { get; set; }
+
         /// <summary>
         /// 管理费企业
         /// </summary>

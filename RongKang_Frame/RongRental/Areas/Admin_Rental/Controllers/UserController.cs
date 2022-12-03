@@ -144,7 +144,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         /// <param name="Searchtext">查询内容</param>
         /// <param name="Selecte_parameter">查询字段</param>
         /// <returns></returns>
-        public ActionResult List(int page = 1, int pageSize = 5, string Searchtext = "", string Selecte_parameter = "")
+        public ActionResult List(int page = 1, int pageSize = 10, string Searchtext = "", string Selecte_parameter = "")
         {
             try
             {
@@ -208,7 +208,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
 
                 var totalRecord = UserBll.GetEntitiesCount(exp);
                 var totalPage = (totalRecord + pageSize - 1) / pageSize;
-                var List = ViewUserBll.SingleGetEntitiesForPaging(page, pageSize, orderName, "asc", exp).ToList();
+                var List = ViewUserBll.SingleGetEntitiesForPaging(page, pageSize, orderName, "asc", exp).ToList().Where(x=>x.User_Name!="admin");
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;

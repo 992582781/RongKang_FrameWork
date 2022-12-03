@@ -69,7 +69,7 @@
 
                                 foreach (var dic in Dic)
                                 {
-                                    if (dic.Value.View_Flag != 0)
+                                    if (dic.Value.View_Flag != 0 && (dic.Key != "Switch_Month" && dic.Key != "Switch_Quarter"))
                                     {
                                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                                         {
@@ -322,13 +322,20 @@
     function BranchOffice($this) {
         var _this = $($this);
         var data_value = _this.val();
+
+        if (data_value != "" && $("#ReimbursementDate").val() == "") {
+            MsgAlert("请先选择报销日期！");
+            _this.val("");
+            return;
+        }
+
         url = "BranchOfficeYearBudget_Funds".split("_");
         $.ajax({
             type: "post",
             url: "/Admin_Rental/" + url[0] + "/" + url[1],  //对应于/controllerName/ActionName
             async: false,
             dataType: 'json',
-            data: { "BranchOffice_ID": data_value },
+            data: { "BranchOffice_ID": data_value, "ReimbursementDate": $("#ReimbursementDate").val() },
             success: function (data) {
                 console.log(data);
                 if (data && data.length) {

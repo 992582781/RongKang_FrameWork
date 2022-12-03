@@ -201,7 +201,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                                exp = exp + "and  " + dic.Key + " = '" + Request.QueryString[dic.Key].ToString() + "'";
                         }
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {
@@ -290,7 +290,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                                exp = exp + "and  " + dic.Key + "= '" + Request.QueryString[dic.Key].ToString() + "'";
                         }
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {

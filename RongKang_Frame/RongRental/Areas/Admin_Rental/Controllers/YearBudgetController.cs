@@ -231,7 +231,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                                exp = exp + "and  " + dic.Key + "= '" + Request.QueryString[dic.Key].ToString() + "'";
                         }
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {
@@ -302,42 +302,58 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     var FollowUpFundsList = reimbursementRecordList.Where(x => x.Project_ID == 2).GroupBy(g => g.Project_ID).
                     Select(e => new { Project_ID = e.Key, FollowUpFunds = e.Sum(q => q.Funds) });
                     YearBudget.FollowUpFunds = string.Format("{0:N2}", FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds);
-                    YearBudget.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds
-                        / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+
+                    if (branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds != 0)
+                        YearBudget.PercentFollowUpFunds = Convert.ToDecimal(FollowUpFundsList?.FirstOrDefault()?.FollowUpFunds
+                            / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+                    else
+                        YearBudget.PercentFollowUpFunds = 0.ToString("0.00%");
 
 
-                    var AcademicFundsList = reimbursementRecordList.Where(x => x.Project_ID == 3).GroupBy(g => g.Project_ID).
-                    Select(e => new { Project_ID = e.Key, AcademicFunds = e.Sum(q => q.Funds) });
+                    var AcademicFundsList = reimbursementRecordList.Where(x => x.Project_ID == 3).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, AcademicFunds = e.Sum(q => q.Funds) });
                     YearBudget.AcademicFunds = string.Format("{0:N2}", AcademicFundsList?.FirstOrDefault()?.AcademicFunds);
-                    YearBudget.PercentAcademicFunds = Convert.ToDecimal(AcademicFundsList?.FirstOrDefault()?.AcademicFunds
+
+                    if (branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds != 0)
+                        YearBudget.PercentAcademicFunds = Convert.ToDecimal(AcademicFundsList?.FirstOrDefault()?.AcademicFunds
                        / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+                    else
+                        YearBudget.PercentAcademicFunds = 0.ToString("0.00%");
 
 
-                    var BusinessFundsList = reimbursementRecordList.Where(x => x.Project_ID == 4).GroupBy(g => g.Project_ID).
-                    Select(e => new { Project_ID = e.Key, BusinessFunds = e.Sum(q => q.Funds) });
+                    var BusinessFundsList = reimbursementRecordList.Where(x => x.Project_ID == 4).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, BusinessFunds = e.Sum(q => q.Funds) });
                     YearBudget.BusinessFunds = string.Format("{0:N2}", BusinessFundsList?.FirstOrDefault()?.BusinessFunds);
-                    YearBudget.PercentBusinessFunds = Convert.ToDecimal(BusinessFundsList?.FirstOrDefault()?.BusinessFunds
+
+                    if (branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds != 0)
+                        YearBudget.PercentBusinessFunds = Convert.ToDecimal(BusinessFundsList?.FirstOrDefault()?.BusinessFunds
                       / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+                    else
+                        YearBudget.PercentBusinessFunds = 0.ToString("0.00%");
 
-                    var InformationFundsList = reimbursementRecordList.Where(x => x.Project_ID == 5).GroupBy(g => g.Project_ID).
-                    Select(e => new { Project_ID = e.Key, InformationFunds = e.Sum(q => q.Funds) });
+                    var InformationFundsList = reimbursementRecordList.Where(x => x.Project_ID == 5).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, InformationFunds = e.Sum(q => q.Funds) });
                     YearBudget.InformationFunds = string.Format("{0:N2}", InformationFundsList?.FirstOrDefault()?.InformationFunds);
-                    YearBudget.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
-                     / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
 
-                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
-                 Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    if (branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds != 0)
+                        YearBudget.PercentInformationFunds = Convert.ToDecimal(InformationFundsList?.FirstOrDefault()?.InformationFunds
+                     / branchOfficeYearBudgetList?.FirstOrDefault()?.UsedBudgetFunds).ToString("0.00%");
+                    else
+                        YearBudget.PercentInformationFunds = 0.ToString("0.00%");
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
                     YearBudget.GuangLeFunds = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
 
-                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
-                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
                     YearBudget.PersonFunds = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
                 }
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
-                ViewBag.Role_ID = Role_ID;
                 ViewBag.totalRecord = totalRecord;
+                ViewBag.Role_ID = Role_ID;
                 return View();
             }
             catch (Exception e)
@@ -381,7 +397,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                                exp = exp + "and  " + dic.Key + "= '" + Request.QueryString[dic.Key].ToString() + "'";
                         }
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {

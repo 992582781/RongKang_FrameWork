@@ -19,6 +19,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
         private Message message = new Message();
         private JsonResult rs = null;
         private int User_ID = 0;
+        public int Role_ID = 0;
 
         IBranchOfficeYearBudgetBll<BranchOfficeYearBudget> BranchOfficeYearBudgetBll;
         IBranchOfficeBll<BranchOffice> BranchOfficeBll;
@@ -30,7 +31,8 @@ namespace RongRental.Areas.Admin_Rental.Controllers
              IBranchOfficeBll<BranchOffice> BranchOfficeBll,
              IYearBudgetBll<YearBudget> YearBudgetBll,
              IReimbursementRecordBll<ReimbursementRecord> ReimbursementRecordBll,
-             IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll) //依赖构造函数进行对象注入 
+             IProvincialRegionBll<ProvincialRegion> ProvincialRegionBll,
+              IUserRoleBll<UserRole> UserRoleBll) //依赖构造函数进行对象注入 
         {
             this.BranchOfficeYearBudgetBll = BranchOfficeYearBudgetBll; //在构造函数中初始化控制器类的Bll属性
             this.BranchOfficeBll = BranchOfficeBll; //在构造函数中初始化控制器类的Bll属性
@@ -38,6 +40,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             this.ProvincialRegionBll = ProvincialRegionBll; //在构造函数中初始化控制器类的Bll属性
             this.ReimbursementRecordBll = ReimbursementRecordBll; //在构造函数中初始化控制器类的Bll属性
             User_ID = Cookie_Operate.GetID();
+            Role_ID = (int)(UserRoleBll.GetFirstEntity(x => x.User_ID == User_ID)?.Role_ID);
         }
 
 
@@ -108,7 +111,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     if (branchOfficeYearBudgetOld != null)
                     {
                         message.Status = false;
-                        message.Msg = "数据已经存在，务重复添加！";
+                        message.Msg = "数据已经存在，勿重复添加！";
                         rs = Json(message);
                         rs.ContentType = "text/html";
                         return rs;
@@ -233,7 +236,12 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                 //exp1 = x => x.ID > 0;
 
                 var orderName = "Year";
-                var exp = "ID>0  and UserID=" + User_ID + "";
+                //var exp = "ID>0  and UserID=" + User_ID + "";
+                var exp = "";
+                if (Role_ID == 4)
+                    exp = "ID>0  and UserID=" + User_ID + "";
+                else
+                    exp = "ID>0 ";
                 Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<BranchOfficeYearBudget>();//修改model
                 foreach (var dic in Dic)
                 {
@@ -242,7 +250,7 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                         if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
                         {
                             if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
-                                exp = exp + "and  " + dic.Key + "= " + Request.QueryString[dic.Key].ToString() + "";
+                                exp = exp + "and  " + dic.Key + " = '" + Request.QueryString[dic.Key].ToString() + "'";
                         }
                         else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
                         {
@@ -264,25 +272,31 @@ namespace RongRental.Areas.Admin_Rental.Controllers
                     BranchOfficeYearBudget.BranchOfficeName = BranchOfficeList?.Where(x => x.ID == BranchOfficeYearBudget.BranchOffice_ID)?.FirstOrDefault()?.BranchOfficeName;
                     BranchOfficeYearBudget.ProvinceName = ProvincialRegionList?.Where(x => x.ID == BranchOfficeYearBudget.ProvincialRegion_ID)?.FirstOrDefault()?.ProvinceName;
 
+                    BranchOfficeYearBudget.Legal = BranchOfficeList?.Where(x => x.ID == BranchOfficeYearBudget.BranchOffice_ID)?.FirstOrDefault()?.Legal;
+                    BranchOfficeYearBudget.Salesman = BranchOfficeList?.Where(x => x.ID == BranchOfficeYearBudget.BranchOffice_ID)?.FirstOrDefault()?.Salesman;
+
+
                     BranchOfficeYearBudget.BudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.BudgetFunds);
                     BranchOfficeYearBudget.AvailableBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.AvailableBudgetFunds);
                     BranchOfficeYearBudget.UsedBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.UsedBudgetFunds);
 
-                    var reimbursementRecordList = ReimbursementRecordBll.GetEntities(x => x.BranchOffice_ID == BranchOfficeYearBudget.BranchOffice_ID &&
-                   x.Year == BranchOfficeYearBudget.Year).ToList();
+                    var reimbursementRecordList = ReimbursementRecordBll
+                        .GetEntities(x => x.BranchOffice_ID == BranchOfficeYearBudget.BranchOffice_ID && x.Year == BranchOfficeYearBudget.Year)
+                        .ToList();
 
-                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID).
-                Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
                     BranchOfficeYearBudget.GuangLeFunds_1 = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
 
-                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID).
-                   Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
                     BranchOfficeYearBudget.PersonFunds_1 = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
                 }
 
                 ViewBag.List = List;
                 ViewBag.totalPage = totalPage;
                 ViewBag.totalRecord = totalRecord;
+                ViewBag.Role_ID = Role_ID;
                 return View();
             }
             catch (Exception e)
@@ -292,6 +306,92 @@ namespace RongRental.Areas.Admin_Rental.Controllers
             }
         }
 
+
+
+        #region 导出列表
+        /// </summary>
+        /// <param name="page">当前页码</param>
+        /// <param name="pageSize">分页条数</param>
+        /// <param name="Searchtext">查询内容</param>
+        /// <param name="Selecte_parameter">查询字段</param>
+        /// <returns></returns>
+        public ActionResult Excel(int page = 1, int pageSize = 20000)
+        {
+            try
+            {
+
+                //Func<ViewModule, bool> exp1;
+                //exp1 = x => x.ID > 0;
+
+                var orderName = "Year";
+                //var exp = "ID>0  and UserID=" + User_ID + "";
+                var exp = "";
+                if (Role_ID == 4)
+                    exp = "ID>0  and UserID=" + User_ID + "";
+                else
+                    exp = "ID>0 ";
+                Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<BranchOfficeYearBudget>();//修改model
+                foreach (var dic in Dic)
+                {
+                    if (dic.Value.View_Flag != 0)
+                    {
+                        if (dic.Value.Control_Type.ToString() == Control_Type.SelectText.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + "and  " + dic.Key + "= '" + Request.QueryString[dic.Key].ToString() + "'";
+                        }
+                        else if (dic.Value.Control_Type.ToString() == Control_Type.Text.ToString())
+                        {
+                            if (!string.IsNullOrWhiteSpace(Request.QueryString[dic.Key]))
+                                exp = exp + " and   CONVERT(varchar(100), " + dic.Key + ", 23)" + " like '%" + Request.QueryString[dic.Key].ToString() + "%'";
+                        }
+                    }
+                }
+
+                var totalRecord = BranchOfficeYearBudgetBll.GetEntitiesCount(exp);
+                var totalPage = (totalRecord + pageSize - 1) / pageSize;
+                var List = BranchOfficeYearBudgetBll.GetEntitiesForPaging(page, pageSize, orderName, "desc", exp).ToList();
+
+                var BranchOfficeList = BranchOfficeBll.GetEntities(x => x.ID > 0).ToList();
+                var ProvincialRegionList = ProvincialRegionBll.GetEntities(x => x.ID > 0).ToList();
+
+                foreach (var BranchOfficeYearBudget in List)
+                {
+                    BranchOfficeYearBudget.BranchOfficeName = BranchOfficeList?.Where(x => x.ID == BranchOfficeYearBudget.BranchOffice_ID)?.FirstOrDefault()?.BranchOfficeName;
+                    BranchOfficeYearBudget.ProvinceName = ProvincialRegionList?.Where(x => x.ID == BranchOfficeYearBudget.ProvincialRegion_ID)?.FirstOrDefault()?.ProvinceName;
+
+                    BranchOfficeYearBudget.Legal = BranchOfficeList?.Where(x => x.ID == BranchOfficeYearBudget.BranchOffice_ID)?.FirstOrDefault()?.Legal;
+                    BranchOfficeYearBudget.Salesman = BranchOfficeList?.Where(x => x.ID == BranchOfficeYearBudget.BranchOffice_ID)?.FirstOrDefault()?.Salesman;
+
+
+                    BranchOfficeYearBudget.BudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.BudgetFunds);
+                    BranchOfficeYearBudget.AvailableBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.AvailableBudgetFunds);
+                    BranchOfficeYearBudget.UsedBudgetFunds_1 = String.Format("{0:N2}", BranchOfficeYearBudget.UsedBudgetFunds);
+
+                    var reimbursementRecordList = ReimbursementRecordBll
+                        .GetEntities(x => x.BranchOffice_ID == BranchOfficeYearBudget.BranchOffice_ID && x.Year == BranchOfficeYearBudget.Year)
+                        .ToList();
+
+                    var GuangLeFundsList = reimbursementRecordList.Where(x => x.Project_ID == 6).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, GuangLeFunds = e.Sum(q => q.Funds) });
+                    BranchOfficeYearBudget.GuangLeFunds_1 = string.Format("{0:N2}", GuangLeFundsList?.FirstOrDefault()?.GuangLeFunds);
+
+                    var personFundsList = reimbursementRecordList.Where(x => x.Project_ID == 7).GroupBy(g => g.Project_ID)
+                        .Select(e => new { Project_ID = e.Key, PersonFunds = e.Sum(q => q.Funds) });
+                    BranchOfficeYearBudget.PersonFunds_1 = string.Format("{0:N2}", personFundsList?.FirstOrDefault()?.PersonFunds);
+                }
+
+                return File(ExportExcelHelper.GenExcelFileStream(List), "application/ms-excel", string.Format("商业年度汇总{0}.xls", DateTime.Now.ToString("yyyyMMddHHmmss")));
+
+            }
+            catch (Exception e)
+            {
+                Dal_Log.WriteBaseDal(e.ToString());
+                return Content("<script>alert('查询数据异常，请吴恶意操作！');window.history.back();</script>");
+            }
+        }
+
+        #endregion
         #endregion
 
         #region 对前端开放的下拉数据接口

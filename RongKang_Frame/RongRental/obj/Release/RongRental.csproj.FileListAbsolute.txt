@@ -391,3 +391,11 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\obj\Release\RongRental.pdb
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\Repository.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\NPOI.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\ICSharpCode.SharpZipLib.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\BouncyCastle.Crypto.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\NPOI.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\NPOI.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\ICSharpCode.SharpZipLib.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\ICSharpCode.SharpZipLib.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongRental\bin\BouncyCastle.Crypto.xml

@@ -19,18 +19,18 @@ namespace RongKang_Entity
         [Key]
         public int ID { get; set; }
 
-        /// <summary>
-        /// 月份
-        /// </summary>
-        [FieldName(2, "月份", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
-        [NotMapped]
-        public int Switch_Month { get; set; }
-        /// <summary>
-        /// 季度
-        /// </summary>
-        [FieldName(2, "季度", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
-        [NotMapped]
-        public int Switch_Quarter { get; set; }
+        ///// <summary>
+        ///// 月份
+        ///// </summary>
+        //[FieldName(2, "月份", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        //[NotMapped]
+        //public int Switch_Month { get; set; }
+        ///// <summary>
+        ///// 季度
+        ///// </summary>
+        //[FieldName(2, "季度", "只能输入汉字", Validate.Required, Control_Type.SelectText)]
+        //[NotMapped]
+        //public int Switch_Quarter { get; set; }
 
         /// <summary>
         /// 省份 如：江苏省
@@ -70,61 +70,64 @@ namespace RongKang_Entity
         [NotMapped]
         public string RealUsedBudgetFunds { get; set; }
 
+
+        #region 暂时隐藏
         /// <summary>
         /// 随访费合计
         /// </summary>
-        [FieldName(0, "随访费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
-        [NotMapped]
-        public string FollowUpFunds { get; set; }
+        //[FieldName(0, "随访费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        //[NotMapped]
+        //public string FollowUpFunds { get; set; }
 
-        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
-        [NotMapped]
-        public string PercentFollowUpFunds { get; set; }
-
-        /// <summary>
-        /// 学术费合计
-        /// </summary>
-        [FieldName(0, "学术费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
-        [NotMapped]
-        public string AcademicFunds { get; set; }
-
+        //[FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        //[NotMapped]
+        //public string PercentFollowUpFunds { get; set; }
 
         /// <summary>
         /// 学术费合计
         /// </summary>
-        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
-        [NotMapped]
-        public string PercentAcademicFunds { get; set; }
-
-        /// <summary>
-        /// 商务费合计
-        /// </summary>
-        [FieldName(0, "商务费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
-        [NotMapped]
-        public string BusinessFunds { get; set; }
+        //[FieldName(0, "学术费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        //[NotMapped]
+        //public string AcademicFunds { get; set; }
 
 
-        /// <summary>
-        /// 商务费合计
-        /// </summary>
-        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
-        [NotMapped]
-        public string PercentBusinessFunds { get; set; }
+        ///// <summary>
+        ///// 学术费合计
+        ///// </summary>
+        //[FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        //[NotMapped]
+        //public string PercentAcademicFunds { get; set; }
+
+        ///// <summary>
+        ///// 商务费合计
+        ///// </summary>
+        //[FieldName(0, "商务费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        //[NotMapped]
+        //public string BusinessFunds { get; set; }
+
+
+        ///// <summary>
+        ///// 商务费合计
+        ///// </summary>
+        //[FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        //[NotMapped]
+        //public string PercentBusinessFunds { get; set; }
 
         /// <summary>
         /// 信息费合计
         /// </summary>
-        [FieldName(0, "信息费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
-        [NotMapped]
-        public string InformationFunds { get; set; }
+        //[FieldName(0, "信息费合计", "只能输入数字", Validate.Number, Control_Type.Readonly)]
+        //[NotMapped]
+        //public string InformationFunds { get; set; }
 
-        /// <summary>
-        /// 信息费合计
-        /// </summary>
-        [FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
-        [NotMapped]
-        public string PercentInformationFunds { get; set; }
- 
+        ///// <summary>
+        ///// 信息费合计
+        ///// </summary>
+        //[FieldName(0, "占比", "只能输入数字", Validate.Number, Control_Type.Text)]
+        //[NotMapped]
+        //public string PercentInformationFunds { get; set; }
+
+        #endregion
 
         /// <summary>
         /// 广乐总费用
@@ -132,6 +135,8 @@ namespace RongKang_Entity
         [FieldName(0, "广乐总费用", "只能输入数字", Validate.Number, Control_Type.Readonly)]
         [NotMapped]
         public string GuangLeFunds { get; set; }
+
+
 
 
         /// <summary>

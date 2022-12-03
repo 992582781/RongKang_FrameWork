@@ -1,0 +1,30 @@
+
+发生时间：2022/11/28 21:46:46
+操作的表：ProvincialRegion
+客户端IP：127.0.0.1
+操作的ID：17
+操作数据：ProvinceName:广西区,Leader:张友军,Remark:鹅鹅鹅,
+
+发生时间：2022/11/28 21:47:04
+操作的表：BranchOffice
+客户端IP：127.0.0.1
+操作的ID：17
+操作数据：ProvincialRegion_ID:15,BranchOfficeName: 22,Remark:222,
+
+发生时间：2022/11/28 21:48:01
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：17
+操作数据：ProvincialRegion_ID:15,Year:2022,Remark:,
+
+发生时间：2022/11/28 21:48:17
+操作的表：BranchOfficeYearBudget
+客户端IP：127.0.0.1
+操作的ID：17
+操作数据：Year:2022,ProvincialRegion_ID:15,BranchOffice_ID:1002,Switch_ManageType:否,Remark:,
+
+发生时间：2022/11/28 21:48:17
+操作的表：YearBudget
+客户端IP：127.0.0.1
+操作的ID：17
+操作数据：ProvincialRegion_ID:15,Year:2022,Remark:,

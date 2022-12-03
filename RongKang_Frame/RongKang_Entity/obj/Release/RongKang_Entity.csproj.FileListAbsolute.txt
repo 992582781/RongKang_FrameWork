@@ -132,3 +132,11 @@ D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKa
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.csproj.CopyComplete
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.dll
 D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\obj\Release\RongKang_Entity.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\NPOI.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\BouncyCastle.Crypto.dll
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\NPOI.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\NPOI.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\ICSharpCode.SharpZipLib.pdb
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\ICSharpCode.SharpZipLib.xml
+D:\WorkSelf\RongKang_FrameWork\RongKang_Frame\RongKang_Entity\bin\Release\BouncyCastle.Crypto.xml

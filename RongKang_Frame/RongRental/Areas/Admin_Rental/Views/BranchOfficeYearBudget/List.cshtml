@@ -7,6 +7,7 @@
 @{
     //这两行是页面添加显示修改数据必须需要的。
     var List = ViewBag.List;
+    int Role_ID = ViewBag.Role_ID;
     Dictionary<string, FieldNameAttribute> Dic = CustomAttributeHelper.GetpropertyView<BranchOfficeYearBudget>();//修改model
 }
 <!doctype html>
@@ -48,19 +49,22 @@
                 <hr>
                 <!-- List search start -->
                 <div class="am-g">
-                    <div class="am-u-lg-1">
-                        <div class="am-input-group am-input-group-secondary am-form-group">
-                            @if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
-                            {
-                                <button type="button" id="Add" class="am-btn am-btn-primary"><span class="am-icon-plus"></span>新增</button>
+                    @if (Role_ID == 4)
+                    {
+                        <div class="am-u-lg-1">
+                            <div class="am-input-group am-input-group-secondary am-form-group">
+                                @if (Permission.RightCheck(ViewContext.RouteData.Values["controller"].ToString(), "Add"))
+                                {
+                                    <button type="button" id="Add" class="am-btn am-btn-primary"><span class="am-icon-plus"></span>新增</button>
 
-                            }
-                            else
-                            {
-                                <button type="button" class="hide"></button>
-                            }
+                                }
+                                else
+                                {
+                                    <button type="button" class="hide"></button>
+                                }
+                            </div>
                         </div>
-                    </div>
+                    }
                     @{
                         foreach (var dic in Dic)
                         {
@@ -92,11 +96,12 @@
                         }
                     }
 
-                    <div class="am-u-lg-1">
-                        <div class="am-input-group ">
-                            <button class="am-btn am-btn-primary" id="search" type="button">搜索</button>
-                        </div>
+                <div class="am-u-lg-2">
+                    <div class="am-input-group ">
+                        <button class="am-btn am-btn-primary" id="search" type="button">搜索</button>
+                        <button class="am-btn am-btn-primary" id="excel" type="button">导出</button>
                     </div>
+                </div>
                 </div>
                 <!-- List search end -->
                 <!-- List start -->
@@ -169,11 +174,11 @@
                                                                 <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>修改</span>
                                                             </div>
                                                             @*<div class="am-btn-group am-btn-group-xs">
-                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整预算</span>
-                                        </div>
-                                        <div class="am-btn-group am-btn-group-xs">
-                                            <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整管理费</span>
-                                        </div>*@
+                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整预算</span>
+                                                                </div>
+                                                                <div class="am-btn-group am-btn-group-xs">
+                                                                    <span class="edit am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 调整管理费</span>
+                                                                </div>*@
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -265,6 +270,11 @@
         $("#search").click(function () {
             parameter_(1);
             location.href = location.href.split('?')[0] + parameter;
+        });
+
+        $("#excel").click(function () {
+            parameter_(1);
+            location.href = location.href.split('?')[0].replace('List', 'Excel') + parameter;
         });
 
         function parameter_(flag) {
